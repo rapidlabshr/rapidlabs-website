@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment | Rapid Labs</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cart.css">
+</head>
+
+<body>
+
+<section class="cart-container">
+
+  <!-- STEP INDICATOR -->
+  <div class="cart-steps">
+    <div class="step completed">1<br><span>Add to Cart</span></div>
+    <div class="step completed">2<br><span>Select Member</span></div>
+    <div class="step completed">3<br><span>Date & Time</span></div>
+    <div class="step active">4<br><span>Payment</span></div>
+  </div>
+
+  <div class="cart-layout">
+
+    <!-- LEFT -->
+    <div class="cart-left">
+
+      <h2>Review Your Booking</h2>
+
+      <div id="paymentSummary"></div>
+
+      <div class="cart-actions">
+        <button id="confirmPaymentBtn" class="confirm-btn">
+        Confirm & Proceed to Payment
+        </button>
+
+      </div>
+
+    </div>
+
+      <!-- RIGHT -->
+      <div class="cart-right">
+        <h3>Payment Details</h3>
+
+        <div class="summary-row">
+          <span>Sub Total</span>
+          <span id="subTotal">₹0.00</span>
+        </div>
+
+        <!-- AVAILABLE COUPONS -->
+        <div class="coupon-section">
+          <h4>Available Coupons</h4>
+
+          <div class="coupon-card" data-code="LAB100" data-discount="100">
+            <div>
+              <strong>LAB100</strong>
+              <p>Flat ₹100 OFF on orders above ₹700</p>
+            </div>
+            <button>Apply</button>
+          </div>
+
+          <div class="coupon-card" data-code="HEALTH10" data-percent="10">
+            <div>
+              <strong>HEALTH10</strong>
+              <p>10% OFF (Max ₹450)</p>
+            </div>
+            <button>Apply</button>
+          </div>
+        </div>
+
+        <div class="summary-row">
+          <span>Discount</span>
+          <span class="discount" id="discountAmount">₹0.00</span>
+        </div>
+
+        <hr>
+
+        <div class="summary-row total">
+          <span>Total Payable</span>
+          <span id="totalPayable">₹0.00</span>
+        </div>
+      </div>
+
+
+
+  </div>
+
+</section>
+
+
+<!-- PAYMENT SELECTION MODAL -->
+
+<div id="paymentModal" class="med-booking-modal">
+
+  <div class="med-booking-card" style="max-width:500px">
+
+    <button class="med-close" id="closePaymentModal">✕</button>
+
+    <div class="med-right" style="width:100%">
+
+      <div class="med-header">
+        <h3>Select Payment Method</h3>
+        <p>Choose how you want to pay</p>
+      </div>
+
+      <form id="paymentForm">
+
+        <div class="med-payment-section">
+
+          <div class="med-payment-options">
+
+            <label class="med-payment-card">
+              <input type="radio" name="payment_method" value="online" checked>
+              <div class="med-pay-content">
+                ⚡ <div><strong>Pay Online</strong><p>UPI / Card</p></div>
+              </div>
+            </label>
+
+            <label class="med-payment-card">
+              <input type="radio" name="payment_method" value="offline">
+              <div class="med-pay-content">
+                🏠 <div><strong>Pay at Home</strong><p>Cash</p></div>
+              </div>
+            </label>
+
+          </div>
+
+        </div>
+
+        <button type="submit" class="med-book-btn">
+          Confirm Booking
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script src="../script/bookingcontrol.js"></script>
+<script src="../script/payment.js"></script>
+</body>
+</html>

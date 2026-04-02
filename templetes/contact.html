@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rapid Labs-contact us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/about.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<!-- TOP INFO (NOT STICKY) -->
+<div class="top-info">
+  <div class="container top-info-inner">
+
+    <h1 class="logo">Rapid<span>Labs</span></h1>
+
+    <button class="location-btn" id="openLocationModal">
+      📍 Home Collection
+    </button>
+
+    <a href="#" class="appointment-btn">Patient Login</a>
+
+  </div>
+</div>
+
+<!-- LOCATION MODAL -->
+<div class="location-modal" id="locationModal">
+  <div class="location-content">
+    <span class="close-btn" id="closeLocationModal">&times;</span>
+
+    <h3>Check Home Collection Availability at Your Location</h3>
+
+    <input type="text" id="pincode" placeholder="Enter your PIN code" />
+
+    <button class="check-btn" id="checkAvailabilityBtn">
+      Check Availability
+    </button>
+
+    <p id="resultBox"></p>
+  </div>
+</div>
+
+
+
+<!-- STICKY MENU BAR -->
+<header class="menu-header">
+  <nav class="menu-nav">
+
+<div class="nav-search">
+  
+  <!-- Search Icon -->
+  <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" 
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+
+  <!-- Input -->
+ <input id="searchInput" type="text" placeholder="Search Blood Tests..." />
+
+  <!-- Mic Icon -->
+  <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+    <line x1="12" y1="19" x2="12" y2="23"/>
+    <line x1="8" y1="23" x2="16" y2="23"/>
+  </svg>
+
+</div>
+
+<div id="searchResults"></div>
+</div>
+
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+
+<ul id="mobileMenu">
+  <li>
+    <a class="active" href="index.html">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="about.html">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+  </li>
+  <li>
+    <a href="services.html">
+      <i class="fa-solid fa-stethoscope"></i>
+      <span>Services</span>
+    </a>
+  </li>
+  <li>
+    <a href="cart.html" class="cart-link">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      <span id="cartCount" class="cart-count">0</span>
+    </a>
+  </li>
+  <li>
+    <a href="contact.html">
+      <i class="fa-solid fa-phone"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+
+  <!-- 🔹 Add this for mobile Patient Login -->
+  <li class="mobile-only">
+    <a href="#" class="appointment-btn">
+      <i class="fa-solid fa-user"></i>
+      <span>Patient Login</span>
+    </a>
+  </li>
+</ul>
+
+  </nav>
+</header>
+
+<!-- ===============================
+     HERO SECTION
+================================ -->
+<section class="contact-hero">
+    <div class="contact-hero-wrapper">
+
+        <!-- Left Image -->
+        <div class="contact-hero-image">
+            <img src="../images/contectus.webp" alt="Rapid Labs Contact">
+        </div>
+
+        <!-- Right Content -->
+        <div class="contact-hero-content">
+            <h1>Contact Rapid Labs</h1>
+            <p>
+                We are here to assist you with appointments, diagnostic reports,
+                and healthcare inquiries. Reach out to our team anytime.
+            </p>
+
+            <div class="hero-contact-info">
+                <div>
+                    <strong>📞 Call:</strong>
+                    <span>+91 7892287102</span>
+                </div>
+                <div>
+                    <strong>📧 Email:</strong>
+                    <span>rapidlabs.hr@gmail.com</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ===============================
+     MODERN CONTACT INFO SECTION
+================================ -->
+<section class="contact-info-modern">
+    <div class="contact-info-wrapper">
+
+        <!-- Phone -->
+        <a href="tel:+917892287102" class="contact-box">
+            <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <h3>Call Us Directly</h3>
+            <p class="primary-text">+91 7892287102</p>
+            <p class="secondary-text">Tap to Call Now</p>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:rapidlabs.hr@gmail.com" class="contact-box">
+            <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email Support</h3>
+            <p class="primary-text">rapidlabs.hr@gmail.com</p>
+            <p class="secondary-text">Tap to Send Email</p>
+        </a>
+
+        <!-- Location -->
+        <a href="https://maps.app.goo.gl/ANyzGnA8g5uUTJvJA" target="_blank" class="contact-box">
+            
+            <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+
+            <h3>Visit Our Center</h3>
+
+            <p class="primary-text">
+                Vijayanagar Chandra Layout, Bengaluru
+            </p>
+
+            <p class="secondary-text">
+                Open in Google Maps
+            </p>
+
+        </a>
+
+    </div>
+</section>
+
+<!-- ===============================
+     CONTACT FORM SECTION
+================================ -->
+<section class="contact-form-section">
+    <div class="contact-form-wrapper">
+        <h2>Contact Us</h2>
+
+        <form class="contact-form" id="contactForm">
+            <input type="text" name="user_name" placeholder="Your Full Name" required>
+            <input type="email" name="user_email" placeholder="Your Email Address" required>
+            <input type="tel" name="user_phone" placeholder="Mobile Number" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+            <button type="submit" id="submitBtn">
+                <span class="btn-text">Submit Inquiry</span>
+            </button>
+
+            <p class="form-message" id="formMessage"></p>
+        </form>
+    </div>
+</section>
+
+<section class="about-labs">
+  <div class="container">
+
+    <h3>About Rapid Labs</h3>
+<p>
+  Experience fast, accurate, and dependable diagnostic services with Rapid Labs — one of Bangalore’s most trusted names in medical testing. Our NABL-accredited laboratory is equipped with advanced diagnostic technology and supported by experienced pathologists and skilled technicians committed to precision and patient care. From routine blood investigations to specialized diagnostics in Cardiology, Neurology, Oncology, Gynecology, and more, Rapid Labs delivers reliable results with speed and accuracy. Enjoy seamless online booking, convenient doorstep sample collection across Bangalore, and secure digital reports delivered on time — ensuring complete comfort, confidence, and peace of mind for you and your family.
+</p>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h4>Patients</h4>
+      <ul>
+        <li><a href="footer-details.html#book-test-popup">Book a Test</a></li>
+        <li><a href="footer-details.html#upload-prescription">Upload Prescription</a></li>
+        <li><a href="footer-details.html#download-report">Download Report</a></li>
+        <li><a href="footer-details.html#health-packages">Health Packages</a></li>
+        <li><a href="footer-details.html#lab-locator">Lab Locator</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Partner With Us</h4>
+      <ul>
+        <li><a href="footer-details.html#join-network">Join Our Lab Network</a></li>
+        <li><a href="footer-details.html#refer-earn">Refer & Earn</a></li>
+        <li><a href="footer-details.html#community-programs">Community Health Programs</a></li>
+
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal & Support</h4>
+      <ul>
+        <li><a href="footer-details.html#privacy-policy">Privacy Policy</a></li>
+        <li><a href="footer-details.html#terms-conditions">Terms & Conditions</a></li>
+        <li><a href="footer-details.html#contact-support">Contact Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="footer-details.html#about-us">About Us</a></li>
+        <li><a href="footer-details.html#mission-vision">Mission & Vision</a></li>
+        <li><a href="footer-details.html#blog-updates">Blog / Updates</a></li>
+        <li><a href="footer-details.html#contact">Contact</a></li>
+        <li><a href="footer-details.html#cookie-policy">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="footer-details.html#get-in-touch">Get in Touch</a></li>
+        <li><a href="footer-details.html#faqs">FAQs</a></li>
+        <li><a href="footer-details.html#sitemap">Sitemap</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<section class="seo-footer">
+  <div class="seo-container">
+
+    <div class="seo-col">
+      <strong>Contact Rapid Labs Bangalore</strong><br>
+      Diagnostic Centre in Bangalore<br>
+      Blood Test Booking Helpline<br>
+      Home Sample Collection Support<br>
+      Customer Care Assistance<br>
+      Corporate & Health Package Enquiries
+    </div>
+
+    <div class="seo-col">
+      <strong>Call & Email Support</strong><br>
+      Book Blood Test by Phone<br>
+      Schedule Home Sample Collection<br>
+      Get Test Reports Assistance<br>
+      Email Support for Lab Queries<br>
+      Health Checkup Package Information
+    </div>
+
+    <div class="seo-col">
+      <strong>Visit Our Diagnostic Centre</strong><br>
+      Pathology Lab in Bangalore<br>
+      Walk-In Blood Test Services<br>
+      Preventive Health Checkups<br>
+      Full Body Screening Services<br>
+      Corporate Health Testing
+    </div>
+
+    <div class="seo-col">
+      <strong>Our Services in Bangalore</strong><br>
+      All Blood Tests & Profiles<br>
+      Full Body Health Checkups<br>
+      Ultrasound & ECG Services<br>
+      Diabetes & Thyroid Testing<br>
+      Fast & Accurate Lab Reports
+    </div>
+
+  </div>
+
+  <div class="seo-bottom">
+    Rapid Labs & Diagnostics is a trusted diagnostic centre in Bangalore providing blood tests, full body health checkups, scanning services, and convenient home sample collection. Contact us today to book lab tests, schedule doorstep sample pickup, or get assistance with reports. Serving Whitefield, Indiranagar, HSR Layout, Electronic City, Koramangala, Jayanagar, and nearby areas across Bangalore.
+  </div>
+</section>
+
+
+<!-- EmailJS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+    (function() {
+        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with Public Key
+    })();
+
+    const form = document.getElementById("contactForm");
+    const message = document.getElementById("formMessage");
+    const button = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        button.innerHTML = "Sending...";
+        button.disabled = true;
+
+        emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+            .then(function() {
+                message.style.color = "green";
+                message.innerText = "Message sent successfully!";
+                form.reset();
+                button.innerHTML = "Submit Inquiry";
+                button.disabled = false;
+            }, function(error) {
+                message.style.color = "red";
+                message.innerText = "Failed to send message. Please try again.";
+                button.innerHTML = "Submit Inquiry";
+                button.disabled = false;
+            });
+    });
+</script>
+
+
+
+<script src="../script/script.js"></script>
+<script src="../script/location.js"></script>
+<script src="../script/product.js"></script>
+<script src="../script/search.js"></script>
+<script src="../script/cart.js"></script>
+</body>
+</html>
+

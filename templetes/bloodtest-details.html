@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Test Details | Rapid Labs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cart.css">
+  <link rel="stylesheet" href="../css/bloodtest.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+<!-- ================= HEADER ================= -->
+
+<!-- TOP INFO (NOT STICKY) -->
+<div class="top-info">
+  <div class="container top-info-inner">
+
+    <h1 class="logo">Rapid<span>Labs</span></h1>
+
+    <button class="location-btn" id="openLocationModal">
+      📍 Home Collection
+    </button>
+
+    <a href="#" class="appointment-btn">Patient Login</a>
+
+  </div>
+</div>
+
+<!-- LOCATION MODAL -->
+<div class="location-modal" id="locationModal">
+  <div class="location-content">
+    <span class="close-btn" id="closeLocationModal">&times;</span>
+
+    <h3>Check Home Collection Availability at Your Location</h3>
+
+    <input type="text" id="pincode" placeholder="Enter your PIN code" />
+
+    <button class="check-btn" id="checkAvailabilityBtn">
+      Check Availability
+    </button>
+
+    <p id="resultBox"></p>
+  </div>
+</div>
+
+
+
+<!-- STICKY MENU BAR -->
+<header class="menu-header">
+  <nav class="menu-nav">
+
+<div class="nav-search">
+  
+  <!-- Search Icon -->
+  <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" 
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+
+  <!-- Input -->
+ <input id="searchInput" type="text" placeholder="Search Blood Tests..." />
+
+  <!-- Mic Icon -->
+  <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+    <line x1="12" y1="19" x2="12" y2="23"/>
+    <line x1="8" y1="23" x2="16" y2="23"/>
+  </svg>
+
+</div>
+
+<div id="searchResults"></div>
+</div>
+
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+
+<ul id="mobileMenu">
+  <li>
+    <a class="active" href="index.html">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="about.html">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+  </li>
+  <li>
+    <a href="services.html">
+      <i class="fa-solid fa-stethoscope"></i>
+      <span>Services</span>
+    </a>
+  </li>
+  <li>
+    <a href="cart.html" class="cart-link">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      <span id="cartCount" class="cart-count">0</span>
+    </a>
+  </li>
+  <li>
+    <a href="contact.html">
+      <i class="fa-solid fa-phone"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+
+  <!-- 🔹 Add this for mobile Patient Login -->
+  <li class="mobile-only">
+    <a href="#" class="appointment-btn">
+      <i class="fa-solid fa-user"></i>
+      <span>Patient Login</span>
+    </a>
+  </li>
+</ul>
+
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="cbc-hero">
+  <div class="hero-wrapper">
+
+    <div class="hero-left">
+      <img id="testImage" src="../images/bloodtestall.webp" alt="">
+    </div>
+
+    <div class="hero-right">
+      <div class="price-card">
+
+        <div class="card-header">
+          <h3 class="test-name" id="testName">Loading...</h3>
+        </div>
+
+        <p class="offer-label" id="offerLabel">Limited Time Offer</p>
+
+        <p class="price">
+          ₹ <span id="testPrice">0</span>
+          <span class="old-price" id="oldPrice"></span>
+        </p>
+
+        <div class="action-buttons">
+        <button id="addToCartBtn" class="hk-cart" data-id="">Add to Cart</button>
+
+          <button class="btn outline">Book Now</button>
+        </div>
+
+
+        <div class="card-footer">
+          NABH-aligned testing • Secure reports • Home sample collection
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= OVERVIEW ================= -->
+<section class="test-overview">
+  <div class="container">
+    <h2>Test Overview</h2>
+    <p class="overview-desc" id="overviewText"></p>
+
+    <div class="overview-cards">
+      <div class="card"><span class="label">Sample</span><strong id="sampleType"></strong></div>
+      <div class="card"><span class="label">Preparation</span><strong id="prep"></strong></div>
+      <div class="card"><span class="label">Report Time</span><strong id="reportTime"></strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARAMETERS ================= -->
+<section class="test-parameters" id="paramSection">
+  <div class="container">
+    <h2 class="section-title" id="paramTitle">Test Parameters</h2>
+    <div class="param-list" id="paramContent"></div>
+  </div>
+</section>
+
+
+<!-- ================= WHO SHOULD TAKE ================= -->
+<section class="who-should-take">
+  <div class="container">
+    <h2>Who Should Take This Test?</h2>
+    <ul class="who-list" id="whoList"></ul>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq-section">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div id="faqContent"></div>
+  </div>
+</section>
+<!-- ================= WHY RAPID LABS ================= -->
+<section class="why-rapidlabs-section">
+  <div class="why-wrapper">
+
+    <h2 class="why-title">Why Rapid Labs</h2>
+
+    <div class="why-grid">
+
+      <div class="why-card">
+        <img src="../images/icons/nabh.webp" alt="">
+        <h4>NABH Accredited Diagnostics</h4>
+        <p>
+            Our labs and facilities follow stringent quality protocols aligned with NABH
+            and national healthcare standards to ensure patient safety and accurate results.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/25.webp" alt="">
+        <h4>25+ Years of Medical Excellence</h4>
+        <p>
+          Backed by over two decades of experience in hospitals and
+          diagnostic services.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/fast.webp" alt="">
+        <h4>Fast & Reliable Reporting</h4>
+        <p>
+          Optimized processes ensure timely and accurate test reports
+          without compromise.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/result.webp" alt="">
+        <h4>High Accuracy Results</h4>
+        <p>
+          Multi-level quality checks ensure dependable and clinically
+          precise results.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/hospital.webp" alt="">
+        <h4>Own Hospital & Diagnostic Setup</h4>
+        <p>
+          Integrated hospital and lab infrastructure for seamless
+          testing and expert consultation.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/trust.webp" alt="">
+        <h4>Growing Network & Reach</h4>
+        <p>
+          Expanding diagnostic services with patient-focused care
+          across regions.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/patient.webp" alt="">
+        <h4>Trusted by Thousands of Patients</h4>
+        <p>
+          Years of consistent quality and ethical practices have earned
+          patient trust.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/modren.webp" alt="">
+        <h4>Modern Diagnostic Technology</h4>
+        <p>
+          Advanced analyzers and equipment for reliable, standardized
+          testing outcomes.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="testimonials-modern">
+  <div class="testimonials-container">
+
+    <h2 class="testimonials-title">What Our Patients Say</h2>
+    <p class="testimonials-subtitle">
+      Trusted by thousands of patients for accurate diagnostics and timely reports.
+    </p>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Simran Kaur</h4>
+            <span>2 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          The ultrasound experience was very smooth. The doctor and staff were
+          polite and professional. The lab was clean and well maintained.
+          Highly recommended.
+        </p>
+      </div>
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Aman Kumar</h4>
+            <span>2 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Booking was easy and reports were delivered on time. Staff guided me
+          properly throughout the testing process. Very reliable diagnostic service.
+        </p>
+      </div>
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Mayur Gupta</h4>
+            <span>3 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Well-organized lab with timely service. I recommend reaching early for
+          full body checkups to avoid waiting time. Overall a good experience.
+        </p>
+      </div>
+
+      <div class="testimonial-box featured">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Parveen Satija</h4>
+            <span>1 month ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Excellent service and professional staff. Tests were conducted exactly
+          as scheduled and reports were provided quickly with images. One of the
+          smoothest diagnostic experiences I’ve had.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="nearby-tests">
+  <div class="container">
+    <h3>Popular Blood Tests in Bangalore</h3>
+
+    <div class="nearby-links">
+
+      <!-- Column 1 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=cbc">CBC Blood Test</a></li>
+        <li><a href="bloodtest-details.html?id=crp">C-Reactive Protein (CRP) Test</a></li>
+        <li><a href="bloodtest-details.html?id=hba1c">HbA1c Test</a></li>
+        <li><a href="bloodtest-details.html?id=thyroid">Thyroid Profile Test (TSH, T3, T4)</a></li>
+        <li><a href="bloodtest-details.html?id=lipid">Lipid Profile Test</a></li>
+        <li><a href="bloodtest-details.html?id=lft">Liver Function Test (LFT)</a></li>
+        <li><a href="bloodtest-details.html?id=kft">Kidney Function Test (KFT)</a></li>
+        <li><a href="bloodtest-details.html?id=bsugar">Blood Sugar Test</a></li>
+      </ul>
+
+      <!-- Column 2 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=vitb12">Vitamin B12 Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitd">Vitamin D Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitk">Vitamin K Test</a></li>
+        <li><a href="bloodtest-details.html?id=iron">Iron Studies</a></li>
+        <li><a href="bloodtest-details.html?id=hormone">Hormone Profile</a></li>
+        <li><a href="bloodtest-details.html?id=folate">Folate Test</a></li>
+        <li><a href="bloodtest-details.html?id=calcium">Calcium Test</a></li>
+        <li><a href="bloodtest-details.html?id=bloodculture">Blood Culture</a></li>
+      </ul>
+
+      <!-- Column 3 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=ironferritin">Iron & Ferritin Test</a></li>
+        <li><a href="bloodtest-details.html?id=psa">Prostate Specific Antigen (PSA)</a></li>
+        <li><a href="bloodtest-details.html?id=cholesterol">Cholesterol – HDL/LDL</a></li>
+        <li><a href="bloodtest-details.html?id=thyroidantibodies">Thyroid Antibodies Test</a></li>
+        <li><a href="bloodtest-details.html?id=urine">Urine Routine & Microscopy</a></li>
+        <li><a href="bloodtest-details.html?id=insulin">Insulin Test</a></li>
+        <li><a href="bloodtest-details.html?id=psa">PSA Test</a></li>
+        <li><a href="bloodtest-details.html?id=magnesium">Magnesium Test</a></li>
+      </ul>
+
+      <!-- Column 4 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=dengue">Dengue Test (NS1, IgG, IgM)</a></li>
+        <li><a href="bloodtest-details.html?id=malaria">Malaria Test</a></li>
+        <li><a href="bloodtest-details.html?id=typhoid">Typhoid Test</a></li>
+        <li><a href="bloodtest-details.html?id=chikungunya">Chikungunya Test</a></li>
+        <li><a href="bloodtest-details.html?id=widal">Widal Test</a></li>
+        <li><a href="bloodtest-details.html?id=hiv">HIV Test</a></li>
+        <li><a href="bloodtest-details.html?id=hepatitis_b">Hepatitis B Test</a></li>
+        <li><a href="bloodtest-details.html?id=hepatitis_c">Hepatitis C Test</a></li>
+      </ul>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="about-labs">
+  <div class="container">
+
+    <h3>About Rapid Labs</h3>
+<p>
+  Experience fast, accurate, and dependable diagnostic services with Rapid Labs — one of Bangalore’s most trusted names in medical testing. Our NABL-accredited laboratory is equipped with advanced diagnostic technology and supported by experienced pathologists and skilled technicians committed to precision and patient care. From routine blood investigations to specialized diagnostics in Cardiology, Neurology, Oncology, Gynecology, and more, Rapid Labs delivers reliable results with speed and accuracy. Enjoy seamless online booking, convenient doorstep sample collection across Bangalore, and secure digital reports delivered on time — ensuring complete comfort, confidence, and peace of mind for you and your family.
+</p>
+
+<h4>Popular Health Packages</h4>
+
+<div class="popular-tests">
+  <a href="package-details.html?id=master">Master Health Checkup</a> |
+  <a href="package-details.html?id=women">Women Health Checkup</a> |
+  <a href="package-details.html?id=diabetic">Diabetic Profile</a> |
+  <a href="package-details.html?id=basic">Basic Health Checkup</a> |
+  <a href="package-details.html?id=heart">Heart Health Checkup</a> |
+  <a href="package-details.html?id=executive">Executive Health Checkup</a> |
+  <a href="package-details.html?id=senior">Senior Citizen Health Checkup</a> |
+  <a href="package-details.html?id=thyroid">Thyroid Health Checkup</a> |
+  <a href="package-details.html?id=vitamin">Vitamin & Mineral Checkup</a> |
+  <a href="package-details.html?id=preemployment">Pre-employment Health Checkup</a>
+</div>
+
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h4>Patients</h4>
+      <ul>
+        <li><a href="footer-details.html#book-test-popup">Book a Test</a></li>
+        <li><a href="footer-details.html#upload-prescription">Upload Prescription</a></li>
+        <li><a href="footer-details.html#download-report">Download Report</a></li>
+        <li><a href="footer-details.html#health-packages">Health Packages</a></li>
+        <li><a href="footer-details.html#lab-locator">Lab Locator</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Partner With Us</h4>
+      <ul>
+        <li><a href="footer-details.html#join-network">Join Our Lab Network</a></li>
+        <li><a href="footer-details.html#refer-earn">Refer & Earn</a></li>
+        <li><a href="footer-details.html#community-programs">Community Health Programs</a></li>
+
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal & Support</h4>
+      <ul>
+        <li><a href="footer-details.html#privacy-policy">Privacy Policy</a></li>
+        <li><a href="footer-details.html#terms-conditions">Terms & Conditions</a></li>
+        <li><a href="footer-details.html#contact-support">Contact Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="footer-details.html#about-us">About Us</a></li>
+        <li><a href="footer-details.html#mission-vision">Mission & Vision</a></li>
+        <li><a href="footer-details.html#blog-updates">Blog / Updates</a></li>
+        <li><a href="footer-details.html#contact">Contact</a></li>
+        <li><a href="footer-details.html#cookie-policy">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="footer-details.html#get-in-touch">Get in Touch</a></li>
+        <li><a href="footer-details.html#faqs">FAQs</a></li>
+        <li><a href="footer-details.html#sitemap">Sitemap</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<section class="seo-footer">
+  <div class="seo-container">
+
+    <div class="seo-col">
+      <strong>Rapid Labs Bangalore</strong><br>
+      Diagnostic Centre in Bangalore<br>
+      Blood Test Lab Near Me<br>
+      Home Sample Collection<br>
+      Health Checkup Packages
+    </div>
+
+    <div class="seo-col">
+      <strong>Popular Blood Tests</strong><br>
+      CBC Blood Test<br>
+      Thyroid Test (TSH, T3, T4)<br>
+      Diabetes Test (HbA1c, Fasting Sugar)<br>
+      Cholesterol & Lipid Profile
+    </div>
+
+    <div class="seo-col">
+      <strong>Full Body Checkups</strong><br>
+      Complete Health Checkup<br>
+      Preventive Health Packages<br>
+      Senior Citizen Health Check<br>
+      Women’s Health Checkup
+    </div>
+
+    <div class="seo-col">
+      <strong>Why Choose Rapid Labs</strong><br>
+      Accurate & Fast Reports<br>
+      Affordable Blood Test Prices<br>
+      Certified Lab Technicians<br>
+      Online Report Download
+    </div>
+
+  </div>
+
+<div class="seo-bottom">
+  Rapid Labs & Diagnostics – Trusted Diagnostic Centre and Blood Test Lab in Bangalore offering Fast Reports and Home Sample Collection.
+</div>
+</section>
+
+<a
+  href="https://wa.me/919999999999?text=Hello%20Rapid%20Labs,%20I%20want%20to%20book%20a%20test"
+  class="whatsapp-float"
+  target="_blank"
+  aria-label="Chat on WhatsApp"
+>
+  <span class="wa-pulse"></span>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+
+<div id="bookingModal" class="booking-modal">
+
+  <div class="booking-card">
+
+    <span id="closeBookingModal" class="close-btn">&times;</span>
+
+    <h2>Quick Booking</h2>
+
+    <form id="bookingForm">
+
+      <input type="text" id="nameInput" placeholder="Your Name" required>
+
+      <input type="tel" id="phoneInput" placeholder="Mobile Number" maxlength="10" required>
+
+      <input type="text" id="testTypeInput" readonly>
+
+            <input type="text" id="locationInput" placeholder="Your Location">
+
+      <button type="button" id="detectLocation" class="detect-btn">
+        📍 Detect Location
+      </button>
+
+      <button type="submit" class="confirm-btn">
+        Confirm Booking
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<script src="../script/script.js"></script>
+<script src="../script/location.js"></script>
+<script src="../script/product.js"></script>
+<script src="../script/search.js"></script>
+<script src="../script/cart.js"></script>
+<!-- ================= SCRIPT ================= -->
+<script>
+/* ===============================
+   PAGE DATA (DISPLAY ONLY)
+================================ */
+const data = {
+  cbc: {
+    productId: 1,
+
+    name: "Complete Blood Count (CBC)",
+    price: 350,
+    old: 699,
+    overview: "CBC gives a snapshot of your overall health and helps detect anemia, infection and inflammation.",
+    sample: "Blood",
+    prep: "No fasting required",
+    report: "Within 06 hours",
+    params: {
+        RBC: [
+            { name: "Hemoglobin (Hb)" },
+            { name: "Total Red Blood Cell (RBC) Count" },
+            { name: "Hematocrit (PCV)" },
+            { name: "Mean Corpuscular Volume (MCV)" },
+            { name: "Mean Corpuscular Hemoglobin (MCH)" },
+            { name: "Mean Corpuscular Hemoglobin Concentration (MCHC)" },
+            { name: "Red Cell Distribution Width (RDW)" },
+
+            { name: "Total White Blood Cell (WBC) Count" },
+            { name: "Neutrophils (%)" },
+            { name: "Lymphocytes (%)" },
+            { name: "Monocytes (%)" },
+            { name: "Eosinophils (%)" },
+            { name: "Basophils (%)" },
+
+            { name: "Platelet Count" },
+            { name: "Mean Platelet Volume (MPV)" }
+        ],
+
+    },
+    who: [
+    {
+        title: "Routine Health Checkups",
+        desc: "Ideal for adults and seniors who want to monitor overall health and detect potential issues early."
+    },
+    {
+        title: "Fatigue or Weakness",
+        desc: "Recommended for individuals experiencing unusual tiredness, weakness, or low energy levels to identify underlying causes."
+    },
+    {
+        title: "Pre-Surgery Evaluation",
+        desc: "Important for patients scheduled for surgery to ensure blood counts are normal and reduce risk during procedures."
+    }
+    ],
+    faq: [
+    {
+        question: "Is fasting required?",
+        answer: "No fasting is required for a CBC test. You can eat and drink normally before the test."
+    },
+    {
+        question: "Is it painful?",
+        answer: "Only a small needle prick is needed to collect a blood sample. Discomfort is minimal."
+    },
+    {
+        question: "How long does the test take?",
+        answer: "The blood sample collection takes just a few minutes, and the report is usually available within 24 hours."
+    },
+    {
+        question: "Can children take this test?",
+        answer: "Yes, CBC is safe for children. The sample volume may be smaller depending on age."
+    },
+    {
+        question: "Are the results accurate?",
+        answer: "CBC tests are highly reliable when conducted in NABH-accredited laboratories."
+    }
+    ]
+
+  },
+    crp: {
+
+    productId: 2,
+    name: "C-Reactive Protein (CRP) Test",
+    price: 450,
+    old: 799,
+    overview: "CRP test helps detect inflammation in the body, which can indicate infections, chronic diseases, or autoimmune disorders.",
+    sample: "Blood",
+    prep: "No fasting required",
+    report: "Within 24 hours",
+    params: {
+        "CRP Test": [
+            { name: "CRP Level" },
+            { name: "High-Sensitivity CRP (hs-CRP)" },
+            { name: "CRP Baseline" },
+            { name: "CRP Trend" }
+        ]
+
+
+    },
+    who: [
+        {
+        title: "Suspected Infection",
+        desc: "Recommended for individuals with unexplained fever, pain, or signs of infection."
+        },
+        {
+        title: "Chronic Inflammatory Conditions",
+        desc: "Helpful for monitoring conditions such as arthritis or autoimmune disorders."
+        },
+        {
+        title: "Post-Surgery or Injury",
+        desc: "Used to check recovery and detect any post-surgical inflammation."
+        }
+    ],
+    faq: [
+        {
+        question: "Is fasting required?",
+        answer: "No fasting is required for a CRP test. You can eat and drink normally."
+        },
+        {
+        question: "Is it painful?",
+        answer: "Only a small needle prick is needed to collect the blood sample."
+        },
+        {
+        question: "How long does the test take?",
+        answer: "Blood sample collection takes a few minutes, and reports are usually available within 24 hours."
+        },
+        {
+        question: "Can children take this test?",
+        answer: "Yes, CRP test is safe for children. Sample volume may be adjusted based on age."
+        },
+        {
+        question: "What does a high CRP indicate?",
+        answer: "High CRP levels may indicate inflammation or infection, but it does not diagnose the cause alone."
+        }
+    ]
+    },
+
+    hba1c: {
+
+    productId: 3,
+
+    name: "HbA1c Test",
+    price: 499,
+    old: 899,
+    overview: "Measures average blood sugar levels over the past 2-3 months to monitor diabetes control.",
+    sample: "Blood",
+    prep: "No fasting required",
+    report: "Within 24 hours",
+    params: {
+        HbA1c: [
+            { name: "HbA1c" }  // Only one main parameter for HbA1c
+        ]
+    },
+    who: [
+        {
+            title: "Diabetes Monitoring",
+            desc: "Recommended for individuals with diabetes to track long-term blood sugar control."
+        },
+        {
+            title: "Prediabetes Screening",
+            desc: "Helps identify those at risk of developing diabetes."
+        },
+        {
+            title: "General Health Check",
+            desc: "Included in routine health checkups for early detection of blood sugar issues."
+        }
+    ],
+    faq: [
+        {
+            question: "Is fasting required?",
+            answer: "No fasting is needed for the HbA1c test."
+        },
+        {
+            question: "How often should I get this test?",
+            answer: "People with diabetes are recommended to get it every 3-6 months."
+        },
+        {
+            question: "Can children take this test?",
+            answer: "Yes, HbA1c can be performed for children if recommended by a doctor."
+        },
+        {
+            question: "Does illness affect the test?",
+            answer: "Certain medical conditions may affect HbA1c levels. Consult your doctor if unsure."
+        },
+        {
+            question: "How accurate are the results?",
+            answer: "HbA1c tests are highly reliable when conducted in accredited laboratories."
+        }
+    ]
+},
+
+    vitb12: {
+
+    productId: 4,
+    name: "Vitamin B12 Test",
+    price: 799,
+    old: 1199,
+    overview: "Measures the level of Vitamin B12 in your blood to assess deficiency or excess.",
+    sample: "Blood",
+    prep: "No fasting required",
+    report: "Within 24 hours",
+    params: {
+        VitaminB12: [
+            { name: "Vitamin B12" }  // Main parameter for the test
+        ]
+    },
+    who: [
+        {
+            title: "Fatigue or Weakness",
+            desc: "Recommended for individuals experiencing low energy, fatigue, or general weakness."
+        },
+        {
+            title: "Neurological Symptoms",
+            desc: "Helpful for patients with numbness, tingling, or memory issues to rule out B12 deficiency."
+        },
+        {
+            title: "Dietary Concerns",
+            desc: "Essential for vegetarians or people with poor dietary intake of Vitamin B12."
+        }
+    ],
+    faq: [
+        {
+            question: "Is fasting required?",
+            answer: "No fasting is needed for the Vitamin B12 test."
+        },
+        {
+            question: "How long does the test take?",
+            answer: "The blood sample collection takes a few minutes, and reports are usually ready within 24 hours."
+        },
+        {
+            question: "Can children take this test?",
+            answer: "Yes, it can be performed on children if recommended by a doctor."
+        },
+        {
+            question: "How accurate are the results?",
+            answer: "Vitamin B12 tests are highly reliable when conducted in accredited laboratories."
+        },
+        {
+            question: "Can supplements affect the test?",
+            answer: "Yes, recent B12 supplementation may influence the results. Inform your doctor beforehand."
+        }
+    ]
+},
+    lipid: {
+
+    productId: 5,
+    name: "Lipid Profile Test",
+    price: 999,
+    old: 1499,
+    overview: "Evaluates the levels of cholesterol and triglycerides in your blood to assess heart disease risk.",
+    sample: "Blood",
+    prep: "8-12 hours fasting required",
+    report: "Within 24 hours",
+    params: {
+        LipidProfile: [
+            { name: "Total Cholesterol" },
+            { name: "HDL Cholesterol" },
+            { name: "LDL Cholesterol" },
+            { name: "VLDL Cholesterol" },
+            { name: "Triglycerides" },
+            { name: "Total Cholesterol/HDL Ratio" }
+        ]
+    },
+    who: [
+        {
+            title: "Heart Disease Risk",
+            desc: "Recommended for individuals with family history of heart disease or high cholesterol."
+        },
+        {
+            title: "Obesity or Overweight",
+            desc: "Helpful for monitoring lipid levels in individuals with excess body weight."
+        },
+        {
+            title: "Diabetes or Metabolic Disorders",
+            desc: "Important for diabetic patients or those with metabolic syndrome."
+        }
+    ],
+    faq: [
+        {
+            question: "Is fasting required?",
+            answer: "Yes, 8-12 hours fasting is recommended before a Lipid Profile test for accurate results."
+        },
+        {
+            question: "How long does the test take?",
+            answer: "Blood collection takes a few minutes, and results are usually available within 24 hours."
+        },
+        {
+            question: "Can children take this test?",
+            answer: "Yes, children can take it if recommended by a doctor."
+        },
+        {
+            question: "How accurate are the results?",
+            answer: "Lipid Profile tests are highly reliable when conducted in accredited laboratories."
+        },
+        {
+            question: "Do medications affect the test?",
+            answer: "Certain medications can affect lipid levels. Inform your doctor before testing."
+        }
+    ]
+},
+thyroid: {
+
+    productId: 301,
+    name: "Thyroid Profile",
+    price: 499,
+    old: 899,
+    overview: "Evaluates thyroid gland function by measuring hormones to detect hypothyroidism, hyperthyroidism, or other thyroid disorders.",
+    sample: "Blood",
+    prep: "No fasting required",
+    report: "24 hours",
+    params: {
+        ThyroidProfile: [
+            { name: "T3 (Triiodothyronine)" },
+            { name: "T4 (Thyroxine)" },
+            { name: "TSH (Thyroid Stimulating Hormone)" }
+        ]
+    },
+    who: [
+        {
+            title: "Weight Changes",
+            desc: "Recommended for individuals experiencing unexplained weight gain or loss."
+        },
+        {
+            title: "Fatigue or Weakness",
+            desc: "Helps detect thyroid-related causes of low energy and tiredness."
+        },
+        {
+            title: "Hair & Skin Issues",
+            desc: "For patients with hair fall, dry skin, or brittle nails to check for thyroid imbalance."
+        }
+    ],
+    faq: [
+        {
+            question: "Is fasting required?",
+            answer: "No fasting is required for a Thyroid Profile test."
+        },
+        {
+            question: "Can children take this test?",
+            answer: "Yes, children can undergo thyroid testing if recommended by a doctor."
+        },
+        {
+            question: "How long does it take to get results?",
+            answer: "Results are usually available within 24 hours."
+        },
+        {
+            question: "Can medications affect thyroid results?",
+            answer: "Certain medications may interfere; inform your doctor before testing."
+        },
+        {
+            question: "How accurate are the results?",
+            answer: "Tests are highly reliable when performed in accredited laboratories."
+        }
+    ]
+},
+    lft: {
+
+    productId: 302,
+    name: "Liver Function Test (LFT)",
+    price: 599,
+    old: 999,
+    overview: "LFT evaluates liver health by measuring enzymes, proteins, and bilirubin levels.",
+    sample: "Blood",
+    prep: "8-10 hours fasting recommended",
+    report: "24 hours",
+    params: {
+        Enzymes: [
+            { name: "ALT" },
+            { name: "AST" },
+            { name: "ALP" },
+            { name: "GGT" }
+        ],
+        Proteins: [
+            { name: "Albumin" },
+            { name: "Total Protein" }
+        ],
+        Bilirubin: [
+            { name: "Total Bilirubin" },
+            { name: "Direct Bilirubin" },
+            { name: "Indirect Bilirubin" }
+        ]
+    },
+    who: [
+        { title: "Routine Health Checkups", desc: "" },
+        { title: "Alcohol Consumers", desc: "" },
+        { title: "Liver Disease Monitoring", desc: "" }
+    ],
+    faq: [
+        { question: "Is fasting required?", answer: "8-10 hours fasting is recommended for accurate results." },
+        { question: "Is it painful?", answer: "Only a small needle prick is needed to collect a blood sample." },
+        { question: "How long does the test take?", answer: "The blood sample collection takes a few minutes; report is usually ready in 24 hours." },
+        { question: "Can children take this test?", answer: "Yes, but the sample volume may vary depending on age." },
+        { question: "Are the results accurate?", answer: "Highly reliable when conducted in NABH-accredited laboratories." }
+    ]
+},
+
+    kft: {
+      
+  productId: 303,
+  name: "Kidney Function Test (KFT)",
+  price: 799,
+  old: 1299,
+  overview: "Evaluates kidney health by checking levels of urea, creatinine, and electrolytes.",
+  sample: "Blood & Urine",
+  prep: "No fasting required",
+  report: "24 hours",
+  params: {
+    KidneyFunctionTest: [
+      { name: "Urea", desc: "" },
+      { name: "Creatinine", desc: "" },
+      { name: "Uric Acid", desc: "" },
+      { name: "Sodium", desc: "" },
+      { name: "Potassium", desc: "" },
+      { name: "Chloride", desc: "" },
+      { name: "Bicarbonate", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Suspected Kidney Disease", desc: "" },
+    { title: "High Blood Pressure", desc: "" },
+    { title: "Diabetic Patients", desc: "" }
+  ],
+  faq: [
+    { question: "Is fasting required?", answer: "No fasting is required for KFT." },
+    { question: "Is it painful?", answer: "Just a small blood draw; minimal discomfort." },
+    { question: "How long does it take?", answer: "Report is usually ready within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, with smaller sample volume if needed." },
+    { question: "Are results accurate?", answer: "Yes, when conducted in NABH-accredited labs." }
+  ]
+},
+
+    bsugar: {
+
+  productId: 304,
+  name: "Blood Sugar (Fasting/PP)",
+  price: 299,
+  old: 499,
+  overview: "Measures blood glucose levels to monitor diabetes or pre-diabetic conditions.",
+  sample: "Blood",
+  prep: "8-10 hours fasting for fasting sugar test; PP sugar test after meal.",
+  report: "24 hours",
+  params: {
+    SugarLevels: [
+      { name: "Fasting Blood Sugar", desc: "" },
+      { name: "Post-Prandial Blood Sugar", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Diabetic Patients", desc: "" },
+    { title: "Suspected Diabetes", desc: "" },
+    { title: "Routine Health Checkups", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Fasting required only for fasting blood sugar test." },
+    { question: "Is it painful?", answer: "Just a small blood draw; minimal discomfort." },
+    { question: "How long does it take?", answer: "Report is usually ready within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, sample volume is smaller depending on age." },
+    { question: "Are results accurate?", answer: "Yes, when conducted in NABH-accredited labs." }
+  ]
+},
+
+    vitd: {
+  productId: 305,
+  name: "Vitamin D Test",
+  price: 399,
+  old: 699,
+  overview: "Measures the level of Vitamin D in your blood to assess bone and overall health.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "24 hours",
+  params: {
+    VitaminD: [
+      { name: "25-Hydroxy Vitamin D", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Bone Health Monitoring", desc: "" },
+    { title: "Suspected Vitamin D Deficiency", desc: "" },
+    { title: "Routine Health Checkups", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "No fasting required." },
+    { question: "Is it painful?", answer: "Minimal discomfort from a small blood draw." },
+    { question: "How long does it take?", answer: "Reports are usually ready within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, with smaller sample volume depending on age." },
+    { question: "Are results accurate?", answer: "Yes, when done in NABH-accredited labs." }
+  ]
+},
+iron: {
+  name: "Iron Studies",
+  price: 499,
+  old: 799,
+  overview: "Evaluates iron levels in the blood to check for anemia or iron overload.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "24 hours",
+  params: {
+    IronStudies: [
+      { name: "Serum Iron", desc: "" },
+      { name: "Total Iron Binding Capacity (TIBC)", desc: "" },
+      { name: "Transferrin Saturation", desc: "" },
+      { name: "Ferritin", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Suspected Anemia", desc: "" },
+    { title: "Fatigue or Weakness", desc: "" },
+    { title: "Routine Health Checkups", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "No fasting required." },
+    { question: "Is it painful?", answer: "Minimal discomfort from a small blood draw." },
+    { question: "How long does it take?", answer: "Reports are usually ready within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, with smaller sample volume depending on age." },
+    { question: "Are results accurate?", answer: "Yes, when done in NABH-accredited labs." }
+  ]
+},
+
+    hormone: {
+  name: "Hormone Profile",
+  price: 699,
+  old: 1099,
+  overview: "Comprehensive assessment of key hormones to evaluate endocrine health and detect imbalances.",
+  sample: "Blood",
+  prep: "Fasting recommended (8–10 hours)",
+  report: "24–48 hours",
+  params: {
+    Hormones: [
+      { name: "FSH", desc: "" },
+      { name: "LH", desc: "" },
+      { name: "Prolactin", desc: "" },
+      { name: "Testosterone", desc: "" },
+      { name: "Estradiol", desc: "" },
+      { name: "Progesterone", desc: "" },
+      { name: "TSH", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Hormonal Imbalance Symptoms", desc: "" },
+    { title: "Infertility Evaluation", desc: "" },
+    { title: "Routine Endocrine Health Checkups", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Fasting is recommended for some hormone tests." },
+    { question: "Is it painful?", answer: "Minimal discomfort from a small blood draw." },
+    { question: "How long does it take?", answer: "Reports are usually ready within 24–48 hours." },
+    { question: "Can children take this test?", answer: "Depends on the specific hormones; consult your doctor." },
+    { question: "Are results accurate?", answer: "Yes, when performed in NABH-accredited labs." }
+  ]
+},
+
+    urine: {
+  name: "Urine Routine & Microscopy",
+  price: 299,
+  old: 499,
+  overview: "A basic urine test to assess kidney function, detect infections, and evaluate overall urinary health.",
+  sample: "Urine",
+  prep: "Midstream clean-catch urine sample recommended",
+  report: "Within 24 hours",
+  params: {
+    Routine: [
+      { name: "Color", desc: "" },
+      { name: "Appearance", desc: "" },
+      { name: "Specific Gravity", desc: "" },
+      { name: "pH", desc: "" },
+      { name: "Protein", desc: "" },
+      { name: "Glucose", desc: "" },
+      { name: "Ketones", desc: "" },
+      { name: "Bilirubin", desc: "" },
+      { name: "Urobilinogen", desc: "" },
+      { name: "Nitrites", desc: "" },
+      { name: "Leukocyte Esterase", desc: "" }
+    ],
+    Microscopy: [
+      { name: "Red Blood Cells (RBCs)", desc: "" },
+      { name: "White Blood Cells (WBCs)", desc: "" },
+      { name: "Epithelial Cells", desc: "" },
+      { name: "Casts", desc: "" },
+      { name: "Crystals", desc: "" },
+      { name: "Bacteria", desc: "" },
+      { name: "Yeast Cells", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Urinary Tract Infection Symptoms", desc: "" },
+    { title: "Routine Kidney Health Check", desc: "" },
+    { title: "Pre-surgery Screening", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Fasting is not required for this test." },
+    { question: "Is it painful?", answer: "No, it requires only a urine sample." },
+    { question: "How long does it take?", answer: "Reports are usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, with age-appropriate sample collection." },
+    { question: "Are results accurate?", answer: "Yes, when conducted in NABH-accredited labs." }
+  ]
+},
+
+
+electrolytes: {
+  
+  productId: 309,
+  name: "Electrolytes Panel",
+  price: 399,
+  old: 699,
+  overview: "Measures key electrolytes like sodium, potassium, chloride, and bicarbonate to assess overall fluid and electrolyte balance.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Sodium", desc: "" },
+      { name: "Potassium", desc: "" },
+      { name: "Chloride", desc: "" },
+      { name: "Bicarbonate / CO2", desc: "" },
+      { name: "Calcium", desc: "" },
+      { name: "Magnesium", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Dehydration or Fluid Imbalance", desc: "" },
+    { title: "Kidney or Heart Conditions", desc: "" },
+    { title: "Routine Health Checkup", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Fasting is not required for this test." },
+    { question: "Is it painful?", answer: "No, only a blood sample is needed." },
+    { question: "How long does it take?", answer: "Reports are usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, with proper sample collection." },
+    { question: "Are results accurate?", answer: "Yes, when done in NABH-accredited labs." }
+  ]
+},
+calcium: {
+  name: "Serum Calcium Test",
+  price: 299,
+  old: 499,
+  overview: "Measures calcium levels in the blood to evaluate bone health, kidney function, and parathyroid function.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Total Calcium", desc: "" },
+      { name: "Ionized Calcium", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Bone or Joint Pain", desc: "" },
+    { title: "Kidney Stones", desc: "" },
+    { title: "Routine Health Screening", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Fasting is not required for this test." },
+    { question: "Is it painful?", answer: "No, only a blood sample is required." },
+    { question: "How long does it take?", answer: "Reports are usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, with proper sample collection." },
+    { question: "Are results accurate?", answer: "Yes, when done in NABH-accredited labs." }
+  ]
+},
+
+psa: {
+  name: "Prostate Specific Antigen (PSA)",
+  price: 499,
+  old: 799,
+  overview: "Measures the level of PSA in the blood to screen for prostate health and detect early signs of prostate disorders.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Total PSA", desc: "" },
+      { name: "Free PSA", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Men over 50", desc: "" },
+    { title: "History of Prostate Problems", desc: "" },
+    { title: "Routine Screening", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Fasting is not required." },
+    { question: "Is it painful?", answer: "No, only a blood sample is needed." },
+    { question: "How long does it take?", answer: "Reports are usually available within 24 hours." },
+    { question: "Can younger men take this test?", answer: "Yes, if recommended by a doctor." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+ironferritin: {
+  name: "Iron & Ferritin Test",
+  price: 399,
+  old: 699,
+  overview: "Measures iron and ferritin levels to evaluate anemia, iron deficiency, and overall iron storage in the body.",
+  sample: "Blood",
+  prep: "8-10 hours fasting recommended",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Serum Iron", desc: "" },
+      { name: "Ferritin", desc: "" },
+      { name: "Total Iron Binding Capacity (TIBC)", desc: "" },
+      { name: "Transferrin Saturation", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Symptoms of Fatigue or Weakness", desc: "" },
+    { title: "Suspected Anemia", desc: "" },
+    { title: "Routine Health Screening", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Fasting for 8–10 hours is recommended." },
+    { question: "Is it painful?", answer: "No, just a small blood sample is taken." },
+    { question: "How long does it take?", answer: "Reports are usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, depending on age and sample volume." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+
+    bloodculture: {
+  name: "Blood Culture",
+  price: 599,
+  old: 999,
+  overview: "Detects the presence of bacteria or fungi in the blood to diagnose bloodstream infections.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "Within 48-72 hours",
+  params: {
+    Panel: [
+      { name: "Aerobic Culture", desc: "" },
+      { name: "Anaerobic Culture", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Persistent Fever", desc: "" },
+    { title: "Suspected Blood Infection", desc: "" },
+    { title: "Hospitalized Patients", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Fasting is not required." },
+    { question: "Is it painful?", answer: "Just a small blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is available in 48-72 hours." },
+    { question: "Can children take this test?", answer: "Yes, based on age and sample volume." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+coagulation: {
+  name: "Coagulation Profile",
+  price: 449,
+  old: 799,
+  overview: "Evaluates blood clotting ability to diagnose bleeding disorders or monitor anticoagulant therapy.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Prothrombin Time (PT)", desc: "" },
+      { name: "International Normalized Ratio (INR)", desc: "" },
+      { name: "Activated Partial Thromboplastin Time (aPTT)", desc: "" },
+      { name: "Fibrinogen", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Patients on Blood Thinners", desc: "" },
+    { title: "Suspected Bleeding Disorders", desc: "" },
+    { title: "Pre-Surgery Evaluation", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "No fasting is required." },
+    { question: "Is it painful?", answer: "No, just a blood sample is needed." },
+    { question: "How long does it take?", answer: "Reports are usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, depending on age." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+thyroidantibodies: {
+  name: "Thyroid Antibodies Test",
+  price: 499,
+  old: 899,
+  overview: "Detects antibodies against thyroid tissue to diagnose autoimmune thyroid disorders.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Anti-TPO (Thyroid Peroxidase Antibodies)", desc: "" },
+      { name: "Anti-TG (Thyroglobulin Antibodies)", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Suspected Autoimmune Thyroid Disease", desc: "" },
+    { title: "Thyroid Dysfunction Symptoms", desc: "" },
+    { title: "Routine Thyroid Screening", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Fasting is not required." },
+    { question: "Is it painful?", answer: "No, only a blood sample is needed." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, depending on age." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+uricacid: {
+  name: "Uric Acid Test",
+  price: 299,
+  old: 499,
+  overview: "Measures uric acid levels to assess risk of gout and kidney disorders.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Uric Acid", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Joint Pain & Gout", desc: "" },
+    { title: "Kidney Stone Risk", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "No fasting required." },
+    { question: "Is it painful?", answer: "Just a blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, depending on age." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+homocysteine: {
+  name: "Homocysteine Test",
+  price: 349,
+  old: 599,
+  overview: "Measures homocysteine levels to assess cardiovascular risk and nutritional status.",
+  sample: "Blood",
+  prep: "Fasting 8-10 hours recommended",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Homocysteine", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Heart Disease Risk", desc: "" },
+    { title: "Vitamin B12/Folate Deficiency", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Yes, fasting for 8-10 hours is recommended." },
+    { question: "Is it painful?", answer: "Just a blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, depending on age." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+triglycerides: {
+  name: "Triglycerides Test",
+  price: 299,
+  old: 499,
+  overview: "Measures triglyceride levels to evaluate heart health and lipid metabolism.",
+  sample: "Blood",
+  prep: "Fasting 8-12 hours required",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Triglycerides", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Heart Disease Risk", desc: "" },
+    { title: "High Cholesterol", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Yes, fasting for 8-12 hours is required." },
+    { question: "Is it painful?", answer: "Just a blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, depending on age." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+cholesterol: {
+  name: "Cholesterol – HDL/LDL",
+  price: 349,
+  old: 599,
+  overview: "Measures HDL, LDL, and total cholesterol to assess heart health and lipid metabolism.",
+  sample: "Blood",
+  prep: "Fasting 8-12 hours required",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Total Cholesterol", desc: "" },
+      { name: "HDL", desc: "" },
+      { name: "LDL", desc: "" },
+      { name: "VLDL", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Heart Disease Risk", desc: "" },
+    { title: "High Cholesterol", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Yes, fasting 8-12 hours required." },
+    { question: "Is it painful?", answer: "Just a blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, depending on age." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+
+folate: {
+
+  productId: 320,
+  name: "Folate Test",
+  price: 299,
+  old: 499,
+  overview: "Measures folate levels to detect deficiency and assess nutritional status.",
+  sample: "Blood",
+  prep: "Fasting not required",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Folate", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Anemia Risk", desc: "" },
+    { title: "Pregnancy Planning", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "No fasting required." },
+    { question: "Is it painful?", answer: "Just a blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, depending on age." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+cortisol: {
+  name: "Cortisol Test",
+  price: 399,
+  old: 699,
+  overview: "Measures cortisol hormone levels to assess adrenal function and stress response.",
+  sample: "Blood",
+  prep: "Morning fasting recommended",
+  report: "Within 24 hours",
+  params: {
+    Panel: [
+      { name: "Cortisol", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Adrenal Disorders", desc: "" },
+    { title: "Stress Assessment", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Yes, morning fasting recommended." },
+    { question: "Is it painful?", answer: "Just a blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." },
+    { question: "Can children take this test?", answer: "Yes, depending on age." },
+    { question: "Are results accurate?", answer: "Yes, in NABH-accredited labs." }
+  ]
+},
+
+insulin: {
+  name: "Insulin Test",
+  price: 399,
+  old: 699,
+  overview: "Measures insulin levels to assess glucose metabolism and detect diabetes risk.",
+  sample: "Blood",
+  prep: "Fasting 8-10 hours required",
+  report: "Within 24 hours",
+  params: { Panel: [{ name: "Insulin", desc: "" }] },
+  who: [
+    { title: "Diabetes Monitoring", desc: "" },
+    { title: "Metabolic Disorders", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Yes, fasting 8-10 hours required." },
+    { question: "Is it painful?", answer: "Just a blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." }
+  ]
+},
+magnesium: {
+  name: "Magnesium Test",
+  price: 299,
+  old: 499,
+  overview: "Measures magnesium levels in the blood to assess nutritional and metabolic status.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "Within 24 hours",
+  params: { Panel: [{ name: "Magnesium", desc: "" }] },
+  who: [
+    { title: "Muscle & Nerve Function", desc: "" },
+    { title: "Heart Health", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "No fasting required." },
+    { question: "Is it painful?", answer: "Just a blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." }
+  ]
+},
+amylase_lipase: {
+  name: "Amylase & Lipase Test",
+  price: 399,
+  old: 699,
+  overview: "Measures amylase and lipase enzymes to evaluate pancreatic function.",
+  sample: "Blood",
+  prep: "Fasting 8 hours recommended",
+  report: "Within 24 hours",
+  params: { Panel: [{ name: "Amylase", desc: "" }, { name: "Lipase", desc: "" }] },
+  who: [
+    { title: "Pancreatic Disorders", desc: "" },
+    { title: "Abdominal Pain", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "Yes, fasting 8 hours recommended." },
+    { question: "Is it painful?", answer: "Just a blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." }
+  ]
+},
+vitk: {
+  name: "Vitamin K Test",
+  price: 299,
+  old: 499,
+  overview: "Measures Vitamin K levels to assess nutritional status and blood clotting potential.",
+  sample: "Blood",
+  prep: "Fasting not required",
+  report: "Within 24 hours",
+  params: { Panel: [{ name: "Vitamin K", desc: "" }] },
+  who: [
+    { title: "Bleeding Disorders", desc: "" },
+    { title: "Nutritional Deficiency", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Do I need to fast?", answer: "No fasting required." },
+    { question: "Is it painful?", answer: "Just a blood sample is taken." },
+    { question: "How long does it take?", answer: "Report is usually available within 24 hours." }
+  ]
+},
+
+dengue: {
+  productId: 326,
+  name: "Dengue Test (NS1, IgG, IgM)",
+  price: 900,
+  old: 1300,
+  overview: "Detects dengue infection by identifying NS1 antigen and IgG/IgM antibodies.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "24 hours",
+  params: {
+    DenguePanel: [
+      { name: "Dengue NS1 Antigen", desc: "" },
+      { name: "Dengue IgG Antibody", desc: "" },
+      { name: "Dengue IgM Antibody", desc: "" }
+    ]
+  },
+  who: [
+    { title: "High Fever with Body Pain", desc: "" },
+    { title: "Suspected Dengue Infection", desc: "" },
+    { title: "Mosquito Bite Exposure", desc: "" }
+  ],
+  faq: [
+    { question: "Is fasting required?", answer: "No fasting required." },
+    { question: "How is the test done?", answer: "A simple blood sample is collected." },
+    { question: "How long for results?", answer: "Usually within 24 hours." }
+  ]
+},
+
+malaria: {
+  productId: 327,
+  name: "Malaria Test",
+  price: 350,
+  old: 600,
+  overview: "Detects malaria parasites in the blood.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "12 hours",
+  params: {
+    MalariaTest: [
+      { name: "Malaria Parasite Detection", desc: "" }
+    ]
+  },
+  who: [
+    { title: "High Fever & Chills", desc: "" },
+    { title: "Travel to Malaria Areas", desc: "" }
+  ],
+  faq: [
+    { question: "Is fasting required?", answer: "No fasting required." },
+    { question: "How long for report?", answer: "Within 12 hours." }
+  ]
+},
+
+typhoid: {
+  productId: 328,
+  name: "Typhoid Test",
+  price: 450,
+  old: 700,
+  overview: "Detects Salmonella bacteria responsible for typhoid fever.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "24 hours",
+  params: {
+    TyphoidPanel: [
+      { name: "Salmonella Antibody Test", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Persistent Fever", desc: "" },
+    { title: "Digestive Issues", desc: "" }
+  ],
+  faq: [
+    { question: "Is fasting needed?", answer: "No fasting required." }
+  ]
+},
+
+chikungunya: {
+  productId: 329,
+  name: "Chikungunya Test",
+  price: 750,
+  old: 1100,
+  overview: "Detects chikungunya virus infection.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "24 hours",
+  params: {
+    ChikungunyaPanel: [
+      { name: "Chikungunya IgM Antibody", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Severe Joint Pain", desc: "" },
+    { title: "High Fever", desc: "" }
+  ],
+  faq: [
+    { question: "Is fasting required?", answer: "No fasting required." }
+  ]
+},
+
+widal: {
+  productId: 330,
+  name: "Widal Test",
+  price: 250,
+  old: 400,
+  overview: "A screening test used to diagnose typhoid fever.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "12 hours",
+  params: {
+    WidalPanel: [
+      { name: "Salmonella Typhi O", desc: "" },
+      { name: "Salmonella Typhi H", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Suspected Typhoid", desc: "" }
+  ],
+  faq: [
+    { question: "Is fasting needed?", answer: "No fasting required." }
+  ]
+},
+
+hiv: {
+  productId: 331,
+  name: "HIV Test",
+  price: 500,
+  old: 900,
+  overview: "Detects HIV infection through antibody screening.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "24 hours",
+  params: {
+    HIVTest: [
+      { name: "HIV 1 & 2 Antibodies", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Routine Health Screening", desc: "" },
+    { title: "High Risk Exposure", desc: "" }
+  ],
+  faq: [
+    { question: "Is fasting required?", answer: "No fasting required." }
+  ]
+},
+
+hepatitis_b: {
+  productId: 332,
+  name: "Hepatitis B Test",
+  price: 600,
+  old: 1000,
+  overview: "Detects Hepatitis B virus infection affecting the liver.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "24 hours",
+  params: {
+    HepatitisBPanel: [
+      { name: "HBsAg", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Liver Disease Symptoms", desc: "" },
+    { title: "Routine Screening", desc: "" }
+  ],
+  faq: [
+    { question: "Is fasting required?", answer: "No fasting required." }
+  ]
+},
+
+hepatitis_c: {
+  productId: 333,
+  name: "Hepatitis C Test",
+  price: 650,
+  old: 1100,
+  overview: "Detects Hepatitis C virus infection.",
+  sample: "Blood",
+  prep: "No fasting required",
+  report: "24 hours",
+  params: {
+    HepatitisCPanel: [
+      { name: "HCV Antibody", desc: "" }
+    ]
+  },
+  who: [
+    { title: "Liver Problems", desc: "" },
+    { title: "Routine Health Check", desc: "" }
+  ],
+  faq: [
+    { question: "Is fasting required?", answer: "No fasting required." }
+  ]
+}
+
+};
+
+/* ===============================
+   MAP PAGE → CART PRODUCT ID
+   (must match PRODUCTS ids)
+================================ */
+PRODUCT_ID_MAP = {
+  cbc: 1,
+  crp: 2,
+  hba1c: 3,
+  vitb12: 4,
+  lipid: 5,
+  thyroid: 301,
+  lft: 302,
+  kft: 303,
+  bsugar: 304,
+  vitd: 305,
+  iron: 306,
+  hormone: 307,
+  urine: 308,
+  electrolytes: 309,
+  calcium: 310,
+  psa: 311,
+  ironferritin: 312,
+  bloodculture: 313,
+  coagulation: 314,
+  thyroidantibodies: 315,
+  uricacid: 316,
+  homocysteine: 317,
+  triglycerides: 318,
+  cholesterol: 319,
+  folate: 320,
+  cortisol: 321,
+  insulin: 322,
+  magnesium: 323,
+  amylase_lipase: 324,
+  folate:320,
+  vitk: 325,
+  dengue: 326,
+  malaria: 327,
+  typhoid: 328,
+  chikungunya: 329,
+  widal: 330,
+  hiv: 331,
+  hepatitis_b: 332,
+  hepatitis_c: 333
+}
+
+/* ===============================
+   READ URL
+================================ */
+const id = new URLSearchParams(window.location.search).get("id")?.toLowerCase();
+const test = data[id];
+
+/* ===============================
+   RENDER PAGE + CART BUTTON
+================================ */
+if (test) {
+  // page content
+  document.getElementById("testName").textContent = test.name;
+  document.getElementById("testPrice").textContent = test.price;
+  document.getElementById("oldPrice").textContent = test.old ? "₹ " + test.old : "";
+  document.getElementById("overviewText").textContent = test.overview;
+  document.getElementById("sampleType").textContent = test.sample;
+  document.getElementById("prep").textContent = test.prep;
+  document.getElementById("reportTime").textContent = test.report;
+
+if (test.params) {
+  const paramContainer = document.getElementById("paramContent");
+  const paramSection = document.getElementById("paramSection");
+
+  if (paramContainer && paramSection) {
+    paramSection.style.display = "block";
+
+    paramContainer.innerHTML = Object.keys(test.params).map(group => {
+      return `
+        <div class="param-item">
+          <div class="param-header" onclick="this.nextElementSibling.classList.toggle('open')">
+            <div>
+              <h3>${group} Parameters</h3>
+              <span class="know-more">Know more</span>
+            </div>
+          </div>
+          <div class="param-body">
+            <ul>
+              ${test.params[group]
+                .map(p => `<li><strong>${p.name}</strong>${p.desc ? ": " + p.desc : ""}</li>`)
+                .join("")}
+            </ul>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+}
+
+const whoContainer = document.getElementById("whoList");
+if (whoContainer) {
+  whoContainer.innerHTML = test.who.map(person => `
+    <li class="who-item">
+      <h4>${person.title}</h4>
+      <p>${person.desc}</p>
+    </li>
+  `).join("");
+}
+
+    const faqContainer = document.getElementById("faqContent");
+
+    if (faqContainer && test.faq) {
+      faqContainer.innerHTML = test.faq.map(f => `
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>${f.question}</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>${f.answer}</p>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // Function to toggle individual FAQ
+    function toggleFaq(el) {
+    const answer = el.nextElementSibling;
+    answer.classList.toggle("open");
+
+    const toggle = el.querySelector(".faq-toggle");
+    toggle.textContent = answer.classList.contains("open") ? "−" : "+";
+}
+
+
+
+/* ===============================
+   CART BUTTON BINDING
+================================ */
+
+const productId = PRODUCT_ID_MAP[id];
+
+if (productId !== undefined) {
+  const addBtn = document.getElementById("addToCartBtn");
+
+  addBtn.dataset.id = productId;
+
+  updateAddToCartButtons();   // move this up
+
+  addBtn.onclick = function () {
+    addToCart(this.dataset.id);
+  };
+
+  document.getElementById("bookNowBtn").onclick = () => {
+    window.location.href = `book.html?id=${id}`;
+  };
+}
+}
+
+
+</script>
+<script>
+
+/* ================= UNIVERSAL BOOKING ================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const modal = document.getElementById("bookingModal");
+const closeBtn = document.getElementById("closeBookingModal");
+
+const nameInput = document.getElementById("nameInput");
+const phoneInput = document.getElementById("phoneInput");
+const testInput = document.getElementById("testTypeInput");
+
+const bookBtns = document.querySelectorAll(".btn.outline");
+
+/* GET TEST NAME AUTOMATICALLY */
+
+function getTestName(){
+
+  let name = "";
+
+  if(document.getElementById("pkgName")){
+    name = document.getElementById("pkgName").textContent;
+  }
+
+  else if(document.getElementById("testName")){
+    name = document.getElementById("testName").textContent;
+  }
+
+  else if(document.querySelector("h1")){
+    name = document.querySelector("h1").textContent;
+  }
+
+  else{
+    name = document.title;
+  }
+
+  return name.trim();
+}
+
+/* OPEN MODAL */
+
+bookBtns.forEach(btn => {
+
+  btn.addEventListener("click", function(){
+
+    testInput.value = getTestName();
+
+    modal.style.display = "flex";
+
+  });
+
+});
+
+
+/* CLOSE MODAL */
+
+if(closeBtn){
+  closeBtn.onclick = () => modal.style.display = "none";
+}
+
+/* OUTSIDE CLICK */
+
+window.onclick = function(e){
+  if(e.target === modal){
+    modal.style.display = "none";
+  }
+}
+
+
+/* FORM SUBMIT */
+
+const form = document.getElementById("bookingForm");
+
+if(form){
+
+form.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  const name = nameInput.value.trim();
+  const phone = phoneInput.value.trim();
+  const test = testInput.value;
+
+  if(phone.length !== 10){
+    alert("Enter valid mobile number");
+    return;
+  }
+
+  const msg =
+`Hello Rapid Labs
+Name: ${name}
+Mobile: ${phone}
+Test: ${test}
+
+I want to book this test.`;
+
+
+  const whatsapp =
+`https://wa.me/919999999999?text=${encodeURIComponent(msg)}`;
+
+  window.open(whatsapp,"_blank");
+
+});
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
+

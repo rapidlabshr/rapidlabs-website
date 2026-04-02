@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organ Diagnostics | RapidLabs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cart.css">
+  <link rel="stylesheet" href="../css/bloodtest.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<!-- TOP INFO (NOT STICKY) -->
+<div class="top-info">
+  <div class="container top-info-inner">
+
+    <h1 class="logo">Rapid<span>Labs</span></h1>
+
+    <button class="location-btn" id="openLocationModal">
+      📍 Home Collection
+    </button>
+
+    <a href="#" class="appointment-btn">Patient Login</a>
+
+  </div>
+</div>
+
+<!-- LOCATION MODAL -->
+<div class="location-modal" id="locationModal">
+  <div class="location-content">
+    <span class="close-btn" id="closeLocationModal">&times;</span>
+
+    <h3>Check Home Collection Availability at Your Location</h3>
+
+    <input type="text" id="pincode" placeholder="Enter your PIN code" />
+
+    <button class="check-btn" id="checkAvailabilityBtn">
+      Check Availability
+    </button>
+
+    <p id="resultBox"></p>
+  </div>
+</div>
+
+
+
+<!-- STICKY MENU BAR -->
+<header class="menu-header">
+  <nav class="menu-nav">
+
+<div class="nav-search">
+  <input type="text" placeholder="Search doctors or services" />
+  <button class="search-btn" aria-label="Search">
+    <span class="search-icon"></span>
+  </button>
+</div>
+
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+
+<ul id="mobileMenu">
+  <li>
+    <a class="active" href="#">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="about.html">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+  </li>
+  <li>
+    <a href="services.html">
+      <i class="fa-solid fa-stethoscope"></i>
+      <span>Services</span>
+    </a>
+  </li>
+  <li>
+    <a href="cart.html" class="cart-link">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      <span id="cartCount" class="cart-count">0</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="fa-solid fa-phone"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+
+  <!-- 🔹 Add this for mobile Patient Login -->
+  <li class="mobile-only">
+    <a href="#" class="appointment-btn">
+      <i class="fa-solid fa-user"></i>
+      <span>Patient Login</span>
+    </a>
+  </li>
+</ul>
+
+  </nav>
+</header>
+
+
+<!-- ================= HERO ================= -->
+<section class="cbc-hero">
+  <div class="hero-wrapper">
+
+    <!-- LEFT IMAGE -->
+    <div class="hero-left">
+      <img id="organImage" src="" alt="Organ Diagnostic">
+    </div>
+
+    <!-- RIGHT PRICE CARD -->
+    <div class="hero-right">
+      <div class="price-card">
+
+        <div class="card-header">
+          <h3 class="test-name" id="organName">Loading...</h3>
+        </div>
+
+        <p class="offer-label" id="organTagline">Advanced Organ Diagnostics</p>
+
+        <p class="price">
+          ₹ <span id="organPrice">0</span>
+          <span class="old-price" id="organOldPrice"></span>
+        </p>
+
+        <div class="action-buttons">
+          <!-- SAME CART CLASS (IMPORTANT) -->
+          <button class="btn primary hk-cart" id="addToCartBtn">
+            Add to Cart
+          </button>
+
+          <button class="btn outline">Book Now</button>
+        </div>
+
+        <div class="card-footer">
+          NABH-aligned diagnostics • Expert radiologists • Fast reports
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= OVERVIEW ================= -->
+<section class="test-overview">
+  <div class="container">
+    <h2>Overview</h2>
+    <p class="overview-desc" id="organOverview"></p>
+
+    <div class="overview-cards">
+      <div class="card">
+        <span class="label">Focus Area</span>
+        <strong id="organFocus"></strong>
+      </div>
+
+      <div class="card">
+        <span class="label">Tests Include</span>
+        <strong id="organIncludes"></strong>
+      </div>
+
+      <div class="card">
+        <span class="label">Report Time</span>
+        <strong id="organReportTime"></strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= PARAMETERS ================= -->
+<section class="test-parameters" id="paramSection">
+  <div class="container">
+    <h2 class="section-title" id="paramTitle">Available Diagnostic Tests</h2>
+    <div class="param-list" id="paramContent">
+      <!-- JS inject -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= WHO SHOULD TAKE ================= -->
+<section class="who-should-take">
+  <div class="container">
+    <h2>Who Should Take These Tests?</h2>
+    <ul class="who-list" id="organWho">
+      <!-- JS inject -->
+    </ul>
+  </div>
+</section>
+<!-- ================= FAQ ================= -->
+<section class="faq-section">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div id="organFaq">
+      <!-- JS inject -->
+    </div>
+  </div>
+</section>
+<!-- ================= WHY RAPID LABS ================= -->
+<section class="why-rapidlabs-section">
+  <div class="why-wrapper">
+
+    <h2 class="why-title">Why Rapid Labs</h2>
+
+    <div class="why-grid">
+
+      <div class="why-card">
+        <img src="../images/icons/nabh.webp" alt="">
+        <h4>NABH Accredited Diagnostics</h4>
+        <p>
+            Our labs and facilities follow stringent quality protocols aligned with NABH
+            and national healthcare standards to ensure patient safety and accurate results.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/25.webp" alt="">
+        <h4>25+ Years of Medical Excellence</h4>
+        <p>
+          Backed by over two decades of experience in hospitals and
+          diagnostic services.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/fast.webp" alt="">
+        <h4>Fast & Reliable Reporting</h4>
+        <p>
+          Optimized processes ensure timely and accurate test reports
+          without compromise.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/result.webp" alt="">
+        <h4>High Accuracy Results</h4>
+        <p>
+          Multi-level quality checks ensure dependable and clinically
+          precise results.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/hospital.webp" alt="">
+        <h4>Own Hospital & Diagnostic Setup</h4>
+        <p>
+          Integrated hospital and lab infrastructure for seamless
+          testing and expert consultation.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/trust.webp" alt="">
+        <h4>Growing Network & Reach</h4>
+        <p>
+          Expanding diagnostic services with patient-focused care
+          across regions.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/patient.webp" alt="">
+        <h4>Trusted by Thousands of Patients</h4>
+        <p>
+          Years of consistent quality and ethical practices have earned
+          patient trust.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/modren.webp" alt="">
+        <h4>Modern Diagnostic Technology</h4>
+        <p>
+          Advanced analyzers and equipment for reliable, standardized
+          testing outcomes.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="testimonials-modern">
+  <div class="testimonials-container">
+
+    <h2 class="testimonials-title">What Our Patients Say</h2>
+    <p class="testimonials-subtitle">
+      Trusted by thousands of patients for accurate diagnostics and timely reports.
+    </p>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Simran Kaur</h4>
+            <span>2 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          The ultrasound experience was very smooth. The doctor and staff were
+          polite and professional. The lab was clean and well maintained.
+          Highly recommended.
+        </p>
+      </div>
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Aman Kumar</h4>
+            <span>2 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Booking was easy and reports were delivered on time. Staff guided me
+          properly throughout the testing process. Very reliable diagnostic service.
+        </p>
+      </div>
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Mayur Gupta</h4>
+            <span>3 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Well-organized lab with timely service. I recommend reaching early for
+          full body checkups to avoid waiting time. Overall a good experience.
+        </p>
+      </div>
+
+      <div class="testimonial-box featured">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Parveen Satija</h4>
+            <span>1 month ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Excellent service and professional staff. Tests were conducted exactly
+          as scheduled and reports were provided quickly with images. One of the
+          smoothest diagnostic experiences I’ve had.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="nearby-tests">
+  <div class="container">
+    <h3>Popular Blood Tests in Bangalore</h3>
+
+    <div class="nearby-links">
+
+      <!-- Column 1 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=cbc">CBC Blood Test</a></li>
+        <li><a href="bloodtest-details.html?id=crp">C-Reactive Protein (CRP) Test</a></li>
+        <li><a href="bloodtest-details.html?id=hba1c">HbA1c Test</a></li>
+        <li><a href="bloodtest-details.html?id=thyroid">Thyroid Profile Test (TSH, T3, T4)</a></li>
+        <li><a href="bloodtest-details.html?id=lipid">Lipid Profile Test</a></li>
+        <li><a href="bloodtest-details.html?id=lft">Liver Function Test (LFT)</a></li>
+        <li><a href="bloodtest-details.html?id=kft">Kidney Function Test (KFT)</a></li>
+        <li><a href="bloodtest-details.html?id=bsugar">Blood Sugar Test</a></li>
+      </ul>
+
+      <!-- Column 2 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=vitb12">Vitamin B12 Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitd">Vitamin D Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitk">Vitamin K Test</a></li>
+        <li><a href="bloodtest-details.html?id=iron">Iron Studies</a></li>
+        <li><a href="bloodtest-details.html?id=hormone">Hormone Profile</a></li>
+        <li><a href="bloodtest-details.html?id=folate">Folate Test</a></li>
+        <li><a href="bloodtest-details.html?id=calcium">Calcium Test</a></li>
+        <li><a href="bloodtest-details.html?id=bloodculture">Blood Culture</a></li>
+      </ul>
+
+      <!-- Column 3 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=ironferritin">Iron & Ferritin Test</a></li>
+        <li><a href="bloodtest-details.html?id=psa">Prostate Specific Antigen (PSA)</a></li>
+        <li><a href="bloodtest-details.html?id=cholesterol">Cholesterol – HDL/LDL</a></li>
+        <li><a href="bloodtest-details.html?id=thyroidantibodies">Thyroid Antibodies Test</a></li>
+        <li><a href="bloodtest-details.html?id=urine">Urine Routine & Microscopy</a></li>
+        <li><a href="bloodtest-details.html?id=insulin">Insulin Test</a></li>
+        <li><a href="bloodtest-details.html?id=psa">PSA Test</a></li>
+        <li><a href="bloodtest-details.html?id=magnesium">Magnesium Test</a></li>
+      </ul>
+
+      <!-- Column 4 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=dengue">Dengue Test (NS1, IgG, IgM)</a></li>
+        <li><a href="bloodtest-details.html?id=malaria">Malaria Test</a></li>
+        <li><a href="bloodtest-details.html?id=typhoid">Typhoid Test</a></li>
+        <li><a href="bloodtest-details.html?id=chikungunya">Chikungunya Test</a></li>
+        <li><a href="bloodtest-details.html?id=widal">Widal Test</a></li>
+        <li><a href="bloodtest-details.html?id=hiv">HIV Test</a></li>
+        <li><a href="bloodtest-details.html?id=hepatitis_b">Hepatitis B Test</a></li>
+        <li><a href="bloodtest-details.html?id=hepatitis_c">Hepatitis C Test</a></li>
+      </ul>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="about-labs">
+  <div class="container">
+
+    <h3>About Rapid Labs</h3>
+<p>
+  Experience fast, accurate, and dependable diagnostic services with Rapid Labs — one of Bangalore’s most trusted names in medical testing. Our NABL-accredited laboratory is equipped with advanced diagnostic technology and supported by experienced pathologists and skilled technicians committed to precision and patient care. From routine blood investigations to specialized diagnostics in Cardiology, Neurology, Oncology, Gynecology, and more, Rapid Labs delivers reliable results with speed and accuracy. Enjoy seamless online booking, convenient doorstep sample collection across Bangalore, and secure digital reports delivered on time — ensuring complete comfort, confidence, and peace of mind for you and your family.
+</p>
+
+<h4>Popular Health Packages</h4>
+
+<div class="popular-tests">
+  <a href="package-details.html?id=master">Master Health Checkup</a> |
+  <a href="package-details.html?id=women">Women Health Checkup</a> |
+  <a href="package-details.html?id=diabetic">Diabetic Profile</a> |
+  <a href="package-details.html?id=basic">Basic Health Checkup</a> |
+  <a href="package-details.html?id=heart">Heart Health Checkup</a> |
+  <a href="package-details.html?id=executive">Executive Health Checkup</a> |
+  <a href="package-details.html?id=senior">Senior Citizen Health Checkup</a> |
+  <a href="package-details.html?id=thyroid">Thyroid Health Checkup</a> |
+  <a href="package-details.html?id=vitamin">Vitamin & Mineral Checkup</a> |
+  <a href="package-details.html?id=preemployment">Pre-employment Health Checkup</a>
+</div>
+
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h4>Patients</h4>
+      <ul>
+        <li><a href="footer-details.html#book-test-popup">Book a Test</a></li>
+        <li><a href="footer-details.html#upload-prescription">Upload Prescription</a></li>
+        <li><a href="footer-details.html#download-report">Download Report</a></li>
+        <li><a href="footer-details.html#health-packages">Health Packages</a></li>
+        <li><a href="footer-details.html#lab-locator">Lab Locator</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Partner With Us</h4>
+      <ul>
+        <li><a href="footer-details.html#join-network">Join Our Lab Network</a></li>
+        <li><a href="footer-details.html#refer-earn">Refer & Earn</a></li>
+        <li><a href="footer-details.html#community-programs">Community Health Programs</a></li>
+
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal & Support</h4>
+      <ul>
+        <li><a href="footer-details.html#privacy-policy">Privacy Policy</a></li>
+        <li><a href="footer-details.html#terms-conditions">Terms & Conditions</a></li>
+        <li><a href="footer-details.html#contact-support">Contact Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="footer-details.html#about-us">About Us</a></li>
+        <li><a href="footer-details.html#mission-vision">Mission & Vision</a></li>
+        <li><a href="footer-details.html#blog-updates">Blog / Updates</a></li>
+        <li><a href="footer-details.html#contact">Contact</a></li>
+        <li><a href="footer-details.html#cookie-policy">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="footer-details.html#get-in-touch">Get in Touch</a></li>
+        <li><a href="footer-details.html#faqs">FAQs</a></li>
+        <li><a href="footer-details.html#sitemap">Sitemap</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919999999999?text=Hello%20Rapid%20Labs,%20I%20want%20to%20book%20an%20organ%20test" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <span class="wa-pulse"></span>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+
+
+<section class="seo-footer">
+  <div class="seo-container">
+
+    <div class="seo-col">
+      <strong>Rapid Labs Bangalore</strong><br>
+      Diagnostic Centre in Bangalore<br>
+      Blood Test Lab Near Me<br>
+      Home Sample Collection Bangalore<br>
+      NABL Certified Diagnostic Lab<br>
+      Same Day Blood Test Reports
+    </div>
+
+    <div class="seo-col">
+      <strong>Heart & Blood Tests</strong><br>
+      Complete Blood Count (CBC)<br>
+      Cholesterol & Lipid Profile Test<br>
+      CRP Blood Test<br>
+      ESR Blood Test<br>
+      Cardiac Risk Blood Tests
+    </div>
+
+    <div class="seo-col">
+      <strong>Hormone & Metabolism Tests</strong><br>
+      Thyroid Profile (TSH, T3, T4)<br>
+      Diabetes Tests (HbA1c, Fasting Sugar)<br>
+      Insulin Resistance Test<br>
+      Vitamin B12 & Vitamin D Test<br>
+      Hormone Blood Tests
+    </div>
+
+    <div class="seo-col">
+      <strong>Organ Function Tests</strong><br>
+      Liver Function Test (LFT)<br>
+      Kidney Function Test (KFT)<br>
+      Pancreas Tests (Amylase, Lipase)<br>
+      Electrolyte Blood Test<br>
+      Full Body Health Checkup
+    </div>
+
+  </div>
+
+  <div class="seo-bottom">
+    Rapid Labs & Diagnostics – Trusted Diagnostic Centre and Blood Test Lab in Bangalore offering Home Sample Collection, Accurate Reports, Preventive Health Checkups, and Affordable Blood Tests for Heart, Liver, Kidney, Thyroid, Diabetes, and Full Body Health Screening.
+  </div>
+</section>
+
+<!-- BOOKING MODAL -->
+<!-- BOOKING MODAL -->
+
+<div id="bookingModal" class="booking-modal">
+
+  <div class="booking-card">
+
+    <span id="closeBookingModal" class="close-btn">&times;</span>
+
+    <h2>Quick Booking</h2>
+
+    <form id="bookingForm">
+
+      <input 
+        type="text"
+        id="nameInput"
+        placeholder="Your Name"
+        required
+      >
+
+      <input 
+        type="tel"
+        id="phoneInput"
+        placeholder="Mobile Number"
+        maxlength="10"
+        required
+      >
+
+      <!-- AUTO TEST NAME -->
+      <input 
+        type="text"
+        id="testTypeInput"
+        readonly
+      >
+
+      
+      <label>Location</label>
+      <input type="text" id="locationInput">
+
+      <button type="button" id="detectLocation" class="detect-btn">
+        📍 Detect Location
+      </button>
+      
+      <button type="submit" class="confirm-btn">
+        Confirm Booking
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+<script src="../script/script.js"></script>
+<script src="../script/location.js"></script>
+<script src="../script/product.js"></script>
+<script src="../script/search.js"></script>
+<script src="../script/cart.js"></script>
+<script>
+/* ===============================
+   PAGE DATA (ORGANS)
+================================ */
+const data = {
+heart: {
+  name: "Heart Diagnostics",
+  price: 1999,
+  old: 2599,
+
+  overview:
+    "Heart Diagnostics is a comprehensive set of cardiac investigations designed to assess heart function, detect early signs of heart disease, and monitor existing cardiac conditions. These tests help evaluate electrical activity, heart structure, blood flow, and cholesterol levels to reduce the risk of serious cardiac events.",
+
+  image: "../images/heart.webp",
+
+  tests: [
+    "Electrocardiogram(ECG)",
+    "2D Echocardiography",
+    "Lipid Profile",
+    "TroponinI"
+  ],
+
+  who: [
+    {
+      title: "Chest Pain, Breathlessness or Palpitations",
+      desc:
+        "Recommended for individuals experiencing chest discomfort, shortness of breath, dizziness, irregular heartbeat, or unexplained fatigue."
+    },
+    {
+      title: "Family History of Heart Disease",
+      desc:
+        "Ideal for people with a family history of heart attacks, high cholesterol, hypertension, or sudden cardiac death."
+    },
+    {
+      title: "Diabetes, High BP or High Cholesterol",
+      desc:
+        "Essential for patients with diabetes, hypertension, obesity, or elevated cholesterol, as these conditions significantly increase cardiac risk."
+    },
+    {
+      title: "Routine Preventive Heart Checkups",
+      desc:
+        "Useful for adults above 35 years for routine heart screening and early detection of silent cardiac conditions."
+    }
+  ],
+
+  faq: [
+    {
+      question: "Do I need fasting for Heart Diagnostic tests?",
+      answer:
+        "Fasting of 8–10 hours is usually required for the Lipid Profile test. Other tests like ECG and 2D Echo do not require fasting."
+    },
+    {
+      question: "Are heart diagnostic tests safe?",
+      answer:
+        "Yes. All tests included in Heart Diagnostics are safe, non-invasive, and performed under expert medical supervision."
+    },
+    {
+      question: "How long does it take to complete the tests?",
+      answer:
+        "The tests are typically completed within 30–60 minutes. Report delivery usually takes up to 24 hours."
+    },
+    {
+      question: "Can these tests detect a heart attack?",
+      answer:
+        "Yes. Tests like ECG and Troponin I help identify heart muscle damage and can indicate an ongoing or recent heart attack."
+    }
+  ]
+},
+
+kidney: {
+  name: "Kidney Diagnostics",
+  price: 1799,
+  old: 2399,
+
+  overview:
+    "Kidney Diagnostics is a comprehensive set of tests designed to evaluate kidney function, detect early signs of kidney disease, and monitor existing renal conditions. These investigations help assess waste filtration, electrolyte balance, and overall kidney health to prevent long-term complications.",
+
+  image: "../images/Kidney.webp",
+
+  tests: [
+    "Kidney Function Test (KFT)",
+    "Serum Creatinine",
+    "Blood Urea",
+    "Uric Acid",
+    "Urine Routine Examination"
+  ],
+
+  who: [
+    {
+      title: "Diabetes or High Blood Pressure",
+      desc:
+        "Recommended for individuals with diabetes or hypertension, as these conditions are leading causes of chronic kidney disease."
+    },
+    {
+      title: "Swelling or Reduced Urine Output",
+      desc:
+        "Ideal for people experiencing swelling in legs, face, or ankles, decreased urine output, or foamy urine."
+    },
+    {
+      title: "History of Kidney Stones or Infections",
+      desc:
+        "Useful for patients with recurrent kidney stones, urinary tract infections, or previous kidney-related issues."
+    },
+    {
+      title: "Routine Preventive Kidney Checkups",
+      desc:
+        "Advised for adults above 35 years or those on long-term medications to detect silent kidney problems early."
+    }
+  ],
+
+  faq: [
+    {
+      question: "Do I need fasting for Kidney Diagnostic tests?",
+      answer:
+        "Fasting is usually not required for most kidney tests. However, your doctor may advise fasting in specific cases."
+    },
+    {
+      question: "Are kidney diagnostic tests safe?",
+      answer:
+        "Yes. All kidney diagnostic tests are safe, non-invasive, and performed using standard laboratory procedures."
+    },
+    {
+      question: "How long does it take to complete the tests?",
+      answer:
+        "Sample collection takes only a few minutes. Reports are generally available within 24 hours."
+    },
+    {
+      question: "Can these tests detect kidney failure?",
+      answer:
+        "Yes. Tests like Creatinine, Urea, and KFT help assess kidney function and can indicate early or advanced kidney damage."
+    }
+  ]
+},
+
+
+liver: {
+  name: "Liver Diagnostics",
+  price: 1699,
+  old: 2299,
+
+  overview:
+    "Liver Diagnostics is a comprehensive panel of tests designed to evaluate liver function, detect liver inflammation or damage, and monitor existing liver conditions. These tests help assess enzyme levels, protein synthesis, and bilirubin metabolism for early diagnosis and prevention of serious liver disorders.",
+
+  image: "../images/Liver.webp",
+
+  tests: [
+    "Liver Function Test (LFT)",
+    "SGOT (AST)",
+    "SGPT (ALT)",
+    "Bilirubin (Total & Direct)",
+    "Alkaline Phosphatase"
+  ],
+
+  who: [
+    {
+      title: "Alcohol Consumption or Fatty Liver Risk",
+      desc:
+        "Recommended for individuals with regular alcohol intake, obesity, or diagnosed fatty liver disease."
+    },
+    {
+      title: "Jaundice or Abdominal Discomfort",
+      desc:
+        "Ideal for people experiencing yellowing of eyes or skin, abdominal pain, nausea, or unexplained fatigue."
+    },
+    {
+      title: "Diabetes or Long-term Medication Use",
+      desc:
+        "Essential for patients with diabetes or those on long-term medications that may affect liver health."
+    },
+    {
+      title: "Routine Preventive Liver Checkups",
+      desc:
+        "Advised for adults above 30 years for early detection of silent liver conditions."
+    }
+  ],
+
+  faq: [
+    {
+      question: "Is fasting required for Liver Diagnostic tests?",
+      answer:
+        "Fasting of 8–10 hours may be advised for accurate Liver Function Test results, depending on your doctor’s recommendation."
+    },
+    {
+      question: "Are liver tests safe?",
+      answer:
+        "Yes. Liver diagnostic tests are safe and require only a blood sample."
+    },
+    {
+      question: "How long does it take to get reports?",
+      answer:
+        "Sample collection takes a few minutes, and reports are usually available within 24 hours."
+    },
+    {
+      question: "Can these tests detect liver damage?",
+      answer:
+        "Yes. Elevated liver enzymes and abnormal bilirubin levels can indicate liver inflammation or damage."
+    }
+  ]
+},
+
+bone: {
+  name: "Bone Diagnostics",
+  price: 1499,
+  old: 1999,
+
+  overview:
+    "Bone Diagnostics is a focused set of investigations designed to assess bone strength, mineral levels, and overall skeletal health. These tests help detect deficiencies, bone loss, and conditions such as osteoporosis, arthritis, or metabolic bone disorders at an early stage.",
+
+  image: "../images/Bone.webp",
+
+  tests: [
+    "Calcium",
+    "Vitamin D",
+    "Alkaline Phosphatase",
+    "Phosphorus",
+    "X-Ray (Specific Area)"
+  ],
+
+  who: [
+    {
+      title: "Bone Pain or Joint Stiffness",
+      desc:
+        "Recommended for individuals experiencing persistent bone pain, joint stiffness, or reduced mobility."
+    },
+    {
+      title: "Vitamin D or Calcium Deficiency",
+      desc:
+        "Ideal for people diagnosed with or suspected of having low calcium or vitamin D levels."
+    },
+    {
+      title: "Post-Menopausal Women & Elderly",
+      desc:
+        "Essential for post-menopausal women and elderly individuals at higher risk of osteoporosis and fractures."
+    },
+    {
+      title: "History of Fractures or Bone Disorders",
+      desc:
+        "Useful for patients with frequent fractures, arthritis, or known bone-related conditions."
+    }
+  ],
+
+  faq: [
+    {
+      question: "Do I need fasting for Bone Diagnostic tests?",
+      answer:
+        "Fasting is generally not required for bone-related blood tests unless advised by your doctor."
+    },
+    {
+      question: "Are bone diagnostic tests safe?",
+      answer:
+        "Yes. Blood tests are completely safe, and X-rays are performed with minimal radiation exposure."
+    },
+    {
+      question: "How long does it take to get reports?",
+      answer:
+        "Blood test reports are usually available within 24 hours. X-ray reports may be available the same day."
+    },
+    {
+      question: "Can these tests detect osteoporosis?",
+      answer:
+        "Yes. Abnormal calcium, vitamin D, and alkaline phosphatase levels can indicate bone loss or osteoporosis risk."
+    }
+  ]
+},
+
+vitamin: {
+  name: "Vitamin Diagnostics",
+  price: 999,
+  old: 1499,
+
+  overview:
+    "Vitamin Diagnostics is a targeted set of tests designed to identify common vitamin deficiencies that can affect energy levels, immunity, bone health, and nerve function. Early detection of deficiencies helps prevent long-term health complications and supports overall well-being.",
+
+  image: "../images/Vitamin.webp",
+
+  tests: [
+    "Vitamin D (25-OH)",
+    "Vitamin B12",
+    "Folate (Vitamin B9)"
+  ],
+
+  who: [
+    {
+      title: "Fatigue, Weakness or Low Energy",
+      desc:
+        "Recommended for individuals experiencing constant tiredness, weakness, or lack of concentration."
+    },
+    {
+      title: "Bone Pain or Muscle Cramps",
+      desc:
+        "Ideal for people with bone pain, muscle cramps, or frequent body aches."
+    },
+    {
+      title: "Hair Fall, Skin or Nerve Issues",
+      desc:
+        "Useful for individuals facing hair loss, tingling sensations, numbness, or skin-related problems."
+    },
+    {
+      title: "Preventive Vitamin Screening",
+      desc:
+        "Advised for adults with limited sun exposure, dietary restrictions, or as part of routine health checkups."
+    }
+  ],
+
+  faq: [
+    {
+      question: "Is fasting required for Vitamin tests?",
+      answer:
+        "Fasting is usually not required for vitamin tests. However, some doctors may advise fasting for accurate results."
+    },
+    {
+      question: "Are vitamin deficiency tests safe?",
+      answer:
+        "Yes. These are simple blood tests and are completely safe."
+    },
+    {
+      question: "How long does it take to get reports?",
+      answer:
+        "Sample collection takes only a few minutes, and reports are usually available within 24–48 hours."
+    },
+    {
+      question: "Can these tests detect vitamin deficiency?",
+      answer:
+        "Yes. These tests accurately measure vitamin levels and help diagnose deficiencies early."
+    }
+  ]
+},
+
+hormone: {
+  name: "Hormone Diagnostics",
+  price: 1899,
+  old: 2499,
+
+  overview:
+    "Hormone Diagnostics is a comprehensive panel of tests designed to evaluate hormonal balance and identify endocrine disorders. These tests help assess thyroid, reproductive, and metabolic hormones that regulate growth, energy levels, mood, fertility, and overall body function.",
+
+  image: "../images/Hormone.webp",
+
+  tests: [
+    "Thyroid Stimulating Hormone (TSH)",
+    "T3 & T4",
+    "Cortisol",
+    "Prolactin",
+    "Testosterone / Estrogen"
+  ],
+
+  who: [
+    {
+      title: "Irregular Periods or Fertility Issues",
+      desc:
+        "Recommended for women experiencing irregular menstrual cycles, PCOS symptoms, or difficulty conceiving."
+    },
+    {
+      title: "Weight Changes or Fatigue",
+      desc:
+        "Ideal for individuals with unexplained weight gain/loss, constant tiredness, or mood fluctuations."
+    },
+    {
+      title: "Hair Loss, Acne or Skin Changes",
+      desc:
+        "Useful for people facing excessive hair fall, acne, pigmentation, or skin-related hormonal issues."
+    },
+    {
+      title: "Low Libido or Erectile Dysfunction",
+      desc:
+        "Essential for men experiencing reduced sexual drive, infertility, or erectile problems."
+    }
+  ],
+
+  faq: [
+    {
+      question: "Do I need fasting for Hormone Diagnostic tests?",
+      answer:
+        "Some hormone tests may require fasting or morning sample collection. Your doctor will guide you accordingly."
+    },
+    {
+      question: "Are hormone tests safe?",
+      answer:
+        "Yes. Hormone diagnostic tests are safe and require only a blood sample."
+    },
+    {
+      question: "How long does it take to get reports?",
+      answer:
+        "Reports are usually available within 24–48 hours depending on the test."
+    },
+    {
+      question: "Can these tests detect hormonal imbalance?",
+      answer:
+        "Yes. These tests accurately measure hormone levels and help diagnose hormonal disorders early."
+    }
+  ]
+},
+
+gut: {
+  name: "Gut Diagnostics",
+  price: 1599,
+  old: 2199,
+
+  overview:
+    "Gut Diagnostics is a comprehensive set of tests designed to evaluate digestive health, identify infections, inflammation, and absorption issues, and monitor overall gut function. These tests help detect the root causes of chronic digestive problems and support better gastrointestinal health.",
+
+  image: "../images/Gut.webp",
+
+  tests: [
+    "Stool Routine Examination",
+    "Stool Occult Blood",
+    "H. Pylori Test",
+    "C-Reactive Protein (CRP)",
+    "Complete Blood Count (CBC)"
+  ],
+
+  who: [
+    {
+      title: "Chronic Acidity, Gas or Bloating",
+      desc:
+        "Recommended for individuals experiencing frequent acidity, bloating, indigestion, or abdominal discomfort."
+    },
+    {
+      title: "Diarrhea, Constipation or IBS Symptoms",
+      desc:
+        "Ideal for people with ongoing bowel irregularities, loose stools, constipation, or irritable bowel symptoms."
+    },
+    {
+      title: "Unexplained Weight Loss or Anemia",
+      desc:
+        "Useful for individuals with unexplained weight loss, nutritional deficiencies, or low hemoglobin levels."
+    },
+    {
+      title: "Preventive Digestive Health Checkups",
+      desc:
+        "Advised for adults with poor dietary habits, high stress levels, or a family history of gut disorders."
+    }
+  ],
+
+  faq: [
+    {
+      question: "Do I need fasting for Gut Diagnostic tests?",
+      answer:
+        "Fasting is generally not required. Stool samples can be collected at home as per instructions."
+    },
+    {
+      question: "Are gut diagnostic tests safe?",
+      answer:
+        "Yes. These tests are safe and non-invasive, involving stool and blood sample analysis."
+    },
+    {
+      question: "How long does it take to get reports?",
+      answer:
+        "Stool and blood test reports are usually available within 24–48 hours."
+    },
+    {
+      question: "Can these tests detect gut infections?",
+      answer:
+        "Yes. Stool tests and H. Pylori testing help identify bacterial infections and gut inflammation."
+    }
+  ]
+},
+
+blood: {
+  name: "Blood Diagnostics",
+  price: 1299,
+  old: 1799,
+
+  overview:
+    "Blood Diagnostics is a comprehensive set of blood tests designed to evaluate overall health, detect infections, anemia, inflammation, and monitor various medical conditions. These tests provide vital insights into blood cells, immunity, and internal organ function.",
+
+  image: "../images/Blood.webp",
+
+  tests: [
+    "Complete Blood Count (CBC)",
+    "Erythrocyte Sedimentation Rate (ESR)",
+    "Peripheral Smear",
+    "C-Reactive Protein (CRP)",
+    "Hemoglobin (Hb)"
+  ],
+
+  who: [
+    {
+      title: "Fatigue, Weakness or Frequent Infections",
+      desc:
+        "Recommended for individuals experiencing constant tiredness, weakness, dizziness, or frequent infections."
+    },
+    {
+      title: "Fever or Suspected Infection",
+      desc:
+        "Ideal for people with persistent fever or symptoms of bacterial or viral infections."
+    },
+    {
+      title: "Anemia or Low Hemoglobin",
+      desc:
+        "Essential for individuals diagnosed with anemia or suspected blood-related disorders."
+    },
+    {
+      title: "Routine Preventive Blood Checkups",
+      desc:
+        "Useful for adults of all ages as part of regular health monitoring and preventive care."
+    }
+  ],
+
+  faq: [
+    {
+      question: "Is fasting required for Blood Diagnostic tests?",
+      answer:
+        "Fasting is not required for most blood tests. However, specific tests may require fasting if advised by your doctor."
+    },
+    {
+      question: "Are blood diagnostic tests safe?",
+      answer:
+        "Yes. Blood tests are safe, quick, and performed using sterile techniques."
+    },
+    {
+      question: "How long does it take to get reports?",
+      answer:
+        "Sample collection takes a few minutes, and reports are usually available within 24 hours."
+    },
+    {
+      question: "Can these tests detect anemia or infection?",
+      answer:
+        "Yes. Tests like CBC, ESR, and CRP help diagnose anemia, infections, and inflammation."
+    }
+  ]
+},
+
+reproductive: {
+  name: "Reproductive Diagnostics",
+  price: 1999,
+  old: 2699,
+
+  overview:
+    "Reproductive Diagnostics is a specialized set of tests designed to evaluate reproductive health, hormonal balance, and fertility status in both men and women. These tests help identify causes of infertility, menstrual irregularities, and other reproductive system disorders.",
+
+  image: "../images/Reproductive.webp",
+
+  tests: [
+    "FSH (Follicle Stimulating Hormone)",
+    "LH (Luteinizing Hormone)",
+    "Prolactin",
+    "Estrogen / Testosterone",
+    "Semen Analysis / Pelvic Ultrasound"
+  ],
+
+  who: [
+    {
+      title: "Fertility Planning or Infertility Issues",
+      desc:
+        "Recommended for couples planning pregnancy or facing difficulty in conceiving."
+    },
+    {
+      title: "Irregular Periods or PCOS Symptoms",
+      desc:
+        "Ideal for women with irregular menstrual cycles, PCOS, or hormonal imbalances."
+    },
+    {
+      title: "Low Libido or Erectile Dysfunction",
+      desc:
+        "Useful for men experiencing reduced sexual drive, erectile issues, or fertility concerns."
+    },
+    {
+      title: "Routine Reproductive Health Checkups",
+      desc:
+        "Advised for individuals seeking preventive reproductive health screening."
+    }
+  ],
+
+  faq: [
+    {
+      question: "Do I need fasting for Reproductive Diagnostic tests?",
+      answer:
+        "Most reproductive hormone tests do not require fasting, but some may need specific timing during the menstrual cycle."
+    },
+    {
+      question: "Are reproductive diagnostic tests safe?",
+      answer:
+        "Yes. These tests are safe and involve blood samples and non-invasive imaging procedures."
+    },
+    {
+      question: "How long does it take to get reports?",
+      answer:
+        "Hormone reports are usually available within 24–48 hours. Imaging reports may be same day."
+    },
+    {
+      question: "Can these tests help diagnose infertility?",
+      answer:
+        "Yes. These tests provide valuable insights into hormonal levels and reproductive organ health."
+    }
+  ]
+},
+
+
+thyroid: {
+  name: "Thyroid Diagnostics",
+  price: 899,
+  old: 1299,
+
+  overview:
+    "Thyroid Diagnostics is a focused set of tests designed to evaluate thyroid gland function and detect hormonal imbalances. These tests help diagnose conditions like hypothyroidism, hyperthyroidism, and other thyroid-related disorders that affect metabolism, energy levels, and overall health.",
+
+  image: "../images/Thyroid.webp",
+
+  tests: [
+    "Thyroid Stimulating Hormone (TSH)",
+    "T3 (Triiodothyronine)",
+    "T4 (Thyroxine)",
+    "Free T3",
+    "Free T4"
+  ],
+
+  who: [
+    {
+      title: "Weight Changes or Fatigue",
+      desc:
+        "Recommended for individuals experiencing unexplained weight gain or loss, constant fatigue, or low energy."
+    },
+    {
+      title: "Hair Fall or Dry Skin",
+      desc:
+        "Ideal for people facing hair thinning, dry skin, brittle nails, or cold intolerance."
+    },
+    {
+      title: "Irregular Periods or Fertility Issues",
+      desc:
+        "Useful for women with menstrual irregularities or difficulty conceiving."
+    },
+    {
+      title: "Routine Thyroid Screening",
+      desc:
+        "Advised for adults, especially women above 30 years, as part of preventive health checkups."
+    }
+  ],
+
+  faq: [
+    {
+      question: "Do I need fasting for Thyroid tests?",
+      answer:
+        "Fasting is not required for thyroid tests. Blood samples are usually collected in the morning."
+    },
+    {
+      question: "Are thyroid tests safe?",
+      answer:
+        "Yes. Thyroid diagnostic tests are safe and require only a blood sample."
+    },
+    {
+      question: "How long does it take to get reports?",
+      answer:
+        "Reports are usually available within 24 hours."
+    },
+    {
+      question: "Can these tests detect thyroid disorders?",
+      answer:
+        "Yes. Abnormal TSH, T3, and T4 levels help diagnose hypothyroidism and hyperthyroidism."
+    }
+  ]
+}
+};
+
+/* ===============================
+   MAP ORGAN → CART PRODUCT ID
+================================ */
+const PRODUCT_ID_MAP = {
+  heart: 201,
+  kidney: 202,
+  liver: 203,
+  bone: 204,
+  vitamin: 205,
+  hormone: 206,
+  gut: 207,
+  blood: 208,
+  reproductive: 209,
+  thyroid: 210
+};
+
+/* ===============================
+   READ URL
+================================ */
+const id = new URLSearchParams(window.location.search).get("id");
+const organ = data[id];
+
+if (!organ) {
+  console.warn("Invalid organ ID");
+} else {
+
+  /* BASIC */
+  document.getElementById("organName").textContent = organ.name;
+  document.getElementById("organOverview").textContent = organ.overview;
+  document.getElementById("organImage").src = organ.image;
+
+  /* PRICE */
+document.getElementById("organPrice").textContent = organ.price;
+
+if (organ.old) {
+  document.getElementById("organOldPrice").textContent = `₹ ${organ.old}`;
+}
+
+
+  /* OVERVIEW CARDS */
+  document.getElementById("organFocus").textContent = organ.name.replace(" Diagnostics", "");
+  document.getElementById("organIncludes").textContent = organ.tests.join(", ");
+  document.getElementById("organReportTime").textContent = "24 Hours";
+
+  /* TEST PARAMETERS */
+  const paramSection = document.getElementById("paramSection");
+  const paramContent = document.getElementById("paramContent");
+
+  paramSection.style.display = "block";
+  paramContent.innerHTML = `
+    <div class="param-item">
+      <div class="param-header" onclick="this.nextElementSibling.classList.toggle('open')">
+        <h3>Available Diagnostic Tests</h3>
+        <span class="know-more">Know more</span>
+      </div>
+      <div class="param-body">
+        <ul>
+          ${organ.tests.map(t => `<li>${t}</li>`).join("")}
+        </ul>
+      </div>
+    </div>
+  `;
+
+  /* WHO SHOULD TAKE */
+  const whoSection = document.getElementById("whoSection") || document.querySelector(".who-should-take");
+  const whoContainer = document.getElementById("organWho");
+
+  whoSection.style.display = "block";
+  whoContainer.innerHTML = organ.who.map(w => `
+    <li>
+      <h4>${w.title}</h4>
+      <p>${w.desc}</p>
+    </li>
+  `).join("");
+
+  /* FAQ */
+  const faqSection = document.getElementById("faqSection") || document.querySelector(".faq-section");
+  const faqContainer = document.getElementById("organFaq");
+
+  faqSection.style.display = "block";
+  faqContainer.innerHTML = organ.faq.map(f => `
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>${f.question}</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>${f.answer}</p>
+      </div>
+    </div>
+  `).join("");
+
+  /* CART */
+  const productId = PRODUCT_ID_MAP[id];
+  if (productId) {
+    const addBtn = document.getElementById("addToCartBtn");
+    addBtn.dataset.id = productId;
+    addBtn.onclick = () => addToCart(productId);
+    updateAddToCartButtons();
+  }
+
+  document.getElementById("bookNowBtn").onclick = () => {
+    window.location.href = `book.html?id=${id}`;
+  };
+}
+
+/* FAQ TOGGLE */
+function toggleFaq(el) {
+  const answer = el.nextElementSibling;
+  const icon = el.querySelector(".faq-toggle");
+  answer.classList.toggle("open");
+  icon.textContent = answer.classList.contains("open") ? "−" : "+";
+}
+</script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const modal = document.getElementById("bookingModal");
+const closeBtn = document.getElementById("closeBookingModal");
+
+const nameInput = document.getElementById("nameInput");
+const phoneInput = document.getElementById("phoneInput");
+const testInput = document.getElementById("testTypeInput");
+
+const bookBtn = document.querySelector(".btn.outline");
+
+/* OPEN MODAL */
+
+if(bookBtn){
+
+  bookBtn.addEventListener("click", function(){
+
+    const organName = document.getElementById("organName").textContent;
+
+    testInput.value = organName;
+
+    modal.style.display = "flex";
+
+  });
+
+}
+
+
+/* CLOSE MODAL */
+
+if(closeBtn){
+  closeBtn.onclick = function(){
+    modal.style.display = "none";
+  }
+}
+
+
+/* OUTSIDE CLICK */
+
+window.onclick = function(e){
+  if(e.target === modal){
+    modal.style.display = "none";
+  }
+}
+
+
+/* FORM SUBMIT */
+
+const form = document.getElementById("bookingForm");
+
+if(form){
+
+form.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  const name = nameInput.value.trim();
+  const phone = phoneInput.value.trim();
+  const test = testInput.value;
+
+  if(phone.length !== 10){
+    alert("Enter valid mobile number");
+    return;
+  }
+
+  const msg =
+`Hello Rapid Labs
+Name: ${name}
+Mobile: ${phone}
+Test: ${test}
+
+I want to book this test.`;
+
+
+  const whatsapp =
+`https://wa.me/919999999999?text=${encodeURIComponent(msg)}`;
+
+  window.open(whatsapp,"_blank");
+
+});
+
+}
+
+});
+
+</script>
+</body>
+</html>

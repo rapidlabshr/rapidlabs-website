@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart | Rapid Labs</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cart.css">
+</head>
+
+<body>
+
+<section class="cart-container">
+
+  <!-- STEP INDICATOR -->
+  <div class="cart-steps">
+    <div class="step active">1<br><span>Add to Cart</span></div>
+    <div class="step">2<br><span>Select Member</span></div>
+    <div class="step">3<br><span>Date & Time</span></div>
+    <div class="step">4<br><span>Payment</span></div>
+  </div>
+
+  <div class="cart-layout">
+
+
+<!-- LEFT : CART ITEMS -->
+<div class="cart-left">
+
+<div id="cartItems">
+
+  <div class="empty-cart">
+    <img src="../images/mtcart.webp" width="200">
+    <h3>Your Cart is Empty</h3>
+    <p>Add tests to proceed with booking</p>
+  </div>
+
+</div>
+
+
+  <!-- ACTIONS -->
+  <div class="cart-actions">
+    <a href="#" class="add-more" id="openModalBtn">+ Add More Test</a>
+
+    <button class="next-btn" id="nextBtn">Next →</button>
+  </div>
+
+</div>
+
+<!-- =============================
+     ADD MORE PRODUCTS MODAL
+================================= -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    
+    <div class="modal-header">
+      <h2>Select Tests & Packages</h2>
+      <span class="close-modal">&times;</span>
+    </div>
+
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input 
+        type="text" 
+        id="productSearch" 
+        placeholder="Search tests & packages..."
+      />
+    </div>
+
+
+    <div class="modal-body" id="modalProductList">
+      <!-- JS will load products here -->
+    </div>
+
+  </div>
+</div>
+
+
+    <!-- RIGHT : PAYMENT SUMMARY -->
+    <div class="cart-right">
+      <h3>Payment Details</h3>
+
+        <div class="summary-row">
+        <span>Sub Total</span>
+        <span id="subTotal">₹0.00</span>
+        </div>
+
+        <div class="summary-row">
+        <span>Discount</span>
+        <span class="discount" id="discount">₹0.00</span>
+        </div>
+
+        <hr>
+
+        <div class="summary-row total">
+        <span>Total Payable</span>
+        <span id="totalPayable">₹0.00</span>
+        </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+<script src="../script/script.js"></script>
+<script src="../script/product.js"></script>
+<script src="../script/cart.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Package Details | Rapid Labs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cart.css">
+  <link rel="stylesheet" href="../css/bloodtest.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<!-- TOP INFO (NOT STICKY) -->
+<div class="top-info">
+  <div class="container top-info-inner">
+
+    <h1 class="logo">Rapid<span>Labs</span></h1>
+
+    <button class="location-btn" id="openLocationModal">
+      📍 Home Collection
+    </button>
+
+    <a href="#" class="appointment-btn">Patient Login</a>
+
+  </div>
+</div>
+
+<!-- LOCATION MODAL -->
+<div class="location-modal" id="locationModal">
+  <div class="location-content">
+    <span class="close-btn" id="closeLocationModal">&times;</span>
+
+    <h3>Check Home Collection Availability at Your Location</h3>
+
+    <input type="text" id="pincode" placeholder="Enter your PIN code" />
+
+    <button class="check-btn" id="checkAvailabilityBtn">
+      Check Availability
+    </button>
+
+    <p id="resultBox"></p>
+  </div>
+</div>
+
+
+
+<!-- STICKY MENU BAR -->
+<header class="menu-header">
+  <nav class="menu-nav">
+
+<div class="nav-search">
+  
+  <!-- Search Icon -->
+  <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" 
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+
+  <!-- Input -->
+ <input id="searchInput" type="text" placeholder="Search Blood Tests..." />
+
+  <!-- Mic Icon -->
+  <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+    <line x1="12" y1="19" x2="12" y2="23"/>
+    <line x1="8" y1="23" x2="16" y2="23"/>
+  </svg>
+
+</div>
+
+<div id="searchResults"></div>
+</div>
+
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+
+<ul id="mobileMenu">
+  <li>
+    <a class="active" href="index.html">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="about.html">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+  </li>
+  <li>
+    <a href="services.html">
+      <i class="fa-solid fa-stethoscope"></i>
+      <span>Services</span>
+    </a>
+  </li>
+  <li>
+    <a href="cart.html" class="cart-link">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      <span id="cartCount" class="cart-count">0</span>
+    </a>
+  </li>
+  <li>
+    <a href="contact.html">
+      <i class="fa-solid fa-phone"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+
+  <!-- 🔹 Add this for mobile Patient Login -->
+  <li class="mobile-only">
+    <a href="#" class="appointment-btn">
+      <i class="fa-solid fa-user"></i>
+      <span>Patient Login</span>
+    </a>
+  </li>
+</ul>
+
+  </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="cbc-hero">
+  <div class="hero-wrapper">
+
+    <div class="hero-left">
+      <img id="pkgImage" src="../images/basic.webp" alt="">
+    </div>
+
+    <div class="hero-right">
+      <div class="price-card">
+
+        <div class="card-header">
+          <h3 class="test-name" id="pkgName">Package Name</h3>
+        </div>
+
+        <p class="offer-label">Limited Time Offer</p>
+
+        <p class="price">
+          ₹ <span id="pkgPrice">1299</span>
+          <span class="old-price">₹ <span id="pkgOldPrice">1999</span></span>
+        </p>
+
+        <div class="action-buttons">
+          <button 
+            class="btn primary hk-cart"
+            id="addToCartBtn"
+            data-type="package"
+          >
+            Add to Cart
+          </button>
+
+          <button class="btn outline">Book Now</button>
+        </div>
+
+        <div class="card-footer">
+          NABH-aligned testing • Secure reports • Home collection
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="test-overview">
+  <div class="container">
+    <h2>Package Overview</h2>
+    <p class="overview-desc" id="pkgDesc"></p>
+
+    <div class="overview-cards">
+      <div class="card"><span class="label">Tests Included</span><strong id="pkgTests"></strong></div>
+      <div class="card"><span class="label">Sample</span><strong>Blood / Urine</strong></div>
+      <div class="card"><span class="label">Preparation</span><strong>Fasting if required</strong></div>
+      <div class="card"><span class="label">Report Time</span><strong>24–48 Hours</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTS ================= -->
+<section class="details-section" id="testsSection">
+  <div class="container">
+    <h2>Available Diagnostic Tests</h2>
+
+    <div class="test-grid" id="organTests">
+      <!-- JS inject cards here -->
+    </div>
+  </div>
+</section>
+
+
+<!-- WHO SHOULD TAKE -->
+<section class="who-should-take">
+  <div class="container">
+    <h2>Who Should Take This Package?</h2>
+    <ul class="who-list" id="pkgWho"></ul>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq1">
+      <label for="faq1">Is home sample collection available?</label>
+      <div class="faq-content"><p>Yes, trained professionals collect samples at home.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq2">
+      <label for="faq2">When will I get reports?</label>
+      <div class="faq-content"><p>Reports are delivered within 24–48 hours.</p></div>
+    </div>
+
+  </div>
+</section>
+<!-- ================= WHY RAPID LABS ================= -->
+<section class="why-rapidlabs-section">
+  <div class="why-wrapper">
+
+    <h2 class="why-title">Why Rapid Labs</h2>
+
+    <div class="why-grid">
+
+      <div class="why-card">
+        <img src="../images/icons/nabh.webp" alt="">
+        <h4>NABH Accredited Diagnostics</h4>
+        <p>
+            Our labs and facilities follow stringent quality protocols aligned with NABH
+            and national healthcare standards to ensure patient safety and accurate results.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/25.webp" alt="">
+        <h4>25+ Years of Medical Excellence</h4>
+        <p>
+          Backed by over two decades of experience in hospitals and
+          diagnostic services.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/fast.webp" alt="">
+        <h4>Fast & Reliable Reporting</h4>
+        <p>
+          Optimized processes ensure timely and accurate test reports
+          without compromise.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/result.webp" alt="">
+        <h4>High Accuracy Results</h4>
+        <p>
+          Multi-level quality checks ensure dependable and clinically
+          precise results.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/hospital.webp" alt="">
+        <h4>Own Hospital & Diagnostic Setup</h4>
+        <p>
+          Integrated hospital and lab infrastructure for seamless
+          testing and expert consultation.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/trust.webp" alt="">
+        <h4>Growing Network & Reach</h4>
+        <p>
+          Expanding diagnostic services with patient-focused care
+          across regions.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/patient.webp" alt="">
+        <h4>Trusted by Thousands of Patients</h4>
+        <p>
+          Years of consistent quality and ethical practices have earned
+          patient trust.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/modren.webp" alt="">
+        <h4>Modern Diagnostic Technology</h4>
+        <p>
+          Advanced analyzers and equipment for reliable, standardized
+          testing outcomes.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="testimonials-modern">
+  <div class="testimonials-container">
+
+    <h2 class="testimonials-title">What Our Patients Say</h2>
+    <p class="testimonials-subtitle">
+      Trusted by thousands of patients for accurate diagnostics and timely reports.
+    </p>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Simran Kaur</h4>
+            <span>2 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          The ultrasound experience was very smooth. The doctor and staff were
+          polite and professional. The lab was clean and well maintained.
+          Highly recommended.
+        </p>
+      </div>
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Aman Kumar</h4>
+            <span>2 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Booking was easy and reports were delivered on time. Staff guided me
+          properly throughout the testing process. Very reliable diagnostic service.
+        </p>
+      </div>
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Mayur Gupta</h4>
+            <span>3 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Well-organized lab with timely service. I recommend reaching early for
+          full body checkups to avoid waiting time. Overall a good experience.
+        </p>
+      </div>
+
+      <div class="testimonial-box featured">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Parveen Satija</h4>
+            <span>1 month ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Excellent service and professional staff. Tests were conducted exactly
+          as scheduled and reports were provided quickly with images. One of the
+          smoothest diagnostic experiences I’ve had.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="nearby-tests">
+  <div class="container">
+    <h3>Popular Blood Tests in Bangalore</h3>
+
+    <div class="nearby-links">
+
+      <!-- Column 1 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=cbc">CBC Blood Test</a></li>
+        <li><a href="bloodtest-details.html?id=crp">C-Reactive Protein (CRP) Test</a></li>
+        <li><a href="bloodtest-details.html?id=hba1c">HbA1c Test</a></li>
+        <li><a href="bloodtest-details.html?id=thyroid">Thyroid Profile Test (TSH, T3, T4)</a></li>
+        <li><a href="bloodtest-details.html?id=lipid">Lipid Profile Test</a></li>
+        <li><a href="bloodtest-details.html?id=lft">Liver Function Test (LFT)</a></li>
+        <li><a href="bloodtest-details.html?id=kft">Kidney Function Test (KFT)</a></li>
+        <li><a href="bloodtest-details.html?id=bsugar">Blood Sugar Test</a></li>
+      </ul>
+
+      <!-- Column 2 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=vitb12">Vitamin B12 Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitd">Vitamin D Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitk">Vitamin K Test</a></li>
+        <li><a href="bloodtest-details.html?id=iron">Iron Studies</a></li>
+        <li><a href="bloodtest-details.html?id=hormone">Hormone Profile</a></li>
+        <li><a href="bloodtest-details.html?id=folate">Folate Test</a></li>
+        <li><a href="bloodtest-details.html?id=calcium">Calcium Test</a></li>
+        <li><a href="bloodtest-details.html?id=bloodculture">Blood Culture</a></li>
+      </ul>
+
+      <!-- Column 3 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=ironferritin">Iron & Ferritin Test</a></li>
+        <li><a href="bloodtest-details.html?id=psa">Prostate Specific Antigen (PSA)</a></li>
+        <li><a href="bloodtest-details.html?id=cholesterol">Cholesterol – HDL/LDL</a></li>
+        <li><a href="bloodtest-details.html?id=thyroidantibodies">Thyroid Antibodies Test</a></li>
+        <li><a href="bloodtest-details.html?id=urine">Urine Routine & Microscopy</a></li>
+        <li><a href="bloodtest-details.html?id=insulin">Insulin Test</a></li>
+        <li><a href="bloodtest-details.html?id=psa">PSA Test</a></li>
+        <li><a href="bloodtest-details.html?id=magnesium">Magnesium Test</a></li>
+      </ul>
+
+      <!-- Column 4 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=dengue">Dengue Test (NS1, IgG, IgM)</a></li>
+        <li><a href="bloodtest-details.html?id=malaria">Malaria Test</a></li>
+        <li><a href="bloodtest-details.html?id=typhoid">Typhoid Test</a></li>
+        <li><a href="bloodtest-details.html?id=chikungunya">Chikungunya Test</a></li>
+        <li><a href="bloodtest-details.html?id=widal">Widal Test</a></li>
+        <li><a href="bloodtest-details.html?id=hiv">HIV Test</a></li>
+        <li><a href="bloodtest-details.html?id=hepatitis_b">Hepatitis B Test</a></li>
+        <li><a href="bloodtest-details.html?id=hepatitis_c">Hepatitis C Test</a></li>
+      </ul>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="about-labs">
+  <div class="container">
+
+    <h3>About Rapid Labs</h3>
+<p>
+  Experience fast, accurate, and dependable diagnostic services with Rapid Labs — one of Bangalore’s most trusted names in medical testing. Our NABL-accredited laboratory is equipped with advanced diagnostic technology and supported by experienced pathologists and skilled technicians committed to precision and patient care. From routine blood investigations to specialized diagnostics in Cardiology, Neurology, Oncology, Gynecology, and more, Rapid Labs delivers reliable results with speed and accuracy. Enjoy seamless online booking, convenient doorstep sample collection across Bangalore, and secure digital reports delivered on time — ensuring complete comfort, confidence, and peace of mind for you and your family.
+</p>
+
+<h4>Popular Health Packages</h4>
+
+<div class="popular-tests">
+  <a href="package-details.html?id=master">Master Health Checkup</a> |
+  <a href="package-details.html?id=women">Women Health Checkup</a> |
+  <a href="package-details.html?id=diabetic">Diabetic Profile</a> |
+  <a href="package-details.html?id=basic">Basic Health Checkup</a> |
+  <a href="package-details.html?id=heart">Heart Health Checkup</a> |
+  <a href="package-details.html?id=executive">Executive Health Checkup</a> |
+  <a href="package-details.html?id=senior">Senior Citizen Health Checkup</a> |
+  <a href="package-details.html?id=thyroid">Thyroid Health Checkup</a> |
+  <a href="package-details.html?id=vitamin">Vitamin & Mineral Checkup</a> |
+  <a href="package-details.html?id=preemployment">Pre-employment Health Checkup</a>
+</div>
+
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h4>Patients</h4>
+      <ul>
+        <li><a href="footer-details.html#book-test-popup">Book a Test</a></li>
+        <li><a href="footer-details.html#upload-prescription">Upload Prescription</a></li>
+        <li><a href="footer-details.html#download-report">Download Report</a></li>
+        <li><a href="footer-details.html#health-packages">Health Packages</a></li>
+        <li><a href="footer-details.html#lab-locator">Lab Locator</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Partner With Us</h4>
+      <ul>
+        <li><a href="footer-details.html#join-network">Join Our Lab Network</a></li>
+        <li><a href="footer-details.html#refer-earn">Refer & Earn</a></li>
+        <li><a href="footer-details.html#community-programs">Community Health Programs</a></li>
+
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal & Support</h4>
+      <ul>
+        <li><a href="footer-details.html#privacy-policy">Privacy Policy</a></li>
+        <li><a href="footer-details.html#terms-conditions">Terms & Conditions</a></li>
+        <li><a href="footer-details.html#contact-support">Contact Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="footer-details.html#about-us">About Us</a></li>
+        <li><a href="footer-details.html#mission-vision">Mission & Vision</a></li>
+        <li><a href="footer-details.html#blog-updates">Blog / Updates</a></li>
+        <li><a href="footer-details.html#contact">Contact</a></li>
+        <li><a href="footer-details.html#cookie-policy">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="footer-details.html#get-in-touch">Get in Touch</a></li>
+        <li><a href="footer-details.html#faqs">FAQs</a></li>
+        <li><a href="footer-details.html#sitemap">Sitemap</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<section class="seo-footer">
+  <div class="seo-container">
+
+    <div class="seo-col">
+      <strong>Rapid Labs Bangalore</strong><br>
+      Diagnostic Centre in Bangalore<br>
+      Blood Test Lab Near Me<br>
+      Home Sample Collection<br>
+      Health Checkup Packages
+    </div>
+
+    <div class="seo-col">
+      <strong>Popular Blood Tests</strong><br>
+      CBC Blood Test<br>
+      Thyroid Test (TSH, T3, T4)<br>
+      Diabetes Test (HbA1c, Fasting Sugar)<br>
+      Cholesterol & Lipid Profile
+    </div>
+
+    <div class="seo-col">
+      <strong>Full Body Checkups</strong><br>
+      Complete Health Checkup<br>
+      Preventive Health Packages<br>
+      Senior Citizen Health Check<br>
+      Women’s Health Checkup
+    </div>
+
+    <div class="seo-col">
+      <strong>Why Choose Rapid Labs</strong><br>
+      Accurate & Fast Reports<br>
+      Affordable Blood Test Prices<br>
+      Certified Lab Technicians<br>
+      Online Report Download
+    </div>
+
+  </div>
+
+<div class="seo-bottom">
+  Rapid Labs & Diagnostics – Trusted Diagnostic Centre and Blood Test Lab in Bangalore offering Fast Reports and Home Sample Collection.
+</div>
+</section>
+
+<a
+  href="https://wa.me/919999999999?text=Hello%20Rapid%20Labs,%20I%20want%20to%20book%20a%20test"
+  class="whatsapp-float"
+  target="_blank"
+  aria-label="Chat on WhatsApp"
+>
+  <span class="wa-pulse"></span>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+<!-- booking model -->
+
+<div id="bookingModal" class="booking-modal">
+
+  <div class="booking-card">
+
+    <span id="closeBookingModal" class="close-btn">&times;</span>
+
+    <h2>Book Your Test</h2>
+
+    <form id="bookingForm">
+
+      <label>Full Name</label>
+      <input type="text" id="nameInput" required>
+
+      <label>Mobile Number</label>
+      <input type="tel" id="phoneInput" required>
+
+      <label>Test / Package</label>
+      <input type="text" id="testTypeInput" readonly>
+
+      <label>Location</label>
+      <input type="text" id="locationInput">
+
+      <button type="button" id="detectLocation" class="detect-btn">
+        📍 Detect Location
+      </button>
+
+      <button type="submit" class="confirm-btn">Confirm Booking</button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- FAST BOOKING MODAL -->
+<div id="bookingModal" class="booking-modal">
+
+  <div class="booking-card">
+
+    <span id="closeBookingModal" class="close-btn">&times;</span>
+
+    <h2>Quick Booking</h2>
+    <p class="booking-sub">Enter your mobile to confirm booking</p>
+
+    <form id="bookingForm">
+
+      <input 
+        type="text"
+        id="nameInput"
+        placeholder="Your Name"
+        required
+      >
+
+      <input 
+        type="tel"
+        id="phoneInput"
+        placeholder="Mobile Number"
+        maxlength="10"
+        required
+      >
+
+      <!-- AUTO FILLED -->
+      <input 
+        type="text"
+        id="testTypeInput"
+        readonly
+      >
+            <input type="text" id="locationInput" placeholder="Your Location">
+
+      <button type="button" id="detectLocation" class="detect-btn">
+        📍 Detect Location
+      </button>
+      
+
+      <button type="submit" class="confirm-btn">
+        Confirm Booking
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<script src="../script/script.js"></script>
+<script src="../script/location.js"></script>
+<script src="../script/product.js"></script>
+<script src="../script/search.js"></script>
+<script src="../script/cart.js"></script>
+
+
+<script>
+/* ================= PACKAGE DATA ================= */
+const packages = {
+  basic: {
+
+    productId: 101,
+    name: "Basic Health Checkup",
+    price: 1299,
+    oldPrice: 1999,
+    image: "../images/basic.webp",
+    desc: "Ideal for routine health screening and early detection.",
+    tests: "60+ Parameters",
+    list: [
+      "Complete Blood Count (CBC)",
+      "Blood Sugar (Fasting/PP)",
+      "Liver Function Test (LFT)",
+      "Kidney Function Test (KFT)",
+      "Urine Routine & Microscopy"
+    ],
+    who: [
+      "Adults above 18 years",
+      "Routine annual checkup",
+      "Early disease detection"
+    ]
+  },
+
+  master: {
+    name: "Master Health Checkup",
+    price: 2499,
+    oldPrice: 3999,
+    image: "../images/master.webp",
+    desc: "Comprehensive full body checkup covering major organs.",
+    tests: "85+ Parameters",
+    list: [
+      "Complete Blood Count (CBC)",
+      "Liver Function Test (LFT)",
+      "Kidney Function Test (KFT)",
+      "Thyroid Profile",
+      "Lipid Profile",
+      "HbA1c Test",
+      "Vitamin D Test",
+      "Iron Studies"
+    ],
+    who: [
+      "Adults 25+",
+      "Preventive healthcare",
+      "Corporate employees"
+    ]
+  },
+
+  heart: {
+    name: "Heart Health Checkup",
+    price: 1799,
+    oldPrice: 2999,
+    image: "../images/heart.webp",
+    desc: "Focused on heart-related tests for early detection of cardiac issues.",
+    tests: "15+ Parameters",
+    list: [
+      "Lipid Profile",
+      "Cholesterol – HDL/LDL",
+      "Triglycerides Test",
+      "Electrolytes Panel",
+      "ECG",
+      "Blood Pressure Check"
+    ],
+    who: [
+      "Adults 35+",
+      "Family history of heart disease",
+      "Lifestyle risk assessment"
+    ]
+  },
+
+  women: {
+    name: "Well Women Checkup",
+    price: 1999,
+    oldPrice: 3499,
+    image: "../images/women.webp",
+    desc: "Comprehensive package designed for women’s health and hormonal balance.",
+    tests: "30+ Parameters",
+    list: [
+      "CBC",
+      "Thyroid Profile",
+      "Vitamin D Test",
+      "Iron Studies",
+      "Hormone Profile",
+      "Urine Routine & Microscopy"
+    ],
+    who: [
+      "Women aged 20+",
+      "Routine health monitoring",
+      "Hormonal imbalance check"
+    ]
+  },
+
+  diabetic: {
+    name: "Diabetic Profile",
+    price: 899,
+    oldPrice: 1499,
+    image: "../images/diabetic.webp",
+    desc: "Designed for diabetes monitoring and control.",
+    tests: "6 Parameters",
+    list: [
+      "Fasting Blood Sugar",
+      "Post Prandial Sugar",
+      "HbA1c Test",
+      "Lipid Profile"
+    ],
+    who: [
+      "Diabetic patients",
+      "Prediabetes monitoring"
+    ]
+  },
+
+  executive: {
+    name: "Executive Health Checkup",
+    price: 2999,
+    oldPrice: 4999,
+    image: "../images/executive.webp",
+    desc: "Premium health package for professionals covering key health markers.",
+    tests: "50+ Parameters",
+    list: [
+      "CBC",
+      "Liver Function Test (LFT)",
+      "Kidney Function Test (KFT)",
+      "Lipid Profile",
+      "Thyroid Profile",
+      "Blood Sugar (Fasting/PP)"
+    ],
+    who: [
+      "Working professionals",
+      "Routine annual checkup",
+      "Corporate health screening"
+    ]
+  },
+
+  senior: {
+    name: "Senior Citizen Health Checkup",
+    price: 2599,
+    oldPrice: 4499,
+    image: "../images/senior.webp",
+    desc: "Comprehensive package for senior citizens to monitor age-related health risks.",
+    tests: "70+ Parameters",
+    list: [
+      "CBC",
+      "Liver Function Test (LFT)",
+      "Kidney Function Test (KFT)",
+      "Lipid Profile",
+      "Thyroid Profile",
+      "Vitamin D Test",
+      "Iron Studies",
+      "Urine Routine & Microscopy"
+    ],
+    who: [
+      "Aged 60+",
+      "Age-related health monitoring",
+      "Routine preventive checkup"
+    ]
+  },
+
+  thyroid: {
+    name: "Thyroid Health Checkup",
+    price: 799,
+    oldPrice: 1499,
+    image: "../images/thyroid.webp",
+    desc: "Focused on thyroid function tests to detect hypo- or hyperthyroidism.",
+    tests: "5 Parameters",
+    list: [
+      "TSH",
+      "T3",
+      "T4",
+      "Thyroid Antibodies Test"
+    ],
+    who: [
+      "Individuals with fatigue, weight change, or hair fall",
+      "Hormonal imbalance check"
+    ]
+  },
+
+  vitamin: {
+    name: "Vitamin & Mineral Checkup",
+    price: 1499,
+    oldPrice: 2499,
+    image: "../images/vitamin.webp",
+    desc: "Check essential vitamin and mineral levels for overall health.",
+    tests: "10+ Parameters",
+    list: [
+      "Vitamin B12",
+      "Vitamin D",
+      "Vitamin K",
+      "Iron & Ferritin Test",
+      "Folate Test",
+      "Magnesium Test"
+    ],
+    who: [
+      "Adults with fatigue or nutritional deficiencies",
+      "Routine health monitoring"
+    ]
+  },
+
+  preemployment: {
+    name: "Pre-employment Health Checkup",
+    price: 999,
+    oldPrice: 1799,
+    image: "../images/preemployment.webp",
+    desc: "Essential tests required for pre-employment screening.",
+    tests: "10+ Parameters",
+    list: [
+      "CBC",
+      "Blood Sugar (Fasting)",
+      "Liver Function Test (LFT)",
+      "Kidney Function Test (KFT)",
+      "Urine Routine & Microscopy"
+    ],
+    who: [
+      "Job applicants",
+      "Mandatory pre-employment screening"
+    ]
+  }
+};
+
+/* ================= PACKAGE → CART ID MAP ================= */
+const PACKAGE_ID_MAP = {
+  basic: 101,
+  master: 102,
+  heart: 103,
+  women: 104,
+  diabetic: 105,
+  executive: 106,
+  senior: 107,
+  thyroid: 108,
+  vitamin: 109,
+  preemployment: 110
+};
+
+/* ================= LOAD PACKAGE DATA ================= */
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id") || "basic";
+const pkg = packages[id];
+
+if (pkg) {
+  // Render package details
+  document.getElementById("pkgName").textContent = pkg.name;
+  document.getElementById("pkgPrice").textContent = pkg.price;
+  document.getElementById("pkgOldPrice").textContent = pkg.oldPrice ? "₹ " + pkg.oldPrice : "";
+  document.getElementById("pkgDesc").textContent = pkg.desc;
+  document.getElementById("pkgTests").textContent = pkg.tests;
+  document.getElementById("pkgImage").src = pkg.image;
+
+  // Populate included tests list
+const pkgList = document.getElementById("pkgList");
+
+if (pkgList) {
+  pkgList.innerHTML = pkg.list.map(test => `<li>${test}</li>`).join("");
+}
+
+  // Populate "who should take" list
+  const pkgWho = document.getElementById("pkgWho");
+  pkgWho.innerHTML = pkg.who.map(person => `<li>${person}</li>`).join("");
+
+  /* =============================== 
+     CART BUTTON BINDING (like test page)
+  ================================= */
+const productId = PACKAGE_ID_MAP[id];
+const addBtn = document.getElementById("addToCartBtn");
+
+if (productId && addBtn) {
+  addBtn.dataset.id = productId;
+  addBtn.dataset.name = pkg.name;
+  addBtn.dataset.price = pkg.price;
+  addBtn.dataset.oldprice = pkg.oldPrice;
+  addBtn.dataset.image = pkg.image;
+  addBtn.dataset.type = "package";
+  addBtn.dataset.category = "package";
+
+  // EXACT SAME AS BLOOD TEST
+  addBtn.onclick = () => addToCart(productId);
+  updateAddToCartButtons();
+}
+
+
+
+  // Optional: "Book Now" button
+  const bookNowBtn = document.getElementById("bookNowBtn");
+  if (bookNowBtn) {
+    bookNowBtn.onclick = () => {
+      window.location.href = `book.html?id=${id}`;
+    };
+  }
+}
+
+</script>
+
+<script>
+
+/* RUN AFTER PAGE LOAD */
+document.addEventListener("DOMContentLoaded", function(){
+
+const modal = document.getElementById("bookingModal");
+const closeBtn = document.getElementById("closeBookingModal");
+
+const nameInput = document.getElementById("nameInput");
+const phoneInput = document.getElementById("phoneInput");
+const testInput = document.getElementById("testTypeInput");
+
+/* BOOK BUTTON */
+const bookBtn = document.querySelector(".btn.outline");
+
+/* OPEN MODAL */
+if(bookBtn){
+  bookBtn.addEventListener("click", function(){
+
+    const pkgName = document.getElementById("pkgName").textContent;
+
+    testInput.value = pkgName;
+
+    modal.style.display = "flex";
+
+  });
+}
+
+/* CLOSE MODAL */
+
+if(closeBtn){
+  closeBtn.onclick = function(){
+    modal.style.display = "none";
+  }
+}
+
+/* CLICK OUTSIDE CLOSE */
+
+window.onclick = function(e){
+  if(e.target === modal){
+    modal.style.display = "none";
+  }
+}
+
+/* FORM SUBMIT */
+
+const form = document.getElementById("bookingForm");
+
+if(form){
+form.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  const name = nameInput.value.trim();
+  const phone = phoneInput.value.trim();
+  const test = testInput.value;
+
+  if(phone.length !== 10){
+    alert("Enter valid mobile number");
+    return;
+  }
+
+  const msg =
+`Hello Rapid Labs
+Name: ${name}
+Mobile: ${phone}
+Test: ${test}
+
+I want to book this test.`;
+
+  const whatsapp =
+`https://wa.me/919999999999?text=${encodeURIComponent(msg)}`;
+
+  window.open(whatsapp,"_blank");
+
+});
+}
+
+});
+
+</script>
+</body>
+</html>

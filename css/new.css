@@ -1,0 +1,464 @@
+/* HERO SECTION */
+.cbc-hero {
+  background: #f5f9ff;
+  padding: 60px 20px;
+  margin-top: 80px;
+}
+
+/* WRAPPER */
+.hero-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 30px;
+  align-items: stretch; /* SAME HEIGHT */
+}
+
+/* LEFT BANNER */
+.hero-left {
+  flex: 1.4;
+  height: 360px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  background: #fff;
+}
+
+.hero-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* =========================
+   RIGHT CARD CONTAINER
+========================= */
+.hero-right {
+  flex: 1;
+  min-width: 300px;
+  max-width: 420px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+/* =========================
+   PRICE CARD
+========================= */
+.price-card {
+  width: 100%;
+  min-height: 360px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    0 10px 24px rgba(15, 23, 42, 0.08),
+    0 2px 6px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+.card-header {
+  padding: 18px 16px;
+  text-align: center;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.test-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* =========================
+   PRICE SECTION
+========================= */
+.offer-label {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.price {
+  margin: 6px 0 18px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.old-price {
+  font-size: 14px;
+  color: #9ca3af;
+  text-decoration: line-through;
+  margin-left: 6px;
+}
+
+/* =========================
+   TEST HIGHLIGHTS
+========================= */
+.test-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0 22px 20px;
+}
+
+.test-highlights li {
+  font-size: 13px;
+  color: #374151;
+  padding: 9px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.test-highlights li:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+.action-buttons {
+  display: flex;
+  gap: 14px;
+  padding: 0 22px 22px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* PRIMARY CTA */
+.btn.primary {
+  background: #1e3a8a;
+  color: #ffffff;
+  border: none;
+}
+
+.btn.primary:hover {
+  background: #1e40af;
+}
+
+/* SECONDARY */
+.btn.outline {
+  background: #ffffff;
+  color: #1e3a8a;
+  border: 1.5px solid #c7d2fe;
+}
+
+.btn.outline:hover {
+  background: #f8fafc;
+}
+
+/* =========================
+   FOOTER TRUST BAR
+========================= */
+.card-footer {
+  margin-top: auto;
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 12px;
+  color: #6b7280;
+  background: #fafafa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-wrapper {
+    flex-direction: column;
+  }
+
+  .hero-left,
+  .hero-right {
+    height: auto;
+  }
+
+  .booking-form {
+    height: auto;
+  }
+}
+/* TEST OVERVIEW */
+.test-overview {
+  padding: 60px 0;
+  background: #f9fafb;
+}
+
+.test-overview h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.overview-desc {
+  font-size: 15px;
+  color: #4b5563;
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* CARDS */
+.overview-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.overview-cards .card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.overview-cards .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+}
+
+.overview-cards .label {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.overview-cards strong {
+  font-size: 16px;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .test-overview h2 {
+    font-size: 24px;
+  }
+
+  .overview-desc {
+    font-size: 14px;
+  }
+}
+
+
+
+/* PARAMETERS & FAQ */
+.test-parameters {
+  padding: 60px 0;
+  background: #ffffff;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+/* LIST */
+.param-list {
+  border-top: 1px solid #e5e7eb;
+}
+
+.param-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* HEADER */
+.param-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  cursor: pointer;
+}
+
+.param-header h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111827;
+  margin: 0;
+}
+
+.know-more {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.toggle {
+  font-size: 24px;
+  color: #111827;
+  transition: transform 0.3s ease;
+}
+
+/* BODY */
+.param-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.param-body ul {
+  padding-bottom: 18px;
+  margin: 0;
+}
+
+.param-body li {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+/* ACTIVE */
+.param-item.active .param-body {
+  max-height: 600px;
+}
+
+.param-item.active .toggle {
+  transform: rotate(45deg);
+}
+
+/* =========================
+   WHO SHOULD TAKE
+========================= */
+.who-should-take {
+  padding: 60px 0;
+  background: #f9fafb;
+}
+
+.who-should-take h2 {
+  font-size: 26px;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.who-intro {
+  max-width: 720px;
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* LIST */
+.who-list {
+  list-style: none;
+  max-width: 720px;
+  padding: 0;
+  margin: 0;
+}
+
+.who-list li {
+  position: relative;
+  padding: 14px 16px 14px 42px;
+  margin-bottom: 12px;
+  background: #ffffff;
+  border-radius: 14px;
+  font-size: 14px;
+  color: #334155;
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+/* CHECK ICON */
+.who-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+/* =========================
+   FAQ SECTION
+========================= */
+.faq-section {
+  padding: 60px 0;
+  background: #ffffff;
+}
+
+.faq-section h2 {
+  font-size: 26px;
+  color: #0f172a;
+  margin-bottom: 28px;
+}
+
+/* FAQ ITEM */
+.faq-item {
+  max-width: 760px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  background: #f9fafb;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+}
+
+/* HIDE CHECKBOX */
+.faq-item input {
+  display: none;
+}
+
+/* QUESTION */
+.faq-item label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* PLUS ICON */
+.faq-item label::after {
+  content: "+";
+  font-size: 22px;
+  color: #1e3a8a;
+  transition: transform 0.3s ease;
+}
+
+/* ANSWER */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  background: #ffffff;
+}
+
+.faq-content p {
+  padding: 0 20px 18px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* OPEN STATE */
+.faq-item input:checked + label::after {
+  transform: rotate(45deg);
+}
+
+.faq-item input:checked ~ .faq-content {
+  max-height: 200px;
+}

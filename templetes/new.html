@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rapid Labs| viewbloodtest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/bloodtest.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<!-- TOP INFO (NOT STICKY) -->
+<div class="top-info">
+  <div class="container top-info-inner">
+
+    <h1 class="logo">Rapid<span>Labs</span></h1>
+
+    <button class="location-btn" id="openLocationModal">
+      📍 Home Collection
+    </button>
+
+    <a href="#" class="appointment-btn">Patient Login</a>
+
+  </div>
+</div>
+
+<!-- LOCATION MODAL -->
+<div class="location-modal" id="locationModal">
+  <div class="location-content">
+    <span class="close-btn" id="closeLocationModal">&times;</span>
+
+    <h3>Check Home Collection Availability at Your Location</h3>
+
+    <input type="text" id="pincode" placeholder="Enter your PIN code" />
+
+    <button class="check-btn" id="checkAvailabilityBtn">
+      Check Availability
+    </button>
+
+    <p id="resultBox"></p>
+  </div>
+</div>
+
+
+
+<!-- STICKY MENU BAR -->
+<header class="menu-header">
+  <nav class="menu-nav">
+
+<div class="nav-search">
+  <input type="text" placeholder="Search doctors or services" />
+  <button class="search-btn" aria-label="Search">
+    <span class="search-icon"></span>
+  </button>
+</div>
+
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+
+<ul id="mobileMenu">
+  <li>
+    <a class="active" href="#">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="about.html">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+  </li>
+  <li>
+    <a href="cbc.html">
+      <i class="fa-solid fa-stethoscope"></i>
+      <span>Services</span>
+    </a>
+  </li>
+  <li>
+    <a href="cart.html" class="cart-link">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      <span id="cartCount" class="cart-count">0</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="fa-solid fa-phone"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+
+  <!-- 🔹 Add this for mobile Patient Login -->
+  <li class="mobile-only">
+    <a href="#" class="appointment-btn">
+      <i class="fa-solid fa-user"></i>
+      <span>Patient Login</span>
+    </a>
+  </li>
+</ul>
+
+  </nav>
+</header>
+<section class="health-offer-section">
+  <div class="health-offer-wrapper">
+
+    <!-- LEFT SLIDER -->
+    <div class="offer-slider">
+      <div class="slide active">
+        <img src="../images/bloodslide1.webp" alt="Healthkind Offer 1">
+      </div>
+      <div class="slide">
+        <img src="../images/lab.webp" alt="Healthkind Offer 2">
+      </div>
+      <!-- Add more slides as needed -->
+      
+      <!-- Dots -->
+      <div class="slider-dots"></div>
+    </div>
+
+    <!-- RIGHT BOOKING FORM -->
+    <div class="booking-form">
+      <h3>Schedule a Home Collection</h3>
+      <input type="text" placeholder="Mobile number *" maxlength="10" id="mobileNumber">
+      <input type="text" placeholder="Enter Pincode" maxlength="6" id="pincode">
+      <button id="bookBtn">Book Now</button>
+      <p class="booking-note">
+        We will contact you via call or SMS to confirm your booking.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="cert-section">
+  <div class="cert-container">
+
+    <div class="cert-item">
+      <img src="../images/icons/nabh.webp" alt="NABH">
+      <p>NABH Accredited<br>Laboratory</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/home.webp" alt="Home Sample Collection">
+      <p>Certified Technicians for Home Sample Collection</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/cmc.webp" alt="CMC Vellore">
+      <p>CMC Vellore<br>Approved</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/hospital.webp" alt="Own Hospital">
+      <p>Own Hospital &<br>Diagnostics</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/hospital.webp" alt="Doctors">
+      <p>Reports Reviewed by<br>Qualified Doctors</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/quality.webp" alt="Quality">
+      <p>Strict Quality &<br>Hygiene Standards</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="hk-section view-all-page">
+  <h2 class="hk-title">Blood Test Package</h2>
+
+  <div class="hk-scroll hk-grid" data-scroll="tests">
+    <!-- CARD 1 -->
+    <div class="hk-card">
+      <img src="../images/cbc.webp" class="hk-img">
+      <h3 class="hk-name">CBC Test</h3>
+      <p class="hk-meta">15 Parameters · Blood Test</p>
+      <p class="hk-gender">Reports within 6 hours</p>
+      <label class="hk-compare">
+        <a href="bloodtest-details.html?id=cbc">View details</a>
+      </label>
+      <div class="hk-price">
+        <span class="hk-old">₹400</span>
+        <span class="hk-new">₹280</span>
+        <span class="hk-off">30% discount</span>
+      </div>
+      <div class="hk-actions">
+        <button class="hk-cart" data-id="1">Add to Cart</button>
+        <button class="hk-book">
+          <a href="viewbloodtest-all.html#package1" style="text-decoration:none; color:inherit;">Book Now</a>
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="hk-card">
+      <img src="../images/crp.webp" class="hk-img">
+      <h3 class="hk-name">CRP Test</h3>
+      <p class="hk-meta">Blood Test · 70 Parameters</p>
+      <p class="hk-gender">Reports within 6 hours</p>
+      <label class="hk-compare">
+        <a href="bloodtest-details.html?id=crp">View details</a>
+      </label>
+      <div class="hk-price">
+        <span class="hk-old">₹400</span>
+        <span class="hk-new">₹280</span>
+        <span class="hk-off">30% Off</span>
+      </div>
+      <div class="hk-actions">
+        <button class="hk-cart" data-id="2">Add to Cart</button>
+        <button class="hk-book">
+          <a href="viewbloodtest-all.html#package2" style="text-decoration:none; color:inherit;">Book Now</a>
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="hk-card">
+      <img src="../images/hba1c.webp" class="hk-img">
+      <h3 class="hk-name">HbA1c Test</h3>
+      <p class="hk-meta">Blood Test · 1 Parameter</p>
+      <p class="hk-gender">Reports within 6 hours</p>
+      <label class="hk-compare">
+        <a href="bloodtest-details.html?id=hba1c">View details</a>
+      </label>
+      <div class="hk-price">
+        <span class="hk-old">₹650</span>
+        <span class="hk-new">₹455</span>
+        <span class="hk-off">30% Off</span>
+      </div>
+      <div class="hk-actions">
+        <button class="hk-cart" data-id="3">Add to Cart</button>
+        <button class="hk-book">
+          <a href="viewbloodtest-all.html#package4" style="text-decoration:none; color:inherit;">Book Now</a>
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="hk-card">
+      <img src="../images/vit.webp" class="hk-img">
+      <h3 class="hk-name">Vitamin B12</h3>
+      <p class="hk-meta">Blood Test · 2 Parameters</p>
+      <p class="hk-gender">Reports within 6 hours</p>
+      <label class="hk-compare">
+        <a href="bloodtest-details.html?id=vitb12">View details</a>
+      </label>
+      <div class="hk-price">
+        <span class="hk-old">₹2700</span>
+        <span class="hk-new">₹1890</span>
+        <span class="hk-off">30% Off</span>
+      </div>
+      <div class="hk-actions">
+        <button class="hk-cart" data-id="4">Add to Cart</button>
+        <button class="hk-book">
+          <a href="viewbloodtest-all.html#package9" style="text-decoration:none; color:inherit;">Book Now</a>
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="hk-card">
+      <img src="../images/lipid.webp" class="hk-img">
+      <h3 class="hk-name">Lipid Profile Test</h3>
+      <p class="hk-meta">Blood Test · 8 Parameters</p>
+      <p class="hk-gender">Reports in 6 hours</p>
+      <label class="hk-compare">
+        <a href="bloodtest-details.html?id=lipid">View details</a>
+      </label>
+      <div class="hk-price">
+        <span class="hk-old">₹600</span>
+        <span class="hk-new">₹420</span>
+        <span class="hk-off">30% Off</span>
+      </div>
+      <div class="hk-actions">
+        <button class="hk-cart" data-id="5">Add to Cart</button>
+        <button class="hk-book">
+          <a href="viewbloodtest-all.html#package7" style="text-decoration:none; color:inherit;">Book Now</a>
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 6 - View All -->
+
+<div class="hk-card">
+  <img src="../images/thyroid.webp" class="hk-img">
+  <h3 class="hk-name">Thyroid Profile</h3>
+  <p class="hk-meta">Blood Test · 5 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=thyroid">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹800</span>
+    <span class="hk-new">₹560</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="301">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package1" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 2: Liver Function Test (LFT) -->
+<div class="hk-card">
+  <img src="../images/lft.webp" class="hk-img">
+  <h3 class="hk-name">Liver Function Test (LFT)</h3>
+  <p class="hk-meta">Blood Test · 12 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=lft">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹1200</span>
+    <span class="hk-new">₹840</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="302">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package2" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 3: Kidney Function Test (KFT) -->
+<div class="hk-card">
+  <img src="../images/kft.webp" class="hk-img">
+  <h3 class="hk-name">Kidney Function Test (KFT)</h3>
+  <p class="hk-meta">Blood Test · 8 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=kft">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹1000</span>
+    <span class="hk-new">₹700</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="303">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package3" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 4: Blood Sugar (Fasting/PP) -->
+<div class="hk-card">
+  <img src="../images/bloodsugar.webp" class="hk-img">
+  <h3 class="hk-name">Blood Sugar (Fasting/PP)</h3>
+  <p class="hk-meta">Blood Test · 2 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=bloodsugar">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹500</span>
+    <span class="hk-new">₹350</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="304">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package4" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 5: Vitamin D Test -->
+<div class="hk-card">
+  <img src="../images/vitd.webp" class="hk-img">
+  <h3 class="hk-name">Vitamin D Test</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=vitd">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹700</span>
+    <span class="hk-new">₹490</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="305">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package5" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 6: Iron Studies -->
+<div class="hk-card">
+  <img src="../images/iron.webp" class="hk-img">
+  <h3 class="hk-name">Iron Studies</h3>
+  <p class="hk-meta">Blood Test · 4 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=iron">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹600</span>
+    <span class="hk-new">₹420</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="306">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package6" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 7: Hormone Profile -->
+<div class="hk-card">
+  <img src="../images/hormone.webp" class="hk-img">
+  <h3 class="hk-name">Hormone Profile</h3>
+  <p class="hk-meta">Blood Test · 6 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=hormone">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹900</span>
+    <span class="hk-new">₹630</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="307">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package7" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 8: Urine Routine & Microscopy -->
+<div class="hk-card">
+  <img src="../images/urine.webp" class="hk-img">
+  <h3 class="hk-name">Urine Routine & Microscopy</h3>
+  <p class="hk-meta">Urine Test · 8 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=urine">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹500</span>
+    <span class="hk-new">₹350</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="308">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package8" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 9: Electrolytes Panel / Serum Calcium Test -->
+<div class="hk-card">
+  <img src="../images/electrolytes.webp" class="hk-img">
+  <h3 class="hk-name">Electrolytes Panel / Serum Calcium Test</h3>
+  <p class="hk-meta">Blood Test · 6 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=electrolytes">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹700</span>
+    <span class="hk-new">₹490</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="309">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package9" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 10: Serum Calcium Test -->
+<div class="hk-card">
+  <img src="../images/calcium.webp" class="hk-img">
+  <h3 class="hk-name">Serum Calcium Test</h3>
+  <p class="hk-meta">Blood Test · 2 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=calcium">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹600</span>
+    <span class="hk-new">₹420</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="310">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package10" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 11: Prostate Specific Antigen (PSA) -->
+<div class="hk-card">
+  <img src="../images/psa.webp" class="hk-img">
+  <h3 class="hk-name">Prostate Specific Antigen (PSA)</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=psa">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹800</span>
+    <span class="hk-new">₹560</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="311">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package11" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 12: Iron & Ferritin Test -->
+<div class="hk-card">
+  <img src="../images/iron-ferritin.webp" class="hk-img">
+  <h3 class="hk-name">Iron & Ferritin Test</h3>
+  <p class="hk-meta">Blood Test · 4 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=ironferritin">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹700</span>
+    <span class="hk-new">₹490</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="312">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package12" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 13: Blood Culture -->
+<div class="hk-card">
+  <img src="../images/blood-culture.webp" class="hk-img">
+  <h3 class="hk-name">Blood Culture</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=bloodculture">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹1000</span>
+    <span class="hk-new">₹700</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="313">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package13" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 14: Coagulation Profile -->
+<div class="hk-card">
+  <img src="../images/coagulation.webp" class="hk-img">
+  <h3 class="hk-name">Coagulation Profile</h3>
+  <p class="hk-meta">Blood Test · 4 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=coagulation">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹900</span>
+    <span class="hk-new">₹630</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="314">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package14" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 15: Thyroid Antibodies Test -->
+<div class="hk-card">
+  <img src="../images/thyroid-antibodies.webp" class="hk-img">
+  <h3 class="hk-name">Thyroid Antibodies Test</h3>
+  <p class="hk-meta">Blood Test · 3 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=thyroid-antibodies">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹850</span>
+    <span class="hk-new">₹595</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="315">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package15" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 16: Uric Acid Test -->
+<div class="hk-card">
+  <img src="../images/uric-acid.webp" class="hk-img">
+  <h3 class="hk-name">Uric Acid Test</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=uric-acid">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹400</span>
+    <span class="hk-new">₹280</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="316">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package16" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 17: Homocysteine Test -->
+<div class="hk-card">
+  <img src="../images/homocysteine.webp" class="hk-img">
+  <h3 class="hk-name">Homocysteine Test</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=homocysteine">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹1200</span>
+    <span class="hk-new">₹840</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="317">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package17" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 18: Triglycerides Test -->
+<div class="hk-card">
+  <img src="../images/triglycerides.webp" class="hk-img">
+  <h3 class="hk-name">Triglycerides Test</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=triglycerides">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹600</span>
+    <span class="hk-new">₹420</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="318">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package18" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 19: Cholesterol – HDL/LDL -->
+<div class="hk-card">
+  <img src="../images/cholesterol.webp" class="hk-img">
+  <h3 class="hk-name">Cholesterol – HDL/LDL</h3>
+  <p class="hk-meta">Blood Test · 2 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=cholesterol">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹600</span>
+    <span class="hk-new">₹420</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="319">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package19" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 20: Folate Test -->
+<div class="hk-card">
+  <img src="../images/folate.webp" class="hk-img">
+  <h3 class="hk-name">Folate Test</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=folate">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹500</span>
+    <span class="hk-new">₹350</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="320">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package20" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 21: Cortisol Test -->
+<div class="hk-card">
+  <img src="../images/cortisol.webp" class="hk-img">
+  <h3 class="hk-name">Cortisol Test</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=cortisol">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹700</span>
+    <span class="hk-new">₹490</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="321">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package21" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 22: Insulin Test -->
+<div class="hk-card">
+  <img src="../images/insulin.webp" class="hk-img">
+  <h3 class="hk-name">Insulin Test</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=insulin">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹800</span>
+    <span class="hk-new">₹560</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="322">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package22" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 23: Magnesium Test -->
+<div class="hk-card">
+  <img src="../images/magnesium.webp" class="hk-img">
+  <h3 class="hk-name">Magnesium Test</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=magnesium">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹500</span>
+    <span class="hk-new">₹350</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="323">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package23" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 24: Amylase & Lipase Test -->
+<div class="hk-card">
+  <img src="../images/amylase-lipase.webp" class="hk-img">
+  <h3 class="hk-name">Amylase & Lipase Test</h3>
+  <p class="hk-meta">Blood Test · 2 Parameters</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=amylase-lipase">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹700</span>
+    <span class="hk-new">₹490</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="324">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package24" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+<!-- CARD 25: Vitamin K Test -->
+<div class="hk-card">
+  <img src="../images/vitk.webp" class="hk-img">
+  <h3 class="hk-name">Vitamin K Test</h3>
+  <p class="hk-meta">Blood Test · 1 Parameter</p>
+  <p class="hk-gender">Reports in 6 hours</p>
+  <label class="hk-compare">
+    <a href="bloodtest-details.html?id=vitk">View details</a>
+  </label>
+  <div class="hk-price">
+    <span class="hk-old">₹600</span>
+    <span class="hk-new">₹420</span>
+    <span class="hk-off">30% Off</span>
+  </div>
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="325">Add to Cart</button>
+    <button class="hk-book">
+      <a href="viewbloodtest-all.html#package25" style="text-decoration:none; color:inherit;">Book Now</a>
+    </button>
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="nearby-tests">
+  <div class="container">
+    <h3>Popular Blood Tests</h3>
+
+    <div class="nearby-links">
+
+      <ul>
+        <li><a href="cbc.html">Complete Blood Count (CBC)</a></li>
+        <li><a href="bloodtest-details.html?id=thyroid">Thyroid Profile</a></li>
+        <li><a href="bloodtest-details.html?id=lipid">Lipid Profile</a></li>
+        <li><a href="bloodtest-details.html?id=lft">Liver Function Test (LFT)</a></li>
+        <li><a href="bloodtest-details.html?id=kft">Kidney Function Test (KFT)</a></li>
+        <li><a href="bloodtest-details.html?id=bsugar">Blood Sugar (Fasting/PP)</a></li>
+        <li><a href="bloodtest-details.html?id=hba1c">HbA1c Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitd">Vitamin D Test</a></li>
+        <li><a href="bloodtest-details.html?id=iron">Iron Studies</a></li>
+        <li><a href="bloodtest-details.html?id=hormone">Hormone Profile</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="bloodtest-details.html?id=urine">Urine Routine & Microscopy</a></li>
+        <li><a href="bloodtest-details.html?id=crp">CRP (C-Reactive Protein)</a></li>
+        <li><a href="bloodtest-details.html?id=electrolytes">Electrolytes Panel</a></li>
+        <li><a href="bloodtest-details.html?id=calcium">Serum Calcium Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitaminb12">Vitamin B12</a></li>
+        <li><a href="bloodtest-details.html?id=psa">Prostate Specific Antigen (PSA)</a></li>
+        <li><a href="bloodtest-details.html?id=ironferritin">Iron & Ferritin Test</a></li>
+        <li><a href="bloodtest-details.html?id=bloodculture">Blood Culture</a></li>
+        <li><a href="bloodtest-details.html?id=coagulation">Coagulation Profile</a></li>
+        <li><a href="bloodtest-details.html?id=thyroidantibodies">Thyroid Antibodies Test</a></li>
+
+      </ul>
+
+      <ul>
+        <li><a href="bloodtest-details.html?id=uricacid">Uric Acid Test</a></li>
+        <li><a href="bloodtest-details.html?id=homocysteine">Homocysteine Test</a></li>
+        <li><a href="bloodtest-details.html?id=triglycerides">Triglycerides Test</a></li>
+        <li><a href="bloodtest-details.html?id=cholesterol">Cholesterol – HDL/LDL</a></li>
+        <li><a href="bloodtest-details.html?id=folate">Folate Test</a></li>
+        <li><a href="bloodtest-details.html?id=cortisol">Cortisol Test</a></li>
+        <li><a href="bloodtest-details.html?id=insulin">Insulin Test</a></li>
+        <li><a href="bloodtest-details.html?id=magnesium">Magnesium Test</a></li>
+        <li><a href="bloodtest-details.html?id=amylase_lipase">Amylase & Lipase Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitk">Vitamin K Test</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="about-labs">
+  <div class="container">
+
+    <h3>About Rapid Labs</h3>
+    <p>
+      Experience fast and reliable diagnostic services with Rapid Labs, a trusted
+      name in medical testing across India. Our NABL-accredited laboratories are
+      equipped with advanced diagnostic technology and supported by experienced
+      pathologists and trained technicians. From routine blood tests to specialized
+      diagnostics in Cardiology, Neurology, Oncology, Gynecology, and more — Rapid
+      Labs ensures accuracy, speed, and care. Enjoy hassle-free online booking,
+      doorstep sample collection, and timely digital reports for complete peace
+      of mind.
+    </p>
+
+<h4>Popular Health Packages</h4>
+
+<div class="popular-tests">
+  <a href="#package2">Master Health Checkup</a> |
+  <a href="#package4">Women Health Checkup</a> |
+  <a href="#package5">Diabetic Profile</a> |
+  <a href="#package1">Basic Health Checkup</a> |
+  <a href="#package3">Heart Health Checkup</a> |
+  <a href="#package6">Executive Health Checkup</a> |
+  <a href="#package7">Senior Citizen Health Checkup</a> |
+  <a href="#package8">Thyroid Health Checkup</a> |
+  <a href="#package9">Vitamin & Mineral Checkup</a> |
+  <a href="#package10">Pre-employment Health Checkup</a>
+</div>
+
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h4>Patients</h4>
+      <ul>
+        <li><a href="#">Book a Test</a></li>
+        <li><a href="#">Upload Prescription</a></li>
+        <li><a href="#">Download Report</a></li>
+        <li><a href="#">Health Packages</a></li>
+        <li><a href="#">Lab Locator</a></li>
+        <li><a href="#">Claim Refund</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Partner With Us</h4>
+      <ul>
+        <li><a href="#">Franchise Opportunities</a></li>
+        <li><a href="#">Corporate Wellness</a></li>
+        <li><a href="#">Hospital Lab Management</a></li>
+        <li><a href="#">Organise Camps</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Doctors</h4>
+      <ul>
+        <li><a href="#">National Reference Lab</a></li>
+        <li><a href="#">Research & Development</a></li>
+        <li><a href="#">Download Forms</a></li>
+        <li><a href="#">Scientific Literature</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Mission & Vision</a></li>
+        <li><a href="#">Management</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Newsletter</a></li>
+        <li><a href="#">PR Media</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="#">Get in Touch</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Sitemap</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<section class="seo-footer">
+  <div class="seo-container">
+
+    <div class="seo-col">
+      <strong>Rapid Labs</strong>
+      Diagnostic Services<br>
+      Pathology & Blood Tests<br>
+      Preventive Health Checkups
+    </div>
+
+    <div class="seo-col">
+      <strong>Healthcare Expertise</strong>
+      25+ Years of Experience<br>
+      In-House Hospital Facilities<br>
+      Certified Pathologists
+    </div>
+
+    <div class="seo-col">
+      <strong>Diagnostic Capabilities</strong>
+      Blood Tests & Profiles<br>
+      Radiology & Imaging<br>
+      Advanced Lab Technology
+    </div>
+
+    <div class="seo-col">
+      <strong>Patient Trust</strong>
+      Accurate Reports<br>
+      Quality-Controlled Testing<br>
+      Reliable Healthcare Solutions
+    </div>
+
+  </div>
+
+  <div class="seo-bottom">
+    © 1999–2026 Rapid Labs & Diagnostics. Trusted Diagnostic & Pathology Services in India.
+  </div>
+</section>
+<a
+  href="https://wa.me/919999999999?text=Hello%20Rapid%20Labs,%20I%20want%20to%20book%20a%20test"
+  class="whatsapp-float"
+  target="_blank"
+  aria-label="Chat on WhatsApp"
+>
+  <span class="wa-pulse"></span>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+
+<script src="../script/script.js"></script>
+<script src="../script/location.js"></script>
+<script src="../script/product.js"></script>
+<script src="../script/cart.js"></script>
+</body>
+</html>

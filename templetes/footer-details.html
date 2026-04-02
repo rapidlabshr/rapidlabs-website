@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Footer Details | Rapid Labs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/footer.css">
+
+  
+</head>
+
+<body>
+
+<!-- ================= BOOK A TEST ================= -->
+<section id="book-test-popup" class="footer-section book-test">
+
+  <div class="booking-card">
+    <h1>Book a Test</h1>
+    <p class="subtitle">Search and book diagnostic tests easily.</p>
+
+    <!-- Search Field -->
+    <div class="rl-search-box">
+      <input 
+        type="text" 
+        id="test-search"
+        class="rl-search-input"
+        placeholder="Search for Blood Test..."
+        autocomplete="off"
+      >
+      <div id="search-results" class="rl-search-results"></div>
+    </div>
+
+    <!-- Name -->
+    <input 
+      type="text" 
+      id="user-name"
+      placeholder="Your Name"
+    >
+
+    <!-- Mobile -->
+    <input 
+      type="tel" 
+      id="mobile-number"
+      placeholder="Enter 10-digit Mobile Number"
+      maxlength="10"
+    >
+
+    <!-- Button -->
+    <button id="book-btn">Book Now</button>
+
+    <!-- Confirmation -->
+    <p id="confirmation-message" class="confirmation-message"></p>
+  </div>
+
+</section>
+
+
+<!-- ================= UPLOAD PRESCRIPTION ================= -->
+<section id="upload-prescription" class="footer-section upload-prescription">
+
+  <div class="upload-card">
+    <h1>Upload Prescription</h1>
+    <p class="subtitle">
+      Upload your doctor’s prescription and our team will contact you to confirm the tests.
+    </p>
+
+    <!-- File Upload -->
+    <label class="file-upload">
+      <input type="file" id="prescription-file">
+      <span id="file-label">📄 Choose Prescription File</span>
+    </label>
+
+    <!-- ✅ Patient Name -->
+    <input
+      type="text"
+      id="prescription-name"
+      placeholder="Enter Patient Name"
+    >
+
+    <!-- Mobile Number -->
+    <input
+      type="tel"
+      id="prescription-mobile"
+      placeholder="Enter 10-digit Mobile Number"
+      maxlength="10"
+    >
+
+    <!-- Optional Notes -->
+    <textarea
+      id="prescription-notes"
+      placeholder="Any special instructions (optional)"
+      rows="3"
+    ></textarea>
+
+    <!-- Submit -->
+    <button type="button" id="upload-btn">Submit Prescription</button>
+
+    <!-- Confirmation -->
+    <p id="upload-confirmation" class="confirmation-message"></p>
+  </div>
+
+</section>
+
+
+<!-- ================= DOWNLOAD REPORT ================= -->
+<section id="download-report" class="footer-section">
+  <h1>Download Report</h1>
+  <p>Access and download your test reports securely.</p>
+
+  <div class="download-box">
+
+    <!-- Report ID -->
+    <input 
+      type="text" 
+      id="report-id" 
+      placeholder="Enter Report ID"
+    >
+
+    <!-- Mobile Number -->
+    <input 
+      type="tel" 
+      id="report-mobile" 
+      placeholder="Enter Mobile Number" 
+      maxlength="10"
+    >
+
+    <!-- Button (NO onclick) -->
+    <button id="download-btn">Download Report</button>
+
+    <!-- Message -->
+    <p id="download-message" class="confirmation-message"></p>
+
+  </div>
+</section>
+
+<!-- ================= HEALTH PACKAGES ================= -->
+<section id="health-packages" class="footer-section health-packages">
+
+  <h1 class="hp-title">Health Checkup Packages</h1>
+  <p class="hp-subtitle">Choose from our curated health checkup packages</p>
+
+  <div class="hp-grid">
+
+    <!-- Package Card -->
+    <div class="hp-card">
+      <img src="../images/basic.webp" alt="Basic Health Checkup">
+      <h3>Basic Health Checkup</h3>
+      <p class="hp-desc">Ideal for routine health screening</p>
+
+      <div class="hp-price">
+        <span class="old">₹1999</span>
+        <span class="new">₹1299</span>
+        <span class="off">35% Off</span>
+      </div>
+
+      <div class="hp-actions">
+        <a href="package-details.html?id=basic" class="hp-link">View Details</a>
+        <a href="#" class="hp-btn" onclick="bookWhatsApp('Basic Health Checkup', 1299)">
+          Book via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="hp-card">
+      <img src="../images/master.webp" alt="Master Health Checkup">
+      <h3>Master Health Checkup</h3>
+      <p class="hp-desc">Comprehensive full body package</p>
+
+      <div class="hp-price">
+        <span class="old">₹3999</span>
+        <span class="new">₹2499</span>
+        <span class="off">38% Off</span>
+      </div>
+
+      <div class="hp-actions">
+        <a href="package-details.html?id=master" class="hp-link">View Details</a>
+        <a href="#" class="hp-btn" onclick="bookWhatsApp('Master Health Checkup', 1299)">
+          Book via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="hp-card">
+      <img src="../images/heart.webp" alt="Heart Health Checkup">
+      <h3>Heart Health Checkup</h3>
+      <p class="hp-desc">Focused on cardiac risk assessment</p>
+
+      <div class="hp-price">
+        <span class="old">₹3499</span>
+        <span class="new">₹2199</span>
+        <span class="off">37% Off</span>
+      </div>
+
+      <div class="hp-actions">
+        <a href="package-details.html?id=heart" class="hp-link">View Details</a>
+        <a href="#" class="hp-btn" onclick="bookWhatsApp('Heart Health Checkup', 1299)">
+          Book via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="hp-card">
+      <img src="../images/women.webp" alt="Well Women Checkup">
+      <h3>Well Women Checkup</h3>
+      <p class="hp-desc">Designed for women’s health needs</p>
+
+      <div class="hp-price">
+        <span class="old">₹3599</span>
+        <span class="new">₹2299</span>
+        <span class="off">36% Off</span>
+      </div>
+
+      <div class="hp-actions">
+        <a href="package-details.html?id=women" class="hp-link">View Details</a>
+                <a href="#" class="hp-btn" onclick="bookWhatsApp('Well Women Checkup', 1299)">
+          Book via WhatsApp
+        </a>
+      </div>
+    </div>
+    
+    <div class="hp-view-all">
+  <a href="viewallpackages.html" class="hp-view-btn">
+    View All Packages →
+  </a>
+</div>
+
+
+  </div>
+
+</section>
+
+
+
+
+<!-- ================= LAB LOCATOR ================= -->
+<section id="lab-locator" class="footer-section lab-locator">
+
+  <div class="lab-card-wrapper">
+
+
+    <!-- Lab Card -->
+    <div class="lab-card">
+      <h3>Raghavendra Diagnostics Center</h3>
+      <p class="lab-partner">Rapid Labs Partner</p>
+
+      <!-- ✅ Updated Address -->
+      <p class="lab-info">
+        📍 Vijayanagar, 1222, 80 Feet Rd, near Ganesha Temple, 
+        BDA Layout, Chandra Layout, Bengaluru, Karnataka 560040
+      </p>
+
+      <p class="lab-info">⏰ 7:00 AM – 8:00 PM</p>
+      <p class="lab-info">📞 +91 7892287102</p>
+
+      <div class="lab-actions">
+
+        <!-- ✅ Google Maps Direction Link -->
+        <a 
+          href="https://www.google.com/maps/search/?api=1&query=Vijayanagar%2C+1222%2C+80+Feet+Rd%2C+near+Ganesha+Temple%2C+BDA+Layout%2C+Chandra+Layout%2C+Bengaluru%2C+Karnataka+560040" 
+          target="_blank" 
+          class="lab-btn secondary">
+          Get Directions
+        </a>
+
+        <!-- ✅ Call Button -->
+        <a href="tel:7892287102" class="lab-btn primary">
+          Call Lab
+        </a>
+
+      </div>
+    </div>
+</section>
+
+<!-- ================= JOIN NETWORK ================= -->
+<section id="join-network" class="footer-section join-network">
+
+  <div class="network-card">
+
+    <h1>Join Our Lab Network</h1>
+    <p class="subtitle">
+      Partner with <strong>Rapid Labs</strong> and grow your diagnostic business.
+    </p>
+
+    <!-- Benefits -->
+    <div class="network-benefits">
+      <p>✔ Increase patient reach through our online platform</p>
+      <p>✔ Get digital booking & reporting support</p>
+      <p>✔ Transparent revenue sharing model</p>
+      <p>✔ Marketing & branding assistance</p>
+    </div>
+
+    <!-- Form -->
+    <input type="text" id="lab-name" placeholder="Lab / Center Name">
+    <input type="text" id="owner-name" placeholder="Owner / Contact Person Name">
+    <input type="tel" id="partner-mobile" placeholder="Enter 10-digit Mobile Number" maxlength="10">
+    <input type="text" id="lab-city" placeholder="City / Location">
+
+    <button id="network-btn">Apply for Partnership</button>
+
+    <p id="network-confirmation" class="confirmation-message"></p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= REFER & EARN ================= -->
+<section id="refer-earn" class="footer-section refer-earn">
+
+  <div class="refer-card">
+
+    <h1>Refer & Earn</h1>
+    <p class="subtitle">
+      Refer your friends to <strong>Rapid Labs</strong> and earn exciting rewards.
+    </p>
+
+    <!-- Steps -->
+    <div class="refer-steps">
+      <div class="step">1️⃣ Share your referral link</div>
+      <div class="step">2️⃣ Friend books a test</div>
+      <div class="step">3️⃣ You earn rewards</div>
+    </div>
+
+    <!-- Referral Code -->
+    <div class="referral-box">
+      <span class="ref-code" id="ref-code">Loading...</span>
+      <button class="copy-btn">Copy Code</button>
+    </div>
+
+    <!-- Share Buttons -->
+    <div class="share-actions">
+      <a href="#" class="share-btn whatsapp">Share on WhatsApp</a>
+      <a href="#" class="share-btn link">Copy Referral Link</a>
+    </div>
+
+    <p class="note">
+      You will receive rewards once your friend completes their first test.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ================= COMMUNITY ================= -->
+<section id="community-programs" class="footer-section community">
+  <div class="content-box">
+    <h1>Community Health Programs</h1>
+
+    <p>
+      At Rapid Labs, we believe quality healthcare should be accessible to everyone.
+      Our community health programs focus on early detection, prevention, and
+      spreading awareness to build a healthier society.
+    </p>
+
+    <h3>Our Initiatives</h3>
+    <ul>
+      <li>Free health screening camps across rural and urban communities</li>
+      <li>Health awareness drives on diabetes, heart health, and preventive care</li>
+      <li>Affordable diagnostic packages for underprivileged families</li>
+    </ul>
+
+    <h3>Our Impact</h3>
+    <p>
+      We have helped thousands of individuals access timely health checkups and
+      early diagnosis through our outreach programs.
+    </p>
+
+    <p>
+      We proudly collaborate with hospitals, NGOs, and local authorities to
+      expand access to reliable and affordable healthcare services.
+    </p>
+
+    <div class="community-actions">
+      <a href="tel:+917892287102" class="btn-primary">Call for Health Camp</a>
+      <a href="tel:+917892287102" class="btn-secondary">Partner With Us</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= PRIVACY ================= -->
+<section id="privacy-policy" class="footer-section privacy">
+  <div class="content-box">
+    <h1>Privacy Policy</h1>
+
+    <p>
+      At Rapid Labs, we are committed to protecting your personal information.
+      This Privacy Policy explains how we collect, use, store, and safeguard your data.
+    </p>
+
+    <h3>1. Information We Collect</h3>
+    <ul>
+      <li>Name, phone number, email address, and location</li>
+      <li>Health test bookings and diagnostic report details</li>
+      <li>Payment and billing information</li>
+      <li>Website usage data (cookies, browser, device info)</li>
+    </ul>
+
+    <h3>2. How We Use Your Information</h3>
+    <ul>
+      <li>To process test bookings and deliver reports</li>
+      <li>To contact you for appointment updates</li>
+      <li>To improve our services and website experience</li>
+      <li>To send important notifications and health updates</li>
+    </ul>
+
+    <h3>3. Data Protection</h3>
+    <ul>
+      <li>We use secure systems to protect your data</li>
+      <li>Access to your data is restricted to authorized staff</li>
+      <li>We follow industry-standard security practices</li>
+    </ul>
+
+    <h3>4. Sharing of Information</h3>
+    <ul>
+      <li>We do not sell your personal data</li>
+      <li>Data may be shared with trusted healthcare partners if required</li>
+      <li>We may share data when required by law</li>
+    </ul>
+
+    <h3>5. Cookies & Tracking</h3>
+    <ul>
+      <li>We use cookies to improve website performance</li>
+      <li>You can disable cookies in your browser settings</li>
+    </ul>
+
+    <h3>6. Data Retention</h3>
+    <ul>
+      <li>We keep your data only as long as necessary</li>
+      <li>Medical records may be stored as per legal requirements</li>
+    </ul>
+
+    <h3>7. Your Rights</h3>
+    <ul>
+      <li>You can request access to your personal data</li>
+      <li>You can request correction of incorrect information</li>
+      <li>You can request deletion of your data (where applicable)</li>
+    </ul>
+
+    <h3>8. Third-Party Services</h3>
+    <ul>
+      <li>We may use trusted third-party tools for payments or analytics</li>
+      <li>These providers follow their own privacy policies</li>
+    </ul>
+
+    <h3>9. Children's Privacy</h3>
+    <ul>
+      <li>Our services are not intended for children without parental consent</li>
+    </ul>
+
+    <h3>10. Updates to Policy</h3>
+    <ul>
+      <li>This policy may be updated from time to time</li>
+      <li>Changes will be posted on this page</li>
+    </ul>
+
+    <h3>11. Contact Us</h3>
+    <p>
+      If you have any questions about this Privacy Policy, please contact us at:
+      <br>
+      📞 Phone: +917892287102 <br>
+      📧 Email: rapidlabs.hr@gmail.com
+    </p>
+  </div>
+</section>
+
+<!-- ================= TERMS ================= -->
+<section id="terms-conditions" class="footer-section terms">
+  <div class="content-box">
+    <h1>Terms & Conditions</h1>
+
+    <p>
+      By accessing and using Rapid Labs services, you agree to the following
+      terms and conditions. Please read them carefully before using our platform.
+    </p>
+
+    <h3>1. Service Agreement</h3>
+    <ul>
+      <li>Rapid Labs provides diagnostic booking and related healthcare services</li>
+      <li>We act as a platform connecting users with certified labs and partners</li>
+    </ul>
+
+    <h3>2. Eligibility</h3>
+    <ul>
+      <li>Users must provide accurate personal and contact information</li>
+    </ul>
+
+    <h3>3. Test Booking</h3>
+    <ul>
+      <li>All test bookings are subject to availability</li>
+      <li>Booking confirmation will be shared via call, SMS, or email</li>
+    </ul>
+
+    <h3>4. Home Sample Collection</h3>
+    <ul>
+      <li>Available based on location and service area</li>
+      <li>Users must be present at the scheduled time</li>
+      <li>Delays may occur due to traffic or unforeseen conditions</li>
+    </ul>
+
+    <h3>5. Pricing & Charges</h3>
+    <ul>
+      <li>Prices are subject to change without prior notice</li>
+      <li>Additional charges may apply for home collection services</li>
+    </ul>
+
+    <h3>6. Payment Terms</h3>
+    <ul>
+      <li>Payments can be made online or at the time of service (if available)</li>
+      <li>All payments must be completed before report delivery</li>
+    </ul>
+
+    <h3>7. Refund & Cancellation</h3>
+    <ul>
+      <li>Cancellations must be made before sample collection</li>
+      <li>Refunds (if applicable) will be processed within a reasonable time</li>
+    </ul>
+
+    <h3>8. Reports & Results</h3>
+    <ul>
+      <li>Reports are delivered digitally via email or WhatsApp</li>
+      <li>Delivery time depends on the type of test</li>
+      <li>Delays may occur in rare cases</li>
+    </ul>
+
+    <h3>9. Medical Disclaimer</h3>
+    <ul>
+      <li>Reports are for informational purposes only</li>
+      <li>Users should consult a qualified doctor for medical advice</li>
+    </ul>
+
+    <h3>10. User Responsibility</h3>
+    <ul>
+      <li>Users must provide accurate health and personal information</li>
+      <li>Incorrect details may affect test results</li>
+    </ul>
+
+    <h3>11. Partner Labs</h3>
+    <ul>
+      <li>Services are fulfilled by certified third-party diagnostic labs</li>
+      <li>Rapid Labs is not directly responsible for lab procedures</li>
+    </ul>
+
+    <h3>12. Service Availability</h3>
+    <ul>
+      <li>Services may vary by city or location</li>
+    </ul>
+
+    <h3>13. Delays & Interruptions</h3>
+    <ul>
+      <li>We are not liable for delays caused by external factors</li>
+    </ul>
+
+    <h3>14. Data Usage</h3>
+    <ul>
+      <li>User data is handled as per our Privacy Policy</li>
+    </ul>
+
+    <h3>15. Prohibited Use</h3>
+    <ul>
+      <li>Users must not misuse the platform or provide false information</li>
+    </ul>
+
+    <h3>16. Limitation of Liability</h3>
+    <ul>
+      <li>Rapid Labs is not liable for indirect or incidental damages</li>
+    </ul>
+
+    <h3>17. Modifications</h3>
+    <ul>
+      <li>We reserve the right to update terms at any time</li>
+    </ul>
+
+    <h3>18. Termination</h3>
+    <ul>
+      <li>We may suspend services for misuse or violation of terms</li>
+    </ul>
+
+    <h3>19. Governing Law</h3>
+    <ul>
+      <li>These terms are governed by applicable local laws</li>
+    </ul>
+
+    <h3>20. Contact Information</h3>
+    <p>
+      For any queries regarding Terms & Conditions, contact us:
+      <br>
+      📞 Phone: +917892287102<br>
+      📧 Email: Rapidlabs.hr@gmail.com
+    </p>
+
+    <p>
+      Continued use of our services indicates your acceptance of these terms.
+    </p>
+  </div>
+</section>
+
+<!-- ================= SUPPORT ================= -->
+<section id="contact-support" class="footer-section support">
+  <div class="content-box">
+    <h1>Contact Support</h1>
+
+    <p>
+      Our support team is available to assist you with bookings, reports,
+      payments, and technical issues.
+    </p>
+
+    <ul>
+      <li>Email: Rapidlabs.hr@gmail.com</li>
+      <li>Phone: +917892287102</li>
+      <li>Working Hours: 7:00 AM – 9:00 PM</li>
+    </ul>
+
+    <p>
+      We aim to respond to all queries within 24 hours.
+    </p>
+  </div>
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+<section id="about-us" class="footer-section about">
+  <div class="content-box about-container">
+    <!-- Section Header -->
+    <h1>About Us</h1>
+    <p class="section-subtitle">
+      Rapid Labs is revolutionizing healthcare with reliable, technology-driven diagnostic services.
+    </p>
+
+    <!-- About Rapid Labs -->
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          <strong>Rapid Labs</strong> is a leading digital diagnostic platform dedicated to providing accurate, affordable, and timely diagnostic services. Our mission is to make healthcare accessible and seamless for everyone.
+        </p>
+        <p>
+          We simplify testing through online booking, transparent pricing, and fast digital reports. With our innovative technology, patients experience convenience without compromising on quality.
+        </p>
+        <p>
+          At Rapid Labs, we combine expertise with advanced diagnostics to empower individuals to take control of their health.
+        </p>
+      </div>
+
+      <div class="about-image">
+        <img src="https://via.placeholder.com/400x400.png?text=Rapid+Labs+Logo" alt="Rapid Labs" />
+      </div>
+    </div>
+
+    <!-- Founder Section -->
+    <div class="founder-section">
+      <h2>Meet Our Founder</h2>
+      <div class="founder-profile">
+        <img src="https://via.placeholder.com/150.png?text=Founder" alt="Founder of Rapid Labs" />
+        <div class="founder-info">
+          <h3>Dr. Priya Verma</h3>
+          <p>
+            Founder of Rapid Labs. Dedicated to creating an accessible, tech-driven diagnostic platform
+            that empowers individuals to manage their health efficiently.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CEO Section -->
+    <div class="ceo-section">
+      <h2>Meet Our CEO</h2>
+      <div class="ceo-profile">
+        <img src="https://via.placeholder.com/150.png?text=CEO" alt="CEO of Rapid Labs" />
+        <div class="ceo-info">
+          <h3>Dr. Rahul Sharma</h3>
+          <p>
+            CEO of Rapid Labs. With over 15 years of experience in healthcare and technology solutions,
+            he ensures Rapid Labs delivers precise, timely, and innovative diagnostic services.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Highlights / Features -->
+    <div class="about-highlights">
+      <div class="highlight-box">
+        <img src="https://via.placeholder.com/80.png?text=Booking" alt="Online Booking" />
+        <h4>Online Booking</h4>
+        <p>Book your tests anytime with a few clicks and manage appointments online.</p>
+      </div>
+      <div class="highlight-box">
+        <img src="https://via.placeholder.com/80.png?text=Reports" alt="Fast Reports" />
+        <h4>Fast Digital Reports</h4>
+        <p>Receive accurate reports quickly, directly on your mobile or email.</p>
+      </div>
+      <div class="highlight-box">
+        <img src="https://via.placeholder.com/80.png?text=Affordable" alt="Affordable Pricing" />
+        <h4>Affordable Pricing</h4>
+        <p>Transparent, budget-friendly pricing for all health checkups and tests.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= MISSION ================= -->
+<section id="mission-vision" class="footer-section mission">
+  <div class="content-box">
+    <h1>Mission & Vision</h1>
+
+    <p>
+      At Rapid Labs, we are committed to transforming healthcare by making
+      diagnostic services simple, accessible, and trustworthy for everyone.
+    </p>
+
+    <h3>Our Mission</h3>
+    <p>
+      Our mission is to provide accurate, affordable, and timely diagnostic
+      services through advanced technology and trusted healthcare partnerships.
+      We aim to ensure that every individual, regardless of location or
+      background, has access to quality health testing and early disease
+      detection.
+    </p>
+    <ul>
+      <li>Make healthcare accessible in both urban and rural areas</li>
+      <li>Offer affordable diagnostic solutions for all income groups</li>
+      <li>Ensure fast, accurate, and reliable test results</li>
+      <li>Promote preventive healthcare and early diagnosis</li>
+      <li>Leverage technology to simplify the healthcare experience</li>
+    </ul>
+
+    <h3>Our Vision</h3>
+    <p>
+      Our vision is to become a leading and trusted digital diagnostics platform
+      that empowers individuals to take control of their health through
+      preventive care and informed decisions.
+    </p>
+    <ul>
+      <li>Build a nationwide network of trusted diagnostic partners</li>
+      <li>Enhance digital healthcare access across India</li>
+      <li>Encourage regular health checkups and awareness</li>
+      <li>Deliver a seamless and user-friendly healthcare experience</li>
+      <li>Contribute to a healthier and more informed society</li>
+    </ul>
+
+    <h3>Our Commitment</h3>
+    <p>
+      We are dedicated to maintaining the highest standards of quality,
+      transparency, and patient care. Our focus is always on delivering reliable
+      services while building long-term trust with our users.
+    </p>
+  </div>
+</section>
+
+
+<!-- ================= BLOG ================= -->
+<section id="blog-updates" class="footer-section blog">
+  <div class="content-box">
+    <h1>Blog & Updates</h1>
+
+    <p>
+      Stay updated with expert health tips, diagnostic insights, and latest announcements from Rapid Labs.
+    </p>
+
+    <ul>
+      <li>
+        <strong>5 Essential Preventive Health Checkups:</strong> Learn which screenings help detect diseases early and keep you healthy.
+      </li>
+      <li>
+        <strong>Understanding Your Blood Test Results:</strong> A simple guide to interpreting common blood tests and what they mean.
+      </li>
+      <li>
+        <strong>How Home Sample Collection Works:</strong> Tips for preparing for a home health checkup and making the process smooth.
+      </li>
+      <li>
+        <strong>Importance of Regular Heart Health Monitoring:</strong> Learn why regular heart checkups can prevent serious health issues.
+      </li>
+      <li>
+        <strong>Top 10 Tests for Women’s Health:</strong> Key tests every woman should consider to stay proactive about her health.
+      </li>
+      <li>
+        <strong>Digital Diagnostics: The Future of Healthcare:</strong> How technology is making diagnostics faster, reliable, and accessible.
+      </li>
+      <li>
+        <strong>Nutrition and Preventive Care:</strong> Simple diet tips that complement health screenings and overall wellness.
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+
+<!-- ================= COOKIE ================= -->
+<section id="cookie-policy" class="footer-section cookie">
+  <div class="content-box">
+    <h1>Cookie Policy</h1>
+
+    <p>
+      Rapid Labs uses cookies and similar technologies to enhance user experience, improve website performance, and provide personalized services.
+    </p>
+
+    <h3>1. What Are Cookies?</h3>
+    <p>
+      Cookies are small text files stored on your device when you visit a website. They help remember your preferences and enable website functionality.
+    </p>
+
+    <h3>2. Types of Cookies We Use</h3>
+    <ul>
+      <li><strong>Essential Cookies:</strong> Required for the website to function properly (e.g., login sessions, security).</li>
+      <li><strong>Performance Cookies:</strong> Help us understand how visitors use the website to improve content and performance.</li>
+      <li><strong>Functional Cookies:</strong> Remember your preferences (e.g., language, theme, region).</li>
+      <li><strong>Marketing/Analytics Cookies:</strong> Used to deliver personalized ads and track the effectiveness of marketing campaigns.</li>
+    </ul>
+
+    <h3>3. How We Use Cookies</h3>
+    <ul>
+      <li>To improve website navigation and user experience.</li>
+      <li>To analyze traffic and understand user behavior.</li>
+      <li>To personalize content and show relevant health tips or offers.</li>
+      <li>To remember your settings and preferences across visits.</li>
+      <li>To measure the performance of our marketing campaigns.</li>
+    </ul>
+
+    <h3>4. Third-Party Cookies</h3>
+    <p>
+      Some cookies are set by third-party services such as Google Analytics or advertising partners. These cookies help us improve our services and provide relevant content.
+    </p>
+
+    <h3>5. Managing Cookies</h3>
+    <ul>
+      <li>You can control or block cookies using your browser settings.</li>
+      <li>Disabling certain cookies may affect website functionality.</li>
+      <li>Some cookies may remain on your device until they expire or are deleted.</li>
+    </ul>
+
+    <h3>6. Consent</h3>
+    <p>
+      By continuing to use our website, you consent to the use of cookies as described in this policy. You can withdraw consent anytime by changing your browser settings.
+    </p>
+
+    <h3>7. Updates to Cookie Policy</h3>
+    <p>
+      We may update this policy from time to time. Any changes will be posted on this page with the “Last Updated” date.
+    </p>
+
+    <h3>8. Contact Us</h3>
+    <p>
+      For questions regarding our Cookie Policy, please contact us at:</br>
+
+      📧 Email: rapidlabs.hr@gmail.com
+    </p>
+  </div>
+</section>
+
+
+<!-- ================= GET IN TOUCH ================= -->
+<section id="get-in-touch" class="footer-section get-touch">
+  <div class="content-box">
+    <h1>Get in Touch</h1>
+
+    <p>
+      Have questions or suggestions? We’d love to hear from you.
+    </p>
+
+    <p>
+      Contact us anytime and our team will assist you promptly.
+    </p>
+
+    <div class="contact-actions">
+      <!-- Email button -->
+      <a href="mailto:rapidlabs.hr@gmail.com" class="btn-contact btn-email">📧 Email Us</a>
+
+      <!-- WhatsApp button -->
+      <a href="https://wa.me/917892287102" target="_blank" class="btn-contact btn-whatsapp">💬 WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= FAQ ================= -->
+<section id="faqs" class="footer-section faqs">
+  <div class="content-box">
+    <h1>Frequently Asked Questions</h1>
+
+    <h3>How do I book a test?</h3>
+    <p>You can book tests online through the Rapid Labs website.</p>
+
+    <h3>When will I receive my report?</h3>
+    <p>Most reports are available within 24 hours.</p>
+
+    <h3>Are home sample collections available?</h3>
+    <p>Yes, home sample collection is available for selected tests.</p>
+
+    <h3>Have a Question?</h3>
+    <p>
+      If your question is not listed, you can ask us directly and receive a response on WhatsApp.
+    </p>
+
+    <div class="faq-contact">
+      <a href="https://wa.me/917892287102?text=Hello%20Rapid%20Labs,%20I%20have%20a%20question%20regarding%20your%20services." target="_blank" class="btn-whatsapp">💬 Ask on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= SITEMAP ================= -->
+<section id="sitemap" class="footer-section sitemap">
+  <div class="content-box">
+    <h1>Sitemap</h1>
+
+    <ul class="sitemap-list">
+      <li>Home</li>
+      <li>Book a Test</li>
+      <li>Health Packages</li>
+      <li>Lab Locator</li>
+      <li>Refer & Earn</li>
+      <li>Contact</li>
+      <li>Privacy Policy</li>
+      <li>Terms & Conditions</li>
+      <li>FAQs</li>
+      <li>Blog & Updates</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* ================= BOOK TEST SEARCH ================= */
+
+  const searchInput = document.getElementById("test-search");
+  const resultsBox = document.getElementById("search-results");
+
+  if (searchInput && resultsBox) {
+
+    const tests = [
+      "Complete Blood Count (CBC)",
+      "Blood Sugar (Fasting)",
+      "Blood Sugar (PP)",
+      "Lipid Profile",
+      "Thyroid Profile (TSH, T3, T4)",
+      "Liver Function Test (LFT)",
+      "Kidney Function Test (KFT)",
+      "Vitamin D Test",
+      "Vitamin B12 Test",
+      "HbA1c",
+      "Urine Routine",
+      "Dengue Test",
+      "Malaria Test",
+      "COVID-19 Test"
+    ];
+
+    searchInput.addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      resultsBox.innerHTML = "";
+
+      if (!query) {
+        resultsBox.style.display = "none";
+        return;
+      }
+
+      const filtered = tests.filter(test =>
+        test.toLowerCase().includes(query)
+      );
+
+      if (filtered.length === 0) {
+        resultsBox.style.display = "none";
+        return;
+      }
+
+      filtered.forEach(test => {
+        const div = document.createElement("div");
+        div.textContent = test;
+
+        div.addEventListener("click", function () {
+          searchInput.value = test;
+          resultsBox.style.display = "none";
+        });
+
+        resultsBox.appendChild(div);
+      });
+
+      resultsBox.style.display = "block";
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".rl-search-box")) {
+        resultsBox.style.display = "none";
+      }
+    });
+  }
+
+  /* ================= FOOTER SECTION SWITCH ================= */
+
+  const sections = document.querySelectorAll(".footer-section");
+  const hash = window.location.hash;
+
+  if (sections.length > 0) {
+    sections.forEach(sec => sec.style.display = "none");
+
+    if (hash && document.querySelector(hash)) {
+      document.querySelector(hash).style.display = "block";
+    } else {
+      sections[0].style.display = "block";
+    }
+  }
+
+  /* ================= JOIN NETWORK FORM ================= */
+
+  const mobileInput = document.getElementById("partner-mobile");
+  const btn = document.getElementById("network-btn");
+  const message = document.getElementById("network-confirmation");
+
+  if (mobileInput && btn && message) {
+
+    mobileInput.addEventListener("input", function () {
+      this.value = this.value.replace(/\D/g, '');
+    });
+
+    btn.addEventListener("click", function () {
+
+      const labName = document.getElementById("lab-name").value.trim();
+      const owner = document.getElementById("owner-name").value.trim();
+      const mobile = mobileInput.value.trim();
+      const city = document.getElementById("lab-city").value.trim();
+
+      if (!labName || !owner || mobile.length !== 10 || !city) {
+        message.style.display = "block";
+        message.style.color = "red";
+        message.textContent = "Please fill all details correctly.";
+        return;
+      }
+
+      message.style.display = "block";
+      message.style.color = "green";
+      message.textContent =
+        "✅ Thank you! Our partnership team will contact you shortly.";
+
+    });
+  }
+
+});
+
+
+const fileInput = document.getElementById("prescription-file");
+const fileLabel = document.getElementById("file-label");
+
+if (fileInput) {
+  fileInput.addEventListener("change", function () {
+
+    if (this.files.length > 0) {
+      const fileName = this.files[0].name;
+
+      fileLabel.textContent = "✅ File added: " + fileName;
+      fileLabel.style.color = "green";
+
+    } else {
+      fileLabel.textContent = "📄 Choose Prescription File";
+      fileLabel.style.color = "black";
+    }
+
+  });
+}
+
+function bookWhatsApp(testName, price){
+
+  const phone = "917892287102"; // your number
+
+  const message = 
+`Hi Rapid Labs,
+I want to book a test.
+
+Test: ${testName}
+Price: ₹${price}
+
+Please assist me.`;
+
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, "_blank");
+}
+
+
+
+document.getElementById("network-btn").addEventListener("click", function () {
+
+  const labName = document.getElementById("lab-name").value.trim();
+  const owner = document.getElementById("owner-name").value.trim();
+  const mobile = document.getElementById("partner-mobile").value.trim();
+  const city = document.getElementById("lab-city").value.trim();
+  const messageBox = document.getElementById("network-confirmation");
+
+  // ✅ VALIDATION
+  if (!labName || !owner || mobile.length !== 10 || !city) {
+    messageBox.style.display = "block";
+    messageBox.style.color = "red";
+    messageBox.textContent = "Please fill all details correctly.";
+    return;
+  }
+
+  // ✅ WHATSAPP NUMBER (CHANGE THIS)
+  const phone = "917892287102";
+
+  // ✅ MESSAGE FORMAT
+  const message =Refer & Earn
+`Hello Rapid Labs,
+
+I want to join your lab network.
+
+Lab Name: ${labName}
+Owner Name: ${owner}
+Mobile: ${mobile}
+City: ${city}
+
+Please contact me for partnership.`;
+
+  // ✅ ENCODE + OPEN WHATSAPP
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, "_blank");
+
+  // ✅ SUCCESS UI
+  messageBox.style.display = "block";
+  messageBox.style.color = "green";
+  messageBox.textContent = "Redirecting to WhatsApp...";
+
+});
+
+
+
+// copy ref and earn 
+/* ================= REFER & EARN ================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const refCodeEl = document.getElementById("ref-code");
+  const copyBtn = document.querySelector(".copy-btn");
+  const whatsappBtn = document.querySelector(".share-btn.whatsapp");
+  const linkBtn = document.querySelector(".share-btn.link");
+
+  // ✅ STEP 1: GET / GENERATE USER MOBILE (SIMULATION)
+  let mobile = localStorage.getItem("user_mobile");
+
+  if (!mobile) {
+    // generate fake mobile for now (first time user)
+    mobile = "9" + Math.floor(100000000 + Math.random() * 900000000);
+    localStorage.setItem("user_mobile", mobile);
+  }
+
+  // ✅ STEP 2: GENERATE REFERRAL CODE
+  const referralCode = "RL" + mobile.slice(-4);
+
+  refCodeEl.textContent = referralCode;
+
+  // ✅ STEP 3: COPY CODE
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+
+      navigator.clipboard.writeText(referralCode);
+
+      copyBtn.textContent = "Copied!";
+      setTimeout(() => {
+        copyBtn.textContent = "Copy Code";
+      }, 2000);
+
+    });
+  }
+
+  // ✅ STEP 4: SHARE ON WHATSAPP
+  if (whatsappBtn) {
+    whatsappBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const message =
+`Hey! 👋
+
+Book your lab tests with Rapid Labs 🧪
+
+Use my referral code: ${referralCode}
+Get exciting discounts 🎉
+
+Book here:
+https://yourwebsite.com/?ref=${referralCode}`;
+
+      const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+
+      window.open(url, "_blank");
+    });
+  }
+
+  // ✅ STEP 5: COPY REFERRAL LINK
+  if (linkBtn) {
+    linkBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const link = `https://rapidlabs.in/?ref=${referralCode}`;
+
+      navigator.clipboard.writeText(link);
+
+      linkBtn.textContent = "Link Copied!";
+      setTimeout(() => {
+        linkBtn.textContent = "Copy Referral Link";
+      }, 2000);
+    });
+  }
+
+});
+
+
+
+</script>
+<script src="../script/bookingcontrol.js"></script>
+</body>
+</html>

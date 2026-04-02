@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Member | Rapid Labs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/cart.css">
+</head>
+
+<body>
+
+<section class="cart-container">
+
+<div class="cart-steps">
+<div class="step completed">1<br><span>Add to Cart</span></div>
+<div class="step active">2<br><span>Select Member</span></div>
+<div class="step">3<br><span>Date & Time</span></div>
+<div class="step">4<br><span>Payment</span></div>
+</div>
+
+<div class="member-container">
+
+<h2>Select Member</h2>
+
+<div id="memberList" class="member-list"></div>
+
+<button class="add-member-btn" id="addMemberBtn">
++ Add New Member
+</button>
+
+<div class="cart-actions">
+<button class="next-btn" id="memberNextBtn" disabled>
+Next →
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MEMBER MODAL -->
+
+<div class="member-modal" id="memberModal">
+
+<div class="member-modal-box">
+
+<h3 id="modalTitle">Enter Details</h3>
+
+<input type="text" id="memberName" placeholder="Full Name">
+
+<input type="tel" id="memberMobile" placeholder="Mobile Number">
+
+<input type="number" id="memberAge" placeholder="Age">
+
+<select id="memberGender">
+<option value="">Select Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+<option value="Other">Other</option>
+</select>
+
+<input type="text" id="memberLocation" placeholder="Location">
+
+<button type="button" id="detectLocation">
+📍 Detect Location
+</button>
+
+<div class="modal-actions">
+<button class="cancel-btn" id="cancelMember">Cancel</button>
+<button class="save-btn" id="saveMember">Save</button>
+</div>
+
+</div>
+
+</div>
+
+<script src="../script/member.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | Rapid Labs</title>
+
+  <link rel="stylesheet" href="../css/service.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cart.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<!-- TOP INFO (NOT STICKY) -->
+<div class="top-info">
+  <div class="container top-info-inner">
+
+    <h1 class="logo">Rapid<span>Labs</span></h1>
+
+    <button class="location-btn" id="openLocationModal">
+      📍 Home Collection
+    </button>
+
+    <a href="#" class="appointment-btn">Patient Login</a>
+
+  </div>
+</div>
+
+<!-- LOCATION MODAL -->
+<div class="location-modal" id="locationModal">
+  <div class="location-content">
+    <span class="close-btn" id="closeLocationModal">&times;</span>
+
+    <h3>Check Home Collection Availability at Your Location</h3>
+
+    <input type="text" id="pincode" placeholder="Enter your PIN code" />
+
+    <button class="check-btn" id="checkAvailabilityBtn">
+      Check Availability
+    </button>
+
+    <p id="resultBox"></p>
+  </div>
+</div>
+
+
+
+<!-- STICKY MENU BAR -->
+<header class="menu-header">
+  <nav class="menu-nav">
+
+<div class="nav-search">
+  
+  <!-- Search Icon -->
+  <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" 
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+
+  <!-- Input -->
+ <input id="searchInput" type="text" placeholder="Search Blood Tests..." />
+
+  <!-- Mic Icon -->
+  <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+    <line x1="12" y1="19" x2="12" y2="23"/>
+    <line x1="8" y1="23" x2="16" y2="23"/>
+  </svg>
+
+</div>
+
+<div id="searchResults"></div>
+</div>
+
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+
+<ul id="mobileMenu">
+  <li>
+    <a class="active" href="index.html">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="about.html">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+  </li>
+  <li>
+    <a href="services.html">
+      <i class="fa-solid fa-stethoscope"></i>
+      <span>Services</span>
+    </a>
+  </li>
+  <li>
+    <a href="cart.html" class="cart-link">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      <span id="cartCount" class="cart-count">0</span>
+    </a>
+  </li>
+  <li>
+    <a href="contact.html">
+      <i class="fa-solid fa-phone"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+
+  <!-- 🔹 Add this for mobile Patient Login -->
+  <li class="mobile-only">
+    <a href="#" class="appointment-btn">
+      <i class="fa-solid fa-user"></i>
+      <span>Patient Login</span>
+    </a>
+  </li>
+</ul>
+
+  </nav>
+</header>
+
+
+
+<!-- ================= SERVICES SECTION ================= -->
+<section class="services-section">
+  <div class="services-container">
+
+    <div class="services-header">
+      <h1>Our Diagnostic Services</h1>
+      <p>
+        Choose from a wide range of diagnostic services including blood tests,
+        health checkup packages, and advanced imaging — all under one trusted
+        healthcare network.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Blood Tests -->
+      <a href="viewallbloodtest.html" class="service-card">
+        <h3>Blood Tests</h3>
+        <p>
+          Routine and specialized blood tests with accurate reporting and quick
+          turnaround time.
+        </p>
+        <span>Explore Blood Tests →</span>
+      </a>
+
+      <!-- Health Packages -->
+      <a href="viewallpackages.html" class="service-card">
+        <h3>Health Checkup Packages</h3>
+        <p>
+          Preventive health packages designed for all age groups and lifestyles.
+        </p>
+        <span>View Packages →</span>
+      </a>
+
+      <!-- Scans -->
+      <a href="viewallscan.html" class="service-card">
+        <h3>Scans & Imaging</h3>
+        <p>
+          Advanced imaging services including X-Ray, Ultrasound, ECG, and more.
+        </p>
+        <span>View Scans →</span>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="cert-section">
+  <div class="cert-container">
+
+    <div class="cert-item">
+      <img src="../images/icons/nabh.webp" alt="NABH">
+      <p>NABH Accredited<br>Laboratory</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/home.webp" alt="Home Sample Collection">
+      <p>Certified Technicians for Home Sample Collection</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/cmc.webp" alt="CMC Vellore">
+      <p>CMC Vellore<br>Approved</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/hospital.webp" alt="Own Hospital">
+      <p>Own Hospital &<br>Diagnostics</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/hospital.webp" alt="Doctors">
+      <p>Reports Reviewed by<br>Qualified Doctors</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/quality.webp" alt="Quality">
+      <p>Strict Quality &<br>Hygiene Standards</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="lab-display-section">
+  <div class="lab-display-wrapper">
+
+    <!-- LEFT BIG BANNER -->
+    <a href="viewallbloodtest.html" class="lab-banner banner-large">
+      <img src="../images/bloodslide1.webp" alt="Blood Tests">
+      <div class="banner-content dark">
+        <h3>Explore Blood Tests</h3>
+        <p>CBC, Lipid Profile, Thyroid & More</p>
+        <span>View Blood Tests →</span>
+      </div>
+    </a>
+
+    <!-- RIGHT STACK -->
+    <div class="banner-stack">
+
+      <a href="viewallpackages.html" class="lab-banner banner-small">
+        <img src="../images/healthslide2.webp" alt="Health Packages">
+        <div class="banner-content light">
+          <h3>Health Checkup Packages</h3>
+          <p>Master, Executive, Heart & Diabetic Profiles</p>
+          <span>Explore Packages →</span>
+        </div>
+      </a>
+
+      <a href="viewallscan.html" class="lab-banner banner-small">
+        <img src="../images/sanningslide3.webp" alt="Scanning Services">
+        <div class="banner-content light">
+          <h3>Advanced Scanning</h3>
+          <p>X-ray, Ultrasound, MRI & CT Scan</p>
+          <span>View Scanning Services →</span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="why-rapidlabs-section">
+  <div class="why-wrapper">
+
+    <h2 class="why-title">Why Rapid Labs</h2>
+
+    <div class="why-grid">
+
+      <div class="why-card">
+        <img src="../images/icons/nabh.webp" alt="">
+        <h4>NABH Accredited Diagnostics</h4>
+        <p>
+            Our labs and facilities follow stringent quality protocols aligned with NABH
+            and national healthcare standards to ensure patient safety and accurate results.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/25.webp" alt="">
+        <h4>25+ Years of Medical Excellence</h4>
+        <p>
+          Backed by over two decades of experience in hospitals and
+          diagnostic services.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/fast.webp" alt="">
+        <h4>Fast & Reliable Reporting</h4>
+        <p>
+          Optimized processes ensure timely and accurate test reports
+          without compromise.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/result.webp" alt="">
+        <h4>High Accuracy Results</h4>
+        <p>
+          Multi-level quality checks ensure dependable and clinically
+          precise results.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/hospital.webp" alt="">
+        <h4>Own Hospital & Diagnostic Setup</h4>
+        <p>
+          Integrated hospital and lab infrastructure for seamless
+          testing and expert consultation.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/trust.webp" alt="">
+        <h4>Growing Network & Reach</h4>
+        <p>
+          Expanding diagnostic services with patient-focused care
+          across regions.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/patient.webp" alt="">
+        <h4>Trusted by Thousands of Patients</h4>
+        <p>
+          Years of consistent quality and ethical practices have earned
+          patient trust.
+        </p>
+      </div>
+
+      <div class="why-card">
+        <img src="../images/icons/modren.webp" alt="">
+        <h4>Modern Diagnostic Technology</h4>
+        <p>
+          Advanced analyzers and equipment for reliable, standardized
+          testing outcomes.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="testimonials-modern">
+  <div class="testimonials-container">
+
+    <h2 class="testimonials-title">What Our Patients Say</h2>
+    <p class="testimonials-subtitle">
+      Trusted by thousands of patients for accurate diagnostics and timely reports.
+    </p>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Simran Kaur</h4>
+            <span>2 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          The ultrasound experience was very smooth. The doctor and staff were
+          polite and professional. The lab was clean and well maintained.
+          Highly recommended.
+        </p>
+      </div>
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Aman Kumar</h4>
+            <span>2 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Booking was easy and reports were delivered on time. Staff guided me
+          properly throughout the testing process. Very reliable diagnostic service.
+        </p>
+      </div>
+
+      <div class="testimonial-box">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Mayur Gupta</h4>
+            <span>3 weeks ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Well-organized lab with timely service. I recommend reaching early for
+          full body checkups to avoid waiting time. Overall a good experience.
+        </p>
+      </div>
+
+      <div class="testimonial-box featured">
+        <div class="testimonial-top">
+          <img src="../images/icons/user.webp" alt="Patient">
+          <div>
+            <h4>Parveen Satija</h4>
+            <span>1 month ago</span>
+          </div>
+        </div>
+
+        <div class="testimonial-stars">★★★★★</div>
+
+        <p class="testimonial-text">
+          Excellent service and professional staff. Tests were conducted exactly
+          as scheduled and reports were provided quickly with images. One of the
+          smoothest diagnostic experiences I’ve had.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h4>Patients</h4>
+      <ul>
+        <li><a href="footer-details.html#book-test-popup">Book a Test</a></li>
+        <li><a href="footer-details.html#upload-prescription">Upload Prescription</a></li>
+        <li><a href="footer-details.html#download-report">Download Report</a></li>
+        <li><a href="footer-details.html#health-packages">Health Packages</a></li>
+        <li><a href="footer-details.html#lab-locator">Lab Locator</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Partner With Us</h4>
+      <ul>
+        <li><a href="footer-details.html#join-network">Join Our Lab Network</a></li>
+        <li><a href="footer-details.html#refer-earn">Refer & Earn</a></li>
+        <li><a href="footer-details.html#community-programs">Community Health Programs</a></li>
+
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal & Support</h4>
+      <ul>
+        <li><a href="footer-details.html#privacy-policy">Privacy Policy</a></li>
+        <li><a href="footer-details.html#terms-conditions">Terms & Conditions</a></li>
+        <li><a href="footer-details.html#contact-support">Contact Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="footer-details.html#about-us">About Us</a></li>
+        <li><a href="footer-details.html#mission-vision">Mission & Vision</a></li>
+        <li><a href="footer-details.html#blog-updates">Blog / Updates</a></li>
+        <li><a href="footer-details.html#contact">Contact</a></li>
+        <li><a href="footer-details.html#cookie-policy">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="footer-details.html#get-in-touch">Get in Touch</a></li>
+        <li><a href="footer-details.html#faqs">FAQs</a></li>
+        <li><a href="footer-details.html#sitemap">Sitemap</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+<section class="seo-footer">
+  <div class="seo-container">
+
+    <div class="seo-col">
+      <strong>Rapid Labs Bangalore</strong><br>
+      Leading Diagnostic Centre in Bangalore<br>
+      Blood Test Lab Near Me<br>
+      Pathology Laboratory Services<br>
+      Home Sample Collection Across Bangalore<br>
+      Online Blood Test Booking<br>
+      Same-Day & Next-Day Reports<br>
+      Affordable Lab Test Prices
+    </div>
+
+    <div class="seo-col">
+      <strong>Comprehensive Blood Tests</strong><br>
+      CBC Blood Test<br>
+      Thyroid Profile (TSH, T3, T4)<br>
+      Diabetes Tests (HbA1c, Fasting & PP Sugar)<br>
+      Lipid Profile & Cholesterol Test<br>
+      Liver Function Test (LFT)<br>
+      Kidney Function Test (KFT)<br>
+      Vitamin D & Vitamin B12 Test<br>
+      Dengue, Malaria & Typhoid Tests<br>
+      Hormone & Infection Screening
+    </div>
+
+    <div class="seo-col">
+      <strong>Scanning & Diagnostic Services</strong><br>
+      Ultrasound Scan<br>
+      ECG Test<br>
+      2D Echo<br>
+      X-Ray Services<br>
+      Preventive Cardiac Screening<br>
+      Women’s Health Diagnostics<br>
+      Men’s Health Screening<br>
+      Senior Citizen Health Tests
+    </div>
+
+    <div class="seo-col">
+      <strong>Health Checkup Packages</strong><br>
+      Full Body Health Checkup<br>
+      Master Health Checkup<br>
+      Preventive Health Packages<br>
+      Corporate Health Checkups<br>
+      Annual Health Screening<br>
+      Women’s Wellness Package<br>
+      Diabetes Care Package<br>
+      Heart Health Package
+    </div>
+
+  </div>
+
+  <div class="seo-bottom">
+    Rapid Labs & Diagnostics is a trusted blood test laboratory and diagnostic centre in Bangalore providing accurate pathology services, full body health checkups, preventive screening packages, scanning services, and convenient home sample collection. We serve patients across Whitefield, Indiranagar, HSR Layout, Electronic City, Koramangala, Jayanagar, Marathahalli, and surrounding areas. Book blood tests online, schedule doorstep sample collection, and receive fast, reliable digital reports from one of Bangalore’s preferred diagnostic labs.
+  </div>
+</section>
+
+<a
+  href="https://wa.me/919999999999?text=Hello%20Rapid%20Labs,%20I%20want%20to%20book%20a%20test"
+  class="whatsapp-float"
+  target="_blank"
+  aria-label="Chat on WhatsApp"
+>
+  <span class="wa-pulse"></span>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+<script src="../script/script.js"></script>
+<script src="../script/location.js"></script>
+<script src="../script/product.js"></script>
+<script src="../script/search.js"></script>
+<script src="../script/cart.js"></script>
+</body>
+</html>
+</body>
+</html>

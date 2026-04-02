@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Rapid Labs | Trusted Medical & Diagnostic Services</title>
+    <meta name="description" content="Rapid Labs - NABH approved hospital & diagnostic center with 25+ years of experience. Offering advanced laboratory and medical services.">
+    <meta name="keywords" content="Rapid Labs, NABH approved, Diagnostic center, Medical services, Laboratory, Healthcare, Blood tests, Health checkups">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/about.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<!-- TOP INFO (NOT STICKY) -->
+<div class="top-info">
+  <div class="container top-info-inner">
+
+    <h1 class="logo">Rapid<span>Labs</span></h1>
+
+    <button class="location-btn" id="openLocationModal">
+      📍 Home Collection
+    </button>
+
+    <a href="#" class="appointment-btn">Patient Login</a>
+
+  </div>
+</div>
+
+<!-- LOCATION MODAL -->
+<div class="location-modal" id="locationModal">
+  <div class="location-content">
+    <span class="close-btn" id="closeLocationModal">&times;</span>
+
+    <h3>Check Home Collection Availability at Your Location</h3>
+
+    <input type="text" id="pincode" placeholder="Enter your PIN code" />
+
+    <button class="check-btn" id="checkAvailabilityBtn">
+      Check Availability
+    </button>
+
+    <p id="resultBox"></p>
+  </div>
+</div>
+
+
+
+<!-- STICKY MENU BAR -->
+<header class="menu-header">
+  <nav class="menu-nav">
+
+<div class="nav-search">
+  
+  <!-- Search Icon -->
+  <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" 
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+
+  <!-- Input -->
+ <input id="searchInput" type="text" placeholder="Search Blood Tests..." />
+
+  <!-- Mic Icon -->
+  <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+    <line x1="12" y1="19" x2="12" y2="23"/>
+    <line x1="8" y1="23" x2="16" y2="23"/>
+  </svg>
+
+</div>
+
+<div id="searchResults"></div>
+</div>
+
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+
+<ul id="mobileMenu">
+  <li>
+    <a class="active" href="index.html">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="about.html">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+  </li>
+  <li>
+    <a href="services.html">
+      <i class="fa-solid fa-stethoscope"></i>
+      <span>Services</span>
+    </a>
+  </li>
+  <li>
+    <a href="cart.html" class="cart-link">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      <span id="cartCount" class="cart-count">0</span>
+    </a>
+  </li>
+  <li>
+    <a href="contact.html">
+      <i class="fa-solid fa-phone"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+
+  <!-- 🔹 Add this for mobile Patient Login -->
+  <li class="mobile-only">
+    <a href="#" class="appointment-btn">
+      <i class="fa-solid fa-user"></i>
+      <span>Patient Login</span>
+    </a>
+  </li>
+</ul>
+
+  </nav>
+</header>
+
+
+<!-- Modern About Hero Section -->
+<section class="about-hero">
+    <div class="about-overlay"></div>
+
+    <div class="container about-content">
+        <h1>About Rapid Labs</h1>
+        <p class="subheadline">
+            Excellence in Medical & Diagnostic Services — Accurate, Reliable, and Compassionate Care
+        </p>
+
+        <div class="hero-highlights">
+            <span>Advanced Diagnostics</span>
+            <span>Expert Professionals</span>
+            <span>Trusted Care</span>
+        </div>
+
+        <p class="hero-tagline">Where precision meets compassion.</p>
+    </div>
+</section>
+
+
+<!-- Our Story - Modern Section -->
+<section class="about-story">
+    <div class="container story-wrapper">
+
+        <!-- Image Side -->
+        <div class="story-image">
+            <img src="../images/rapidlab_booking.webp" alt="Rapid Labs Team">
+        </div>
+
+        <!-- Content Side -->
+        <div class="story-content">
+            <h2>Our Journey</h2>
+            <p>
+                At Rapid Labs, we deliver precise and dependable diagnostic services that put patient care first. Accredited and trusted by healthcare professionals, we combine advanced technology with a highly skilled team to ensure every result is accurate and meaningful.
+            </p>
+            <p>
+                From routine tests to specialized medical diagnostics, our approach focuses on reliability, efficiency, and compassionate service for every patient.
+            </p>
+
+            <div class="story-highlights">
+                <div>
+                    <h3>25+ Years</h3>
+                    <span>Industry Experience</span>
+                </div>
+                <div>
+                    <h3>500K+</h3>
+                    <span>Tests Conducted</span>
+                </div>
+                <div>
+                    <h3>100%</h3>
+                    <span>Accuracy Rate</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- Modern Vision & Mission -->
+<section class="vision-mission">
+    <div class="vm-container">
+
+        <div class="vm-block vision">
+            <span class="vm-label">Our Vision</span>
+            <h2>Shaping the Future of Diagnostics</h2>
+            <p>
+                To redefine healthcare diagnostics with precision, innovation, and compassionate care,
+                empowering healthier lives through trust and advanced medical excellence.
+            </p>
+        </div>
+
+        <div class="vm-divider"></div>
+
+        <div class="vm-block mission">
+            <span class="vm-label">Our Mission</span>
+            <h2>Committed to Clinical Excellence</h2>
+            <ul>
+                <li>Deliver accurate and reliable medical diagnostics</li>
+                <li>Continuously adopt advanced healthcare technology</li>
+                <li>Prioritize patient-centric care and safety</li>
+                <li>Maintain transparency, excellence, and trust</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- Our Services -->
+<section class="services container">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+        <div class="service-item">
+            <i class="fa-solid fa-stethoscope"></i>
+            <h4>General Diagnostics</h4>
+            <p>Comprehensive blood tests, urine tests, and pathology services with accurate results.</p>
+        </div>
+        <div class="service-item">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <h4>Heart Health Checkups</h4>
+            <p>Advanced cardiac assessments including ECG, echocardiography, and preventive screenings.</p>
+        </div>
+        <div class="service-item">
+            <i class="fa-solid fa-dna"></i>
+            <h4>Specialized Lab Tests</h4>
+            <p>Molecular diagnostics, hormonal assays, and advanced biochemical tests.</p>
+        </div>
+        <div class="service-item">
+            <i class="fa-solid fa-hospital"></i>
+            <h4>Hospital Services</h4>
+            <p>NABH-accredited hospital services with experienced doctors and supportive staff.</p>
+        </div>
+        <div class="service-item">
+            <i class="fa-solid fa-flask"></i>
+            <h4>Home Collection</h4>
+            <p>Convenient home sample collection available in your area for hassle-free diagnostics.</p>
+        </div>
+        <div class="service-item">
+            <i class="fa-solid fa-user-doctor"></i>
+            <h4>Consultation & Follow-up</h4>
+            <p>Expert doctor consultations with timely follow-ups for complete patient care.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta container">
+    <h2>Experience the Rapid Labs Difference</h2>
+    <p>Trusted by healthcare professionals, NABH-accredited, and equipped with advanced diagnostics — your health is in safe hands.</p>
+    <a href="tel:+1234567890" class="call-btn">Call Now</a>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h4>Patients</h4>
+      <ul>
+        <li><a href="footer-details.html#book-test-popup">Book a Test</a></li>
+        <li><a href="footer-details.html#upload-prescription">Upload Prescription</a></li>
+        <li><a href="footer-details.html#download-report">Download Report</a></li>
+        <li><a href="footer-details.html#health-packages">Health Packages</a></li>
+        <li><a href="footer-details.html#lab-locator">Lab Locator</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Partner With Us</h4>
+      <ul>
+        <li><a href="footer-details.html#join-network">Join Our Lab Network</a></li>
+        <li><a href="footer-details.html#refer-earn">Refer & Earn</a></li>
+        <li><a href="footer-details.html#community-programs">Community Health Programs</a></li>
+
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal & Support</h4>
+      <ul>
+        <li><a href="footer-details.html#privacy-policy">Privacy Policy</a></li>
+        <li><a href="footer-details.html#terms-conditions">Terms & Conditions</a></li>
+        <li><a href="footer-details.html#contact-support">Contact Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="footer-details.html#about-us">About Us</a></li>
+        <li><a href="footer-details.html#mission-vision">Mission & Vision</a></li>
+        <li><a href="footer-details.html#blog-updates">Blog / Updates</a></li>
+        <li><a href="footer-details.html#contact">Contact</a></li>
+        <li><a href="footer-details.html#cookie-policy">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="footer-details.html#get-in-touch">Get in Touch</a></li>
+        <li><a href="footer-details.html#faqs">FAQs</a></li>
+        <li><a href="footer-details.html#sitemap">Sitemap</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<section class="seo-footer">
+  <div class="seo-container">
+
+    <div class="seo-col">
+      <strong>Rapid Labs Bangalore</strong><br>
+      Leading Diagnostic Centre in Bangalore<br>
+      Blood Test Lab Near Me<br>
+      Home Sample Collection in Bangalore<br>
+      NABL Standards & Quality Testing<br>
+      Online Lab Test Booking<br>
+      Same-Day Blood Test Reports
+    </div>
+
+    <div class="seo-col">
+      <strong>Popular Blood Tests in Bangalore</strong><br>
+      CBC Blood Test<br>
+      Thyroid Test (TSH, T3, T4)<br>
+      Diabetes Test (HbA1c, Fasting & PP Sugar)<br>
+      Lipid Profile & Cholesterol Test<br>
+      Liver Function Test (LFT)<br>
+      Kidney Function Test (KFT)<br>
+      Vitamin D & Vitamin B12 Test<br>
+      Dengue, Malaria & Typhoid Tests
+    </div>
+
+    <div class="seo-col">
+      <strong>Health Checkup Packages</strong><br>
+      Full Body Health Checkup<br>
+      Preventive Health Packages<br>
+      Senior Citizen Health Checkup<br>
+      Women’s Health Checkup Package<br>
+      Men’s Wellness Checkup<br>
+      Corporate Health Checkups<br>
+      Annual Master Health Check
+    </div>
+
+    <div class="seo-col">
+      <strong>Why Choose Rapid Labs</strong><br>
+      Accurate & Reliable Test Results<br>
+      Affordable Blood Test Prices in Bangalore<br>
+      Experienced Pathologists & Lab Technicians<br>
+      Advanced Diagnostic Technology<br>
+      Hygienic & Safe Sample Collection<br>
+      Digital Reports via Email & WhatsApp<br>
+      Convenient Doorstep Sample Collection
+    </div>
+
+  </div>
+
+  <div class="seo-bottom">
+    Rapid Labs & Diagnostics is a trusted blood test laboratory and diagnostic centre in Bangalore providing accurate pathology services, preventive health checkups, and home sample collection across all major areas of the city including Whitefield, Indiranagar, HSR Layout, Electronic City, Jayanagar, Marathahalli, and Koramangala. Book blood tests online and get fast, reliable reports from one of Bangalore’s preferred diagnostic labs.
+  </div>
+</section>
+
+<script src="../script/script.js"></script>
+<script src="../script/location.js"></script>
+<script src="../script/product.js"></script>
+<script src="../script/search.js"></script>
+<script src="../script/cart.js"></script>
+</body>
+</html>

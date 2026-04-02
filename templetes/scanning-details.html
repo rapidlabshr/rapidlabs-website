@@ -1,0 +1,1103 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scan Details | Rapid Labs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/bloodtest.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+
+  <!-- ================= HEADER ================= -->
+
+  <!-- TOP INFO (NOT STICKY) -->
+  <div class="top-info">
+    <div class="container top-info-inner">
+
+      <h1 class="logo">Rapid<span>Labs</span></h1>
+
+      <button class="location-btn" id="openLocationModal">
+        📍 Home Collection
+      </button>
+
+      <a href="#" class="appointment-btn">Patient Login</a>
+
+    </div>
+  </div>
+
+  <!-- LOCATION MODAL -->
+  <div class="location-modal" id="locationModal">
+    <div class="location-content">
+      <span class="close-btn" id="closeLocationModal">&times;</span>
+
+      <h3>Check Home Collection Availability at Your Location</h3>
+
+      <input type="text" id="pincode" placeholder="Enter your PIN code" />
+
+      <button class="check-btn" id="checkAvailabilityBtn">
+        Check Availability
+      </button>
+
+      <p id="resultBox"></p>
+    </div>
+  </div>
+
+
+
+  <!-- STICKY MENU BAR -->
+  <header class="menu-header">
+    <nav class="menu-nav">
+
+  <div class="nav-search">
+    
+    <!-- Search Icon -->
+    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+
+    <!-- Input -->
+  <input id="searchInput" type="text" placeholder="Search Blood Tests..." />
+
+    <!-- Mic Icon -->
+    <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+      <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+      <line x1="12" y1="19" x2="12" y2="23"/>
+      <line x1="8" y1="23" x2="16" y2="23"/>
+    </svg>
+
+  </div>
+
+  <div id="searchResults"></div>
+  </div>
+
+      <div class="hamburger" id="hamburger">
+        ☰
+      </div>
+
+  <ul id="mobileMenu">
+    <li>
+      <a class="active" href="index.html">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+    </li>
+    <li>
+      <a href="about.html">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>About</span>
+      </a>
+    </li>
+    <li>
+      <a href="services.html">
+        <i class="fa-solid fa-stethoscope"></i>
+        <span>Services</span>
+      </a>
+    </li>
+    <li>
+      <a href="cart.html" class="cart-link">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>Cart</span>
+        <span id="cartCount" class="cart-count">0</span>
+      </a>
+    </li>
+    <li>
+      <a href="contact.html">
+        <i class="fa-solid fa-phone"></i>
+        <span>Contact</span>
+      </a>
+    </li>
+
+    <!-- 🔹 Add this for mobile Patient Login -->
+    <li class="mobile-only">
+      <a href="#" class="appointment-btn">
+        <i class="fa-solid fa-user"></i>
+        <span>Patient Login</span>
+      </a>
+    </li>
+  </ul>
+
+    </nav>
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+  <section class="cbc-hero">
+    <div class="hero-wrapper">
+
+      <div class="hero-left">
+        <img id="scanImage" src="../images/scanningslide2.webp" alt="Scan">
+      </div>
+
+      <div class="hero-right">
+        <div class="price-card">
+
+          <div class="card-header">
+            <h3 class="test-name" id="scanName">Loading...</h3>
+          </div>
+
+          <p class="offer-label">Diagnostic Scan</p>
+
+          <p class="price">
+            ₹ <span id="scanPrice">0</span>
+            <span class="old-price" id="scanOldPrice"></span>
+          </p>
+
+          <div class="action-buttons">
+
+            <a href="tel:+917892287102" class="call-book-btn">
+              📞 Call to Book Scan
+            </a>
+          </div>
+
+          <div class="card-footer">
+            NABH Center • Expert Radiologists • Same Day Reports
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= OVERVIEW ================= -->
+  <section class="test-overview">
+    <div class="container">
+      <h2>Scan Overview</h2>
+      <p class="overview-desc" id="scanOverview"></p>
+
+      <div class="overview-cards">
+        <div class="card"><span class="label">Scan Type</span><strong id="scanType"></strong></div>
+        <div class="card"><span class="label">Preparation</span><strong id="scanPrep"></strong></div>
+        <div class="card"><span class="label">Report Time</span><strong id="scanReport"></strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AVAILABLE SCAN TYPES ================= -->
+  <section class="scan-types">
+    <div class="container">
+
+      <h2 class="section-title">Available Scan Types</h2>
+      <p class="scan-sub">
+        Select the exact scan you need. Prices may vary based on body part.
+      </p>
+
+      <div class="scan-type-list" id="scanTypeList">
+
+      </div>
+
+    </div>
+  </section>
+  <!-- ================= WHO SHOULD TAKE ================= -->
+  <section class="scan-findings">
+    <div class="container">
+      <h2>What This Scan Detects</h2>
+      <ul id="scanFindings"></ul>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div id="scanFaq"></div>
+    </div>
+  </section>
+  <!-- ================= WHY RAPID LABS ================= -->
+  <section class="why-rapidlabs-section">
+    <div class="why-wrapper">
+
+      <h2 class="why-title">Why Rapid Labs</h2>
+
+      <div class="why-grid">
+
+        <div class="why-card">
+          <img src="../images/icons/nabh.webp" alt="">
+          <h4>NABH Accredited Diagnostics</h4>
+          <p>
+              Our labs and facilities follow stringent quality protocols aligned with NABH
+              and national healthcare standards to ensure patient safety and accurate results.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <img src="../images/icons/25.webp" alt="">
+          <h4>25+ Years of Medical Excellence</h4>
+          <p>
+            Backed by over two decades of experience in hospitals and
+            diagnostic services.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <img src="../images/icons/fast.webp" alt="">
+          <h4>Fast & Reliable Reporting</h4>
+          <p>
+            Optimized processes ensure timely and accurate test reports
+            without compromise.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <img src="../images/icons/result.webp" alt="">
+          <h4>High Accuracy Results</h4>
+          <p>
+            Multi-level quality checks ensure dependable and clinically
+            precise results.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <img src="../images/icons/hospital.webp" alt="">
+          <h4>Own Hospital & Diagnostic Setup</h4>
+          <p>
+            Integrated hospital and lab infrastructure for seamless
+            testing and expert consultation.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <img src="../images/icons/trust.webp" alt="">
+          <h4>Growing Network & Reach</h4>
+          <p>
+            Expanding diagnostic services with patient-focused care
+            across regions.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <img src="../images/icons/patient.webp" alt="">
+          <h4>Trusted by Thousands of Patients</h4>
+          <p>
+            Years of consistent quality and ethical practices have earned
+            patient trust.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <img src="../images/icons/modren.webp" alt="">
+          <h4>Modern Diagnostic Technology</h4>
+          <p>
+            Advanced analyzers and equipment for reliable, standardized
+            testing outcomes.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="testimonials-modern">
+    <div class="testimonials-container">
+
+      <h2 class="testimonials-title">What Our Patients Say</h2>
+      <p class="testimonials-subtitle">
+        Trusted by thousands of patients for accurate diagnostics and timely reports.
+      </p>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-box">
+          <div class="testimonial-top">
+            <img src="../images/icons/user.webp" alt="Patient">
+            <div>
+              <h4>Simran Kaur</h4>
+              <span>2 weeks ago</span>
+            </div>
+          </div>
+
+          <div class="testimonial-stars">★★★★★</div>
+
+          <p class="testimonial-text">
+            The ultrasound experience was very smooth. The doctor and staff were
+            polite and professional. The lab was clean and well maintained.
+            Highly recommended.
+          </p>
+        </div>
+
+        <div class="testimonial-box">
+          <div class="testimonial-top">
+            <img src="../images/icons/user.webp" alt="Patient">
+            <div>
+              <h4>Aman Kumar</h4>
+              <span>2 weeks ago</span>
+            </div>
+          </div>
+
+          <div class="testimonial-stars">★★★★★</div>
+
+          <p class="testimonial-text">
+            Booking was easy and reports were delivered on time. Staff guided me
+            properly throughout the testing process. Very reliable diagnostic service.
+          </p>
+        </div>
+
+        <div class="testimonial-box">
+          <div class="testimonial-top">
+            <img src="../images/icons/user.webp" alt="Patient">
+            <div>
+              <h4>Mayur Gupta</h4>
+              <span>3 weeks ago</span>
+            </div>
+          </div>
+
+          <div class="testimonial-stars">★★★★★</div>
+
+          <p class="testimonial-text">
+            Well-organized lab with timely service. I recommend reaching early for
+            full body checkups to avoid waiting time. Overall a good experience.
+          </p>
+        </div>
+
+        <div class="testimonial-box featured">
+          <div class="testimonial-top">
+            <img src="../images/icons/user.webp" alt="Patient">
+            <div>
+              <h4>Parveen Satija</h4>
+              <span>1 month ago</span>
+            </div>
+          </div>
+
+          <div class="testimonial-stars">★★★★★</div>
+
+          <p class="testimonial-text">
+            Excellent service and professional staff. Tests were conducted exactly
+            as scheduled and reports were provided quickly with images. One of the
+            smoothest diagnostic experiences I’ve had.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="nearby-tests">
+    <div class="container">
+      <h3>Popular Blood Tests in Bangalore</h3>
+
+      <div class="nearby-links">
+
+        <!-- Column 1 -->
+        <ul>
+          <li><a href="bloodtest-details.html?id=cbc">CBC Blood Test</a></li>
+          <li><a href="bloodtest-details.html?id=crp">C-Reactive Protein (CRP) Test</a></li>
+          <li><a href="bloodtest-details.html?id=hba1c">HbA1c Test</a></li>
+          <li><a href="bloodtest-details.html?id=thyroid">Thyroid Profile Test (TSH, T3, T4)</a></li>
+          <li><a href="bloodtest-details.html?id=lipid">Lipid Profile Test</a></li>
+          <li><a href="bloodtest-details.html?id=lft">Liver Function Test (LFT)</a></li>
+          <li><a href="bloodtest-details.html?id=kft">Kidney Function Test (KFT)</a></li>
+          <li><a href="bloodtest-details.html?id=bsugar">Blood Sugar Test</a></li>
+        </ul>
+
+        <!-- Column 2 -->
+        <ul>
+          <li><a href="bloodtest-details.html?id=vitb12">Vitamin B12 Test</a></li>
+          <li><a href="bloodtest-details.html?id=vitd">Vitamin D Test</a></li>
+          <li><a href="bloodtest-details.html?id=vitk">Vitamin K Test</a></li>
+          <li><a href="bloodtest-details.html?id=iron">Iron Studies</a></li>
+          <li><a href="bloodtest-details.html?id=hormone">Hormone Profile</a></li>
+          <li><a href="bloodtest-details.html?id=folate">Folate Test</a></li>
+          <li><a href="bloodtest-details.html?id=calcium">Calcium Test</a></li>
+          <li><a href="bloodtest-details.html?id=bloodculture">Blood Culture</a></li>
+        </ul>
+
+        <!-- Column 3 -->
+        <ul>
+          <li><a href="bloodtest-details.html?id=ironferritin">Iron & Ferritin Test</a></li>
+          <li><a href="bloodtest-details.html?id=psa">Prostate Specific Antigen (PSA)</a></li>
+          <li><a href="bloodtest-details.html?id=cholesterol">Cholesterol – HDL/LDL</a></li>
+          <li><a href="bloodtest-details.html?id=thyroidantibodies">Thyroid Antibodies Test</a></li>
+          <li><a href="bloodtest-details.html?id=urine">Urine Routine & Microscopy</a></li>
+          <li><a href="bloodtest-details.html?id=insulin">Insulin Test</a></li>
+          <li><a href="bloodtest-details.html?id=psa">PSA Test</a></li>
+          <li><a href="bloodtest-details.html?id=magnesium">Magnesium Test</a></li>
+        </ul>
+
+        <!-- Column 4 -->
+        <ul>
+          <li><a href="bloodtest-details.html?id=dengue">Dengue Test (NS1, IgG, IgM)</a></li>
+          <li><a href="bloodtest-details.html?id=malaria">Malaria Test</a></li>
+          <li><a href="bloodtest-details.html?id=typhoid">Typhoid Test</a></li>
+          <li><a href="bloodtest-details.html?id=chikungunya">Chikungunya Test</a></li>
+          <li><a href="bloodtest-details.html?id=widal">Widal Test</a></li>
+          <li><a href="bloodtest-details.html?id=hiv">HIV Test</a></li>
+          <li><a href="bloodtest-details.html?id=hepatitis_b">Hepatitis B Test</a></li>
+          <li><a href="bloodtest-details.html?id=hepatitis_c">Hepatitis C Test</a></li>
+        </ul>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <section class="about-labs">
+    <div class="container">
+
+      <h3>About Rapid Labs</h3>
+  <p>
+    Experience fast, accurate, and dependable diagnostic services with Rapid Labs — one of Bangalore’s most trusted names in medical testing. Our NABL-accredited laboratory is equipped with advanced diagnostic technology and supported by experienced pathologists and skilled technicians committed to precision and patient care. From routine blood investigations to specialized diagnostics in Cardiology, Neurology, Oncology, Gynecology, and more, Rapid Labs delivers reliable results with speed and accuracy. Enjoy seamless online booking, convenient doorstep sample collection across Bangalore, and secure digital reports delivered on time — ensuring complete comfort, confidence, and peace of mind for you and your family.
+  </p>
+
+  <h4>Popular Health Packages</h4>
+
+  <div class="popular-tests">
+    <a href="package-details.html?id=master">Master Health Checkup</a> |
+    <a href="package-details.html?id=women">Women Health Checkup</a> |
+    <a href="package-details.html?id=diabetic">Diabetic Profile</a> |
+    <a href="package-details.html?id=basic">Basic Health Checkup</a> |
+    <a href="package-details.html?id=heart">Heart Health Checkup</a> |
+    <a href="package-details.html?id=executive">Executive Health Checkup</a> |
+    <a href="package-details.html?id=senior">Senior Citizen Health Checkup</a> |
+    <a href="package-details.html?id=thyroid">Thyroid Health Checkup</a> |
+    <a href="package-details.html?id=vitamin">Vitamin & Mineral Checkup</a> |
+    <a href="package-details.html?id=preemployment">Pre-employment Health Checkup</a>
+  </div>
+
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+
+      <div class="footer-col">
+        <h4>Patients</h4>
+        <ul>
+          <li><a href="footer-details.html#book-test-popup">Book a Test</a></li>
+          <li><a href="footer-details.html#upload-prescription">Upload Prescription</a></li>
+          <li><a href="footer-details.html#download-report">Download Report</a></li>
+          <li><a href="footer-details.html#health-packages">Health Packages</a></li>
+          <li><a href="footer-details.html#lab-locator">Lab Locator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Partner With Us</h4>
+        <ul>
+          <li><a href="footer-details.html#join-network">Join Our Lab Network</a></li>
+          <li><a href="footer-details.html#refer-earn">Refer & Earn</a></li>
+          <li><a href="footer-details.html#community-programs">Community Health Programs</a></li>
+
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal & Support</h4>
+        <ul>
+          <li><a href="footer-details.html#privacy-policy">Privacy Policy</a></li>
+          <li><a href="footer-details.html#terms-conditions">Terms & Conditions</a></li>
+          <li><a href="footer-details.html#contact-support">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="footer-details.html#about-us">About Us</a></li>
+          <li><a href="footer-details.html#mission-vision">Mission & Vision</a></li>
+          <li><a href="footer-details.html#blog-updates">Blog / Updates</a></li>
+          <li><a href="footer-details.html#contact">Contact</a></li>
+          <li><a href="footer-details.html#cookie-policy">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href="footer-details.html#get-in-touch">Get in Touch</a></li>
+          <li><a href="footer-details.html#faqs">FAQs</a></li>
+          <li><a href="footer-details.html#sitemap">Sitemap</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <section class="seo-footer">
+    <div class="seo-container">
+
+      <div class="seo-col">
+        <strong>Rapid Labs Bangalore</strong><br>
+        Diagnostic Centre in Bangalore<br>
+        Blood Test Lab Near Me<br>
+        Home Sample Collection<br>
+        Health Checkup Packages
+      </div>
+
+      <div class="seo-col">
+        <strong>Popular Blood Tests</strong><br>
+        CBC Blood Test<br>
+        Thyroid Test (TSH, T3, T4)<br>
+        Diabetes Test (HbA1c, Fasting Sugar)<br>
+        Cholesterol & Lipid Profile
+      </div>
+
+      <div class="seo-col">
+        <strong>Full Body Checkups</strong><br>
+        Complete Health Checkup<br>
+        Preventive Health Packages<br>
+        Senior Citizen Health Check<br>
+        Women’s Health Checkup
+      </div>
+
+      <div class="seo-col">
+        <strong>Why Choose Rapid Labs</strong><br>
+        Accurate & Fast Reports<br>
+        Affordable Blood Test Prices<br>
+        Certified Lab Technicians<br>
+        Online Report Download
+      </div>
+
+    </div>
+
+  <div class="seo-bottom">
+    Rapid Labs & Diagnostics – Trusted Diagnostic Centre and Blood Test Lab in Bangalore offering Fast Reports and Home Sample Collection.
+  </div>
+  </section>
+
+  <a
+    href="https://wa.me/919999999999?text=Hello%20Rapid%20Labs,%20I%20want%20to%20book%20a%20test"
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="Chat on WhatsApp"
+  >
+    <span class="wa-pulse"></span>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+<div id="bookingModal" class="booking-modal">
+
+  <div class="booking-card">
+
+    <span id="closeBookingModal" class="close-btn">&times;</span>
+
+    <h2>Book Your Scan</h2>
+    <p class="booking-sub">Enter details to confirm your scan</p>
+
+    <form id="bookingForm">
+
+      <input type="text" id="nameInput" placeholder="Your Name" required>
+
+      <input type="tel" id="phoneInput" placeholder="Mobile Number" maxlength="10" required>
+
+      <input type="text" id="testTypeInput" placeholder="Scan Name" readonly>
+
+      <input type="text" id="locationInput" placeholder="Your Location">
+
+      <button type="button" id="detectLocation" class="detect-btn">
+        📍 Detect Location
+      </button>
+
+      <button type="submit" class="confirm-btn">
+        Confirm Booking
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+  <script src="../script/script.js"></script>
+  <script src="../script/location.js"></script>
+  <script src="../script/product.js"></script>
+  <script src="../script/search.js"></script>
+  <script src="../script/cart.js"></script>
+
+  <!-- ================= SCRIPT ================= -->
+  <script>
+  const scans = {
+  xray: {
+    name: "X-Ray Scan",
+
+    price: 350,
+    old: 800,
+
+
+    types:[
+      {name:"X-Ray Chest", price:"₹420"},
+      {name:"X-Ray Hand", price:"₹350"},
+      {name:"X-Ray Leg", price:"₹380"},
+      {name:"X-Ray Spine", price:"₹520"}
+    ],
+
+    overview: "X-Ray is a fast imaging test used to examine bones, lungs, chest, joints and internal organs. It helps doctors detect fractures, infections, lung conditions and other abnormalities quickly.",
+
+    type: "Digital X-Ray Imaging",
+
+    prep: "Usually no special preparation required",
+
+    report: "Same day report available",
+
+    detects: [
+      "Bone fractures",
+      "Lung infection",
+      "Joint problems",
+      "Tuberculosis",
+      "Chest abnormalities",
+      "Spine issues"
+    ],
+
+    who: [
+      "Patients with bone pain or injury",
+      "Persistent cough or breathing issues",
+      "Accident or trauma cases",
+      "Doctor recommended diagnostic imaging"
+    ],
+
+    faq: [
+      ["Is X-Ray safe?", "Yes, digital X-Ray uses very low radiation and is medically safe."],
+      ["Do I need fasting?", "No fasting required for most X-Ray scans."]
+    ]
+  },
+
+mri: {
+  name: "MRI Scan",
+
+  price: 4500,
+  old: 7000,
+
+  types:[
+    {name:"MRI Brain", price:"₹4500"},
+    {name:"MRI Spine", price:"₹4800"},
+    {name:"MRI Knee", price:"₹4200"},
+    {name:"MRI Shoulder", price:"₹4300"},
+    {name:"MRI Abdomen", price:"₹5200"}
+  ],
+
+  overview: "MRI Scan (Magnetic Resonance Imaging) uses strong magnetic fields and radio waves to create detailed images of organs, brain, spine, joints and soft tissues.",
+
+  type: "Magnetic Resonance Imaging",
+
+  prep: "Remove all metal objects and inform doctor if you have implants",
+
+  report: "24 hours",
+
+  detects: [
+    "Brain disorders",
+    "Spine problems",
+    "Joint injuries",
+    "Tumors",
+    "Soft tissue abnormalities"
+  ],
+
+  who: [
+    "Severe headaches",
+    "Back or neck pain",
+    "Joint injuries",
+    "Neurological symptoms"
+  ],
+
+  faq: [
+    ["Is MRI safe?", "Yes, MRI uses magnetic fields and no radiation."],
+    ["How long does MRI take?", "Usually 20–40 minutes depending on the scan."]
+  ]
+},
+
+ct: {
+  name: "CT Scan",
+
+  price: 2800,
+  old: 4500,
+
+  types:[
+    {name:"CT Brain", price:"₹2800"},
+    {name:"CT Chest", price:"₹3000"},
+    {name:"CT Abdomen", price:"₹3200"},
+    {name:"CT Spine", price:"₹2900"},
+    {name:"CT Sinus", price:"₹2600"}
+  ],
+
+  overview: "CT Scan (Computed Tomography) uses X-rays and computer technology to create detailed cross-sectional images of organs, bones and tissues.",
+
+  type: "Computed Tomography",
+
+  prep: "Avoid metal objects; contrast scan may require fasting",
+
+  report: "12–24 hours",
+
+  detects: [
+    "Internal injuries",
+    "Brain stroke",
+    "Tumors",
+    "Bone fractures",
+    "Lung infections"
+  ],
+
+  who: [
+    "Head injury",
+    "Severe headache",
+    "Chest pain",
+    "Doctor recommended imaging"
+  ],
+
+  faq: [
+    ["Is CT scan safe?", "Yes, it uses controlled X-ray radiation."],
+    ["How long does CT scan take?", "Usually 5–15 minutes."]
+  ]
+},
+
+ultrasound: {
+  name: "Ultrasound (USG)",
+
+  price: 900,
+  old: 1500,
+
+  types:[
+    {name:"USG Abdomen", price:"₹900"},
+    {name:"USG Pelvis", price:"₹850"},
+    {name:"USG Pregnancy", price:"₹1000"},
+    {name:"USG Kidney", price:"₹800"},
+    {name:"USG Thyroid", price:"₹750"}
+  ],
+
+  overview: "Ultrasound (USG) uses high-frequency sound waves to create images of internal organs such as liver, kidneys, uterus, abdomen and soft tissues.",
+
+  type: "Ultrasound Imaging",
+
+  prep: "Preparation depends on scan type (fasting or full bladder may be required)",
+
+  report: "Same day",
+
+  detects: [
+    "Kidney stones",
+    "Gallstones",
+    "Liver disorders",
+    "Pregnancy monitoring",
+    "Abdominal swelling"
+  ],
+
+  who: [
+    "Abdominal pain",
+    "Pregnancy check",
+    "Digestive problems",
+    "Doctor recommended scan"
+  ],
+
+  faq: [
+    ["Is ultrasound safe?", "Yes, it uses sound waves and no radiation."],
+    ["Is fasting required?", "Depends on scan type like abdomen scan."]
+  ]
+},
+
+pet: {
+  name: "PET Scan",
+
+  price: 15000,
+  old: 18000,
+
+  types:[
+    {name:"PET Whole Body", price:"₹15000"},
+    {name:"PET Brain", price:"₹14000"},
+    {name:"PET Oncology Scan", price:"₹16000"}
+  ],
+
+  overview: "PET Scan (Positron Emission Tomography) helps detect cancer, heart diseases and brain disorders by analyzing metabolic activity inside the body.",
+
+  type: "PET Imaging",
+
+  prep: "Fasting 6 hours before scan; avoid sugar drinks",
+
+  report: "24–48 hours",
+
+  detects: [
+    "Cancer detection",
+    "Tumor spread",
+    "Brain disorders",
+    "Heart disease"
+  ],
+
+  who: [
+    "Cancer diagnosis",
+    "Cancer treatment monitoring",
+    "Neurological symptoms",
+    "Cardiac assessment"
+  ],
+
+  faq: [
+    ["Is PET scan safe?", "Yes, a small controlled radioactive tracer is used."],
+    ["How long does PET scan take?", "Usually 1–2 hours."]
+  ]
+}
+  };
+
+  const SCAN_TO_PRODUCT_ID = {
+    xray: 11,
+    mri: 12,
+    ct: 13,
+    ultrasound: 14,
+    pet: 15
+  };
+/* =============================== 
+   READ URL & LOAD SCAN DATA 
+================================ */
+const id = new URLSearchParams(window.location.search).get("id");
+const scan = scans[id];
+
+const typeList = document.getElementById("scanTypeList");
+
+/* ===============================
+   LOAD SCAN TYPES
+================================ */
+if (typeList && scan.types) {
+
+  typeList.innerHTML = scan.types.map((t,i)=>`
+
+  <div class="scan-type-item">
+
+    <div class="scan-left">
+      <h4>${t.name}</h4>
+      <p>Digital Scan • Report within 6 hours</p>
+    </div>
+
+    <div class="scan-right">
+
+      <span class="scan-price">${t.price}</span>
+
+        <button class="scan-book-btn"
+                data-name="${t.name}"
+                data-price="${t.price}">
+          Book Now
+        </button>
+
+    </div>
+
+  </div>
+
+  `).join("");
+
+  /* BOOK BUTTON CLICK */
+  document.querySelectorAll(".hk-book-btn").forEach(btn=>{
+
+    btn.addEventListener("click",function(){
+
+      const name = this.dataset.name;
+      const price = this.dataset.price;
+
+      // redirect to booking page
+      window.location.href = `book.html?scan=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}`;
+
+    });
+
+  });
+
+}
+
+/* ===============================
+   LOAD MAIN SCAN DETAILS
+================================ */
+if (scan) {
+
+  document.getElementById("scanName").textContent = scan.name;
+  document.getElementById("scanPrice").textContent = scan.price;
+  document.getElementById("scanOldPrice").textContent = scan.old ? "₹ " + scan.old : "";
+  document.getElementById("scanOverview").textContent = scan.overview;
+  document.getElementById("scanType").textContent = scan.type;
+  document.getElementById("scanPrep").textContent = scan.prep;
+  document.getElementById("scanReport").textContent = scan.report;
+
+  /* DETECTS LIST */
+  const findingsContainer = document.getElementById("scanFindings");
+  if (findingsContainer) {
+    findingsContainer.innerHTML = scan.detects.map(d => `<li>${d}</li>`).join("");
+  }
+
+  /* WHO SHOULD TAKE */
+  const whoContainer = document.getElementById("scanWho");
+  if (whoContainer) {
+    whoContainer.innerHTML = scan.who.map(w => `<li>${w}</li>`).join("");
+  }
+
+  /* FAQ */
+  const faqContainer = document.getElementById("scanFaq");
+  if (faqContainer) {
+    faqContainer.innerHTML = scan.faq.map(f => `
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>${f[0]}</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>${f[1]}</p>
+        </div>
+      </div>
+    `).join("");
+  }
+
+}
+
+/* ===============================
+   FAQ TOGGLE
+================================ */
+function toggleFaq(el) {
+
+  const answer = el.nextElementSibling;
+  answer.classList.toggle("open");
+
+  const toggle = el.querySelector(".faq-toggle");
+  toggle.textContent = answer.classList.contains("open") ? "−" : "+";
+
+}
+  </script>
+<script>
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const modal = document.getElementById("bookingModal");
+const closeBtn = document.getElementById("closeBookingModal");
+
+const nameInput = document.getElementById("nameInput");
+const phoneInput = document.getElementById("phoneInput");
+const testInput = document.getElementById("testTypeInput");
+const locationInput = document.getElementById("locationInput");
+
+/* MAIN BOOK SCAN BUTTON */
+
+document.querySelectorAll(".btn.outline").forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    const scanName = document.getElementById("scanName").textContent;
+
+    testInput.value = scanName;
+
+    modal.style.display="flex";
+
+  });
+
+});
+
+
+/* SCAN TYPE BOOK BUTTON */
+
+document.querySelectorAll(".scan-book-btn").forEach(btn=>{
+
+  btn.addEventListener("click",function(){
+
+    const name = this.dataset.name;
+
+    testInput.value = name;
+
+    modal.style.display="flex";
+
+  });
+
+});
+
+
+/* CLOSE MODAL */
+
+closeBtn.onclick = ()=> modal.style.display="none";
+
+window.onclick = (e)=>{
+  if(e.target===modal){
+    modal.style.display="none";
+  }
+};
+
+
+/* LOCATION DETECT */
+
+document.getElementById("detectLocation").onclick=()=>{
+
+  if(!navigator.geolocation){
+    alert("Location not supported");
+    return;
+  }
+
+  locationInput.value="Detecting location...";
+
+  navigator.geolocation.getCurrentPosition(async pos=>{
+
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+
+    try{
+
+      const res = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
+      );
+
+      const data = await res.json();
+
+      const a = data.address;
+
+      const location = [
+        a.suburb || a.neighbourhood,
+        a.city || a.town || a.village,
+        a.state,
+        a.postcode
+      ].filter(Boolean).join(", ");
+
+      locationInput.value = location;
+
+    }
+    catch{
+      locationInput.value="Location detected";
+    }
+
+  });
+
+};
+
+
+/* FORM SUBMIT */
+
+document.getElementById("bookingForm")
+.addEventListener("submit",function(e){
+
+  e.preventDefault();
+
+  const name = nameInput.value.trim();
+  const phone = phoneInput.value.trim();
+  const test = testInput.value;
+  const location = locationInput.value;
+
+  if(phone.length!==10){
+    alert("Enter valid mobile number");
+    return;
+  }
+
+  const msg =
+`Hello Rapid Labs
+Name: ${name}
+Mobile: ${phone}
+Scan: ${test}
+Location: ${location}
+
+I want to book this scan.`;
+
+  const whatsapp =
+`https://wa.me/919999999999?text=${encodeURIComponent(msg)}`;
+
+  window.open(whatsapp,"_blank");
+
+});
+
+});
+
+</script>
+
+  </body>
+  </html>
+

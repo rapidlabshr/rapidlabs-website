@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Date & Time | Rapid Labs</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cart.css">
+</head>
+
+<body>
+
+<section class="cart-container">
+
+  <!-- STEP INDICATOR -->
+  <div class="cart-steps">
+    <div class="step completed">1<br><span>Add to Cart</span></div>
+    <div class="step completed">2<br><span>Select Member</span></div>
+    <div class="step active">3<br><span>Date & Time</span></div>
+    <div class="step">4<br><span>Payment</span></div>
+  </div>
+
+  <div class="cart-layout">
+
+    <!-- LEFT -->
+    <div class="cart-left">
+
+      <h2>Appointment Date</h2>
+      <input type="date" id="appointmentDate" class="date-input" />
+
+      <h2>Preferred Time Slot</h2>
+
+      <div class="time-slots" id="timeSlots">
+        <button type="button" class="time-slot">07:00 AM – 08:00 AM</button>
+        <button type="button" class="time-slot">08:00 AM – 09:00 AM</button>
+        <button type="button" class="time-slot">09:00 AM – 10:00 AM</button>
+        <button type="button" class="time-slot">10:00 AM – 11:00 AM</button>
+      </div>
+
+      <div class="cart-actions">
+        <button type="button" class="next-btn" id="nextBtn">Continue →</button>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="cart-right">
+      <h3>Appointment Summary</h3>
+      <p><strong>Date:</strong> <span id="summaryDate"></span></p>
+      <p><strong>Time:</strong> <span id="summaryTime"></span></p>
+    </div>
+
+  </div>
+
+</section>
+
+<script src="../script/date-time.js"></script>
+</body>
+</html>

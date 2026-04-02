@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rapid Labs| viewpackages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/bloodtest.css">
+</head>
+
+<body>
+
+
+  <!-- ================= HEADER ================= -->
+
+<!-- TOP INFO (NOT STICKY) -->
+<div class="top-info">
+  <div class="container top-info-inner">
+
+    <h1 class="logo">Rapid<span>Labs</span></h1>
+
+    <button class="location-btn" id="openLocationModal">
+      📍 Home Collection
+    </button>
+
+    <a href="#" class="appointment-btn">Patient Login</a>
+
+  </div>
+</div>
+
+<!-- LOCATION MODAL -->
+<div class="location-modal" id="locationModal">
+  <div class="location-content">
+    <span class="close-btn" id="closeLocationModal">&times;</span>
+
+    <h3>Check Home Collection Availability at Your Location</h3>
+
+    <input type="text" id="pincode" placeholder="Enter your PIN code" />
+
+    <button class="check-btn" id="checkAvailabilityBtn">
+      Check Availability
+    </button>
+
+    <p id="resultBox"></p>
+  </div>
+</div>
+
+
+
+<!-- STICKY MENU BAR -->
+<header class="menu-header">
+  <nav class="menu-nav">
+
+<div class="nav-search">
+  
+  <!-- Search Icon -->
+  <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" 
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+
+  <!-- Input -->
+ <input id="searchInput" type="text" placeholder="Search Blood Tests..." />
+
+  <!-- Mic Icon -->
+  <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+    <line x1="12" y1="19" x2="12" y2="23"/>
+    <line x1="8" y1="23" x2="16" y2="23"/>
+  </svg>
+
+</div>
+
+<div id="searchResults"></div>
+</div>
+
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+
+<ul id="mobileMenu">
+  <li>
+    <a class="active" href="index.html">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="about.html">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+  </li>
+  <li>
+    <a href="services.html">
+      <i class="fa-solid fa-stethoscope"></i>
+      <span>Services</span>
+    </a>
+  </li>
+  <li>
+    <a href="cart.html" class="cart-link">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      <span id="cartCount" class="cart-count">0</span>
+    </a>
+  </li>
+  <li>
+    <a href="contact.html">
+      <i class="fa-solid fa-phone"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+
+  <!-- 🔹 Add this for mobile Patient Login -->
+  <li class="mobile-only">
+    <a href="#" class="appointment-btn">
+      <i class="fa-solid fa-user"></i>
+      <span>Patient Login</span>
+    </a>
+  </li>
+</ul>
+
+  </nav>
+</header>
+
+
+
+
+<section class="health-offer-section">
+  <div class="health-offer-wrapper">
+
+    <!-- LEFT SLIDER -->
+    <div class="offer-slider">
+      <div class="slide active">
+        <img src="../images/packageslide1.webp" alt="Healthkind Offer 1">
+      </div>
+      <div class="slide">
+        <img src="../images/packageslide2.webp" alt="Healthkind Offer 2">
+      </div>
+      <!-- Add more slides as needed -->
+      
+      <!-- Dots -->
+      <div class="slider-dots"></div>
+    </div>
+
+    <!-- RIGHT BOOKING FORM -->
+    <div class="booking-form">
+      <h3>Schedule a Home Collection</h3>
+      <input type="text" placeholder="Mobile number *" maxlength="10" id="mobileNumber">
+      <input type="text" placeholder="Enter Pincode" maxlength="6" id="pincode">
+      <button id="bookBtn">Book Now</button>
+      <p class="booking-note">
+        We will contact you via call or SMS to confirm your booking.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="cert-section">
+  <div class="cert-container">
+
+    <div class="cert-item">
+      <img src="../images/icons/nabh.webp" alt="NABH">
+      <p>NABH Accredited<br>Laboratory</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/home.webp" alt="Home Sample Collection">
+      <p>Certified Technicians for Home Sample Collection</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/cmc.webp" alt="CMC Vellore">
+      <p>CMC Vellore<br>Approved</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/hospital.webp" alt="Own Hospital">
+      <p>Own Hospital &<br>Diagnostics</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/hospital.webp" alt="Doctors">
+      <p>Reports Reviewed by<br>Qualified Doctors</p>
+    </div>
+
+    <div class="cert-item">
+      <img src="../images/icons/quality.webp" alt="Quality">
+      <p>Strict Quality &<br>Hygiene Standards</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="hk-section view-all-page">
+  <h2 class="hk-title">Health Checkup Packages</h2>
+
+  <div class="hk-scroll hk-grid" data-scroll="packages">
+
+<!-- CARD 1: Basic Health Checkup -->
+<div class="hk-card">
+  <img src="../images/basic.webp" class="hk-img">
+
+  <h3 class="hk-name">Basic Health Checkup</h3>
+
+  <p class="hk-meta">
+    Essential tests for daily health monitoring
+  </p>
+
+  <p class="hk-gender">
+    25–30 Parameters • Reports within 24 hours
+  </p>
+
+  <label class="hk-compare">
+    <a href="package-details.html?id=basic" class="hk-view-details">
+      View Details
+    </a>
+  </label>
+
+  <div class="hk-price">
+    <span class="hk-old">₹1499</span>
+    <span class="hk-new">₹899</span>
+    <span class="hk-off">40% Off</span>
+  </div>
+
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="101">Add to Cart</button>
+    <button class="hk-book btn outline">
+      Book Now
+    </button>
+  </div>
+</div>
+
+
+<!-- CARD 2: Master Health Checkup -->
+<div class="hk-card">
+  <img src="../images/master.webp" class="hk-img">
+
+  <h3 class="hk-name">Advanced Full Body Health Checkup</h3>
+
+  <p class="hk-meta">
+    Comprehensive screening for complete body wellness
+  </p>
+
+  <p class="hk-gender">
+    60–75 Parameters • Reports within 36 hours
+  </p>
+
+  <label class="hk-compare">
+    <a href="package-details.html?id=master" class="hk-view-details">
+      View Details
+    </a>
+  </label>
+
+  <div class="hk-price">
+    <span class="hk-old">₹4499</span>
+    <span class="hk-new">₹2499</span>
+    <span class="hk-off">44% Off</span>
+  </div>
+
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="102">Add to Cart</button>
+    <button class="hk-book btn outline">
+      Book Now
+    </button>
+  </div>
+</div>
+
+
+    <!-- CARD 3: Heart Health Checkup -->
+<!-- CARD 3: Heart Health Checkup -->
+<div class="hk-card">
+  <img src="../images/heart.webp" class="hk-img">
+
+  <h3 class="hk-name">Heart Health Checkup</h3>
+
+  <p class="hk-meta">
+    Advanced screening for heart disease risk
+  </p>
+
+  <p class="hk-gender">
+    15–20 Cardiac Parameters • Reports within 24 hours
+  </p>
+
+  <label class="hk-compare">
+    <a href="package-details.html?id=heart" class="hk-view-details">
+      View Details
+    </a>
+  </label>
+
+  <div class="hk-price">
+    <span class="hk-old">₹3999</span>
+    <span class="hk-new">₹2299</span>
+    <span class="hk-off">42% Off</span>
+  </div>
+
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="103">Add to Cart</button>
+    <button class="hk-book btn outline">
+      Book Now
+    </button>
+  </div>
+</div>
+
+
+    <!-- CARD 4: Women Health Checkup -->
+<!-- CARD 4: Women Health Checkup -->
+<div class="hk-card">
+  <img src="../images/women.webp" class="hk-img">
+
+  <h3 class="hk-name">Comprehensive Women’s Health Checkup</h3>
+
+  <p class="hk-meta">
+    Complete wellness & hormone screening for women
+  </p>
+
+  <p class="hk-gender">
+    60–70 Parameters • Reports within 36–48 hours
+  </p>
+
+  <label class="hk-compare">
+    <a href="package-details.html?id=women" class="hk-view-details">
+      View Details
+    </a>
+  </label>
+
+  <div class="hk-price">
+    <span class="hk-old">₹4499</span>
+    <span class="hk-new">₹2699</span>
+    <span class="hk-off">40% Off</span>
+  </div>
+
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="104">Add to Cart</button>
+    <button class="hk-book btn outline">
+      Book Now
+    </button>
+  </div>
+</div>
+
+
+    <!-- CARD 5: Diabetic Profile -->
+<!-- CARD 5: Diabetic Profile -->
+<div class="hk-card">
+  <img src="../images/diabetic.webp" class="hk-img">
+
+  <h3 class="hk-name">Diabetic Profile</h3>
+
+  <p class="hk-meta">
+    Essential tests for diabetes monitoring & control
+  </p>
+
+  <p class="hk-gender">
+    FBS, PPBS, HbA1c • Reports within 6 hours
+  </p>
+
+  <label class="hk-compare">
+    <a href="package-details.html?id=diabetic" class="hk-view-details">
+      View Details
+    </a>
+  </label>
+
+  <div class="hk-price">
+    <span class="hk-old">₹999</span>
+    <span class="hk-new">₹599</span>
+    <span class="hk-off">40% Off</span>
+  </div>
+
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="105">Add to Cart</button>
+    <button class="hk-book btn outline">
+      Book Now
+    </button>
+  </div>
+</div>
+
+
+    <!-- CARD 6: Executive Health Checkup -->
+<!-- CARD 6: Executive Health Checkup -->
+<div class="hk-card">
+  <img src="../images/exculsive.webp" class="hk-img">
+
+  <h3 class="hk-name">Executive Full Body Health Checkup</h3>
+
+  <p class="hk-meta">
+    Advanced preventive screening for complete health assessment
+  </p>
+
+  <p class="hk-gender">
+    90–100+ Parameters • Reports within 36–48 hours
+  </p>
+
+  <label class="hk-compare">
+    <a href="package-details.html?id=executive" class="hk-view-details">
+      View Details
+    </a>
+  </label>
+
+  <div class="hk-price">
+    <span class="hk-old">₹8499</span>
+    <span class="hk-new">₹4999</span>
+    <span class="hk-off">41% Off</span>
+  </div>
+
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="106">Add to Cart</button>
+    <button class="hk-book btn outline">
+      Book Now
+    </button>
+  </div>
+</div>
+
+
+    <!-- CARD 7: Senior Citizen Health Checkup -->
+<!-- CARD 7: Senior Citizen Health Checkup -->
+<div class="hk-card">
+  <img src="../images/master.webp" class="hk-img">
+
+  <h3 class="hk-name">Senior Citizen Health Checkup</h3>
+
+  <p class="hk-meta">
+    Comprehensive preventive screening for 60+ age group
+  </p>
+
+  <p class="hk-gender">
+    70–80 Parameters • Reports within 36–48 hours
+  </p>
+
+  <label class="hk-compare">
+    <a href="package-details.html?id=senior" class="hk-view-details">
+      View Details
+    </a>
+  </label>
+
+  <div class="hk-price">
+    <span class="hk-old">₹4499</span>
+    <span class="hk-new">₹2499</span>
+    <span class="hk-off">44% Off</span>
+  </div>
+
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="107">Add to Cart</button>
+    <button class="hk-book btn outline">
+      Book Now
+    </button>
+  </div>
+</div>
+
+
+    <!-- CARD 8: Thyroid Health Checkup -->
+<!-- CARD 8: Thyroid Health Checkup -->
+<div class="hk-card">
+  <img src="../images/thyroid.webp" class="hk-img">
+
+  <h3 class="hk-name">Thyroid Profile (T3, T4, TSH)</h3>
+
+  <p class="hk-meta">
+    Complete thyroid function assessment
+  </p>
+
+  <p class="hk-gender">
+    T3, T4 & TSH • Reports within 6 hours
+  </p>
+
+  <label class="hk-compare">
+    <a href="package-details.html?id=thyroid" class="hk-view-details">
+      View Details
+    </a>
+  </label>
+
+  <div class="hk-price">
+    <span class="hk-old">₹1299</span>
+    <span class="hk-new">₹599</span>
+    <span class="hk-off">54% Off</span>
+  </div>
+
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="108">Add to Cart</button>
+    <button class="hk-book btn outline">
+      Book Now
+    </button>
+  </div>
+</div>
+
+
+    <!-- CARD 9: Vitamin & Mineral Checkup -->
+<!-- CARD 9: Vitamin & Mineral Checkup -->
+<div class="hk-card">
+  <img src="../images/vitamin-full.webp" class="hk-img">
+
+  <h3 class="hk-name">Vitamin & Mineral Checkup</h3>
+
+  <p class="hk-meta">
+    Essential nutrient screening for energy & immunity
+  </p>
+
+  <p class="hk-gender">
+    Vitamin D, B12, Iron & Calcium • Reports within 6 hours
+  </p>
+
+  <label class="hk-compare">
+    <a href="package-details.html?id=vitamin" class="hk-view-details">
+      View Details
+    </a>
+  </label>
+
+  <div class="hk-price">
+    <span class="hk-old">₹2499</span>
+    <span class="hk-new">₹1499</span>
+    <span class="hk-off">40% Off</span>
+  </div>
+
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="109">Add to Cart</button>
+    <button class="hk-book btn outline">
+      Book Now
+    </button>
+  </div>
+</div>
+
+
+<!-- CARD 10: Pre-employment Health Checkup -->
+<div class="hk-card">
+  <img src="../images/emp.webp" class="hk-img">
+
+  <h3 class="hk-name">Pre-Employment Health Checkup</h3>
+
+  <p class="hk-meta">
+    Comprehensive medical screening for new hires
+  </p>
+
+  <p class="hk-gender">
+    20–30 Parameters • Reports within 24 hours
+  </p>
+
+  <label class="hk-compare">
+    <a href="package-details.html?id=preemployment" class="hk-view-details">
+      View Details
+    </a>
+  </label>
+
+  <div class="hk-price">
+    <span class="hk-old">₹2999</span>
+    <span class="hk-new">₹1699</span>
+    <span class="hk-off">43% Off</span>
+  </div>
+
+  <div class="hk-actions">
+    <button class="hk-cart" data-id="110">Add to Cart</button>
+    <button class="hk-book btn outline">
+      Book Now
+    </button>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+
+
+<section class="nearby-tests">
+  <div class="container">
+    <h3>Popular Blood Tests in Bangalore</h3>
+
+    <div class="nearby-links">
+
+      <!-- Column 1 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=cbc">CBC Blood Test</a></li>
+        <li><a href="bloodtest-details.html?id=crp">C-Reactive Protein (CRP) Test</a></li>
+        <li><a href="bloodtest-details.html?id=hba1c">HbA1c Test</a></li>
+        <li><a href="bloodtest-details.html?id=thyroid">Thyroid Profile Test (TSH, T3, T4)</a></li>
+        <li><a href="bloodtest-details.html?id=lipid">Lipid Profile Test</a></li>
+        <li><a href="bloodtest-details.html?id=lft">Liver Function Test (LFT)</a></li>
+        <li><a href="bloodtest-details.html?id=kft">Kidney Function Test (KFT)</a></li>
+        <li><a href="bloodtest-details.html?id=bsugar">Blood Sugar Test</a></li>
+      </ul>
+
+      <!-- Column 2 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=vitb12">Vitamin B12 Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitd">Vitamin D Test</a></li>
+        <li><a href="bloodtest-details.html?id=vitk">Vitamin K Test</a></li>
+        <li><a href="bloodtest-details.html?id=iron">Iron Studies</a></li>
+        <li><a href="bloodtest-details.html?id=hormone">Hormone Profile</a></li>
+        <li><a href="bloodtest-details.html?id=folate">Folate Test</a></li>
+        <li><a href="bloodtest-details.html?id=calcium">Calcium Test</a></li>
+        <li><a href="bloodtest-details.html?id=bloodculture">Blood Culture</a></li>
+      </ul>
+
+      <!-- Column 3 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=ironferritin">Iron & Ferritin Test</a></li>
+        <li><a href="bloodtest-details.html?id=psa">Prostate Specific Antigen (PSA)</a></li>
+        <li><a href="bloodtest-details.html?id=cholesterol">Cholesterol – HDL/LDL</a></li>
+        <li><a href="bloodtest-details.html?id=thyroidantibodies">Thyroid Antibodies Test</a></li>
+        <li><a href="bloodtest-details.html?id=urine">Urine Routine & Microscopy</a></li>
+        <li><a href="bloodtest-details.html?id=insulin">Insulin Test</a></li>
+        <li><a href="bloodtest-details.html?id=psa">PSA Test</a></li>
+        <li><a href="bloodtest-details.html?id=magnesium">Magnesium Test</a></li>
+      </ul>
+
+      <!-- Column 4 -->
+      <ul>
+        <li><a href="bloodtest-details.html?id=dengue">Dengue Test (NS1, IgG, IgM)</a></li>
+        <li><a href="bloodtest-details.html?id=malaria">Malaria Test</a></li>
+        <li><a href="bloodtest-details.html?id=typhoid">Typhoid Test</a></li>
+        <li><a href="bloodtest-details.html?id=chikungunya">Chikungunya Test</a></li>
+        <li><a href="bloodtest-details.html?id=widal">Widal Test</a></li>
+        <li><a href="bloodtest-details.html?id=hiv">HIV Test</a></li>
+        <li><a href="bloodtest-details.html?id=hepatitis_b">Hepatitis B Test</a></li>
+        <li><a href="bloodtest-details.html?id=hepatitis_c">Hepatitis C Test</a></li>
+      </ul>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="about-labs">
+  <div class="container">
+
+    <h3>About Rapid Labs</h3>
+<p>
+  Experience fast, accurate, and dependable diagnostic services with Rapid Labs — one of Bangalore’s most trusted names in medical testing. Our NABL-accredited laboratory is equipped with advanced diagnostic technology and supported by experienced pathologists and skilled technicians committed to precision and patient care. From routine blood investigations to specialized diagnostics in Cardiology, Neurology, Oncology, Gynecology, and more, Rapid Labs delivers reliable results with speed and accuracy. Enjoy seamless online booking, convenient doorstep sample collection across Bangalore, and secure digital reports delivered on time — ensuring complete comfort, confidence, and peace of mind for you and your family.
+</p>
+
+<h4>Popular Health Packages</h4>
+
+<div class="popular-tests">
+  <a href="package-details.html?id=master">Master Health Checkup</a> |
+  <a href="package-details.html?id=women">Women Health Checkup</a> |
+  <a href="package-details.html?id=diabetic">Diabetic Profile</a> |
+  <a href="package-details.html?id=basic">Basic Health Checkup</a> |
+  <a href="package-details.html?id=heart">Heart Health Checkup</a> |
+  <a href="package-details.html?id=executive">Executive Health Checkup</a> |
+  <a href="package-details.html?id=senior">Senior Citizen Health Checkup</a> |
+  <a href="package-details.html?id=thyroid">Thyroid Health Checkup</a> |
+  <a href="package-details.html?id=vitamin">Vitamin & Mineral Checkup</a> |
+  <a href="package-details.html?id=preemployment">Pre-employment Health Checkup</a>
+</div>
+
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h4>Patients</h4>
+      <ul>
+        <li><a href="footer-details.html#book-test-popup">Book a Test</a></li>
+        <li><a href="footer-details.html#upload-prescription">Upload Prescription</a></li>
+        <li><a href="footer-details.html#download-report">Download Report</a></li>
+        <li><a href="footer-details.html#health-packages">Health Packages</a></li>
+        <li><a href="footer-details.html#lab-locator">Lab Locator</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Partner With Us</h4>
+      <ul>
+        <li><a href="footer-details.html#join-network">Join Our Lab Network</a></li>
+        <li><a href="footer-details.html#refer-earn">Refer & Earn</a></li>
+        <li><a href="footer-details.html#community-programs">Community Health Programs</a></li>
+
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal & Support</h4>
+      <ul>
+        <li><a href="footer-details.html#privacy-policy">Privacy Policy</a></li>
+        <li><a href="footer-details.html#terms-conditions">Terms & Conditions</a></li>
+        <li><a href="footer-details.html#contact-support">Contact Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="footer-details.html#about-us">About Us</a></li>
+        <li><a href="footer-details.html#mission-vision">Mission & Vision</a></li>
+        <li><a href="footer-details.html#blog-updates">Blog / Updates</a></li>
+        <li><a href="footer-details.html#contact">Contact</a></li>
+        <li><a href="footer-details.html#cookie-policy">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="footer-details.html#get-in-touch">Get in Touch</a></li>
+        <li><a href="footer-details.html#faqs">FAQs</a></li>
+        <li><a href="footer-details.html#sitemap">Sitemap</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<section class="seo-footer">
+  <div class="seo-container">
+
+    <div class="seo-col">
+      <strong>Rapid Labs Bangalore</strong><br>
+      Diagnostic Centre in Bangalore<br>
+      Blood Test Lab Near Me<br>
+      Home Sample Collection<br>
+      Health Checkup Packages
+    </div>
+
+    <div class="seo-col">
+      <strong>Popular Blood Tests</strong><br>
+      CBC Blood Test<br>
+      Thyroid Test (TSH, T3, T4)<br>
+      Diabetes Test (HbA1c, Fasting Sugar)<br>
+      Cholesterol & Lipid Profile
+    </div>
+
+    <div class="seo-col">
+      <strong>Full Body Checkups</strong><br>
+      Complete Health Checkup<br>
+      Preventive Health Packages<br>
+      Senior Citizen Health Check<br>
+      Women’s Health Checkup
+    </div>
+
+    <div class="seo-col">
+      <strong>Why Choose Rapid Labs</strong><br>
+      Accurate & Fast Reports<br>
+      Affordable Blood Test Prices<br>
+      Certified Lab Technicians<br>
+      Online Report Download
+    </div>
+
+  </div>
+
+<div class="seo-bottom">
+  Rapid Labs & Diagnostics – Trusted Diagnostic Centre and Blood Test Lab in Bangalore offering Fast Reports and Home Sample Collection.
+</div>
+</section>
+
+<a
+  href="https://wa.me/919999999999?text=Hello%20Rapid%20Labs,%20I%20want%20to%20book%20a%20test"
+  class="whatsapp-float"
+  target="_blank"
+  aria-label="Chat on WhatsApp"
+>
+  <span class="wa-pulse"></span>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+
+<!-- booking model -->
+
+<div class="med-booking-modal" id="bookingModal">
+
+  <div class="med-booking-card">
+
+    <button class="med-close" id="closeBookingModal">✕</button>
+
+    <!-- LEFT SIDE -->
+
+    <div class="med-left">
+
+      <h2>Rapid Booking</h2>
+      <p>Fast • Secure • Trusted</p>
+
+    </div>
+
+    <!-- RIGHT SIDE FORM -->
+
+    <div class="med-right">
+
+      <div class="med-header">
+        <h3>Book Your Scan</h3>
+        <p>Takes less than 10 seconds</p>
+      </div>
+
+        <form id="bookingForm">
+
+          <div class="med-input">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name" required>
+          </div>
+
+          <div class="med-input">
+            <label>Mobile Number</label>
+            <input type="tel" placeholder="Enter phone number" required>
+          </div>
+
+          <div class="med-input">
+            <label>Test / Package</label>
+            <input type="text" id="testTypeInput" readonly>
+          </div>
+
+          <div class="med-input">
+            <label>Location</label>
+            <input type="text" id="locationInput" placeholder="Enter your location">
+          </div>
+
+          <button type="button" id="detectLocation" class="detect-location">
+            📍 Detect My Location
+          </button>
+
+          <button type="submit" class="med-book-btn">
+            Confirm Booking
+          </button>
+
+        </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script src="../script/script.js"></script>
+<script src="../script/location.js"></script>
+<script src="../script/product.js"></script>
+<script src="../script/search.js"></script>
+<script src="../script/cart.js"></script>
+</body>
+</html>
