@@ -175,6 +175,58 @@ body {
   }
 }
 
+.info-btn {
+  display: inline-block;
+  padding: 8px 10px;
+  margin-top: 10px;
+  border-radius: 444px; /* pill shape */
+  border: 1px solid #dbeafe;
+  background: #f8fbff;
+  color: #1e40af;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.info-btn:hover {
+  background: #1e40af;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(30,64,175,0.25);
+  transform: translateY(-1px);
+}
+
+
+.book-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 14px;
+  border-radius: 14px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #42a5f5, #1e88e5);
+  color: white;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(30,136,229,0.25);
+}
+
+.book-btn:hover {
+  transform: translateY(-2px);
+}
+
+.book-btn:active {
+  transform: scale(0.97);
+}
+
+.book-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+
 /* TABLET */
 @media (min-width: 600px) {
   .container {
@@ -210,6 +262,7 @@ body {
 
   <input type="text" id="name" placeholder="Full Name" required>
   <input type="tel" id="mobile" placeholder="Mobile Number" required>
+  <input type="text" id="testname" placeholder="Test Name (e.g. CBC, Thyroid)" required>
   <input type="text" id="location" placeholder="Your Location" required>
 
   <button class="loc-btn" onclick="getLocation()">Use My Current Location</button>
@@ -217,12 +270,21 @@ body {
   <!-- ✅ NEW (replaces date + time) -->
   <input type="text" id="datetime" placeholder="Select Date & Time" required>
 
-  <button onclick="sendToTelegram()">Book Now</button>
-
-  <div class="success" id="successMsg">
+    <div class="success" id="successMsg">
     ✅ Booking Successful! Our team will contact you soon.
   </div>
+
+
+<button class="book-btn" onclick="sendToTelegram()">Book Now</button>
+
+  <button class="info-btn" onclick="visitWebsite()">
+    Learn More About Our Tests on Our Website
+  </button>
+  
+
+
 </div>
+
 
 
 
@@ -288,11 +350,12 @@ async function sendToTelegram() {
 
   let name = document.getElementById("name").value.trim();
   let mobile = document.getElementById("mobile").value.trim();
+  let testname = document.getElementById("testname").value.trim();
   let location = document.getElementById("location").value.trim();
   let datetime = document.getElementById("datetime").value.trim();
 
   // ✅ VALIDATION
-  if (!name || !mobile || !location || !datetime) {
+  if (!name || !mobile || !testname || !location || !datetime) {
     alert("Please fill all fields");
     return;
   }
@@ -309,13 +372,14 @@ async function sendToTelegram() {
 
   // ✨ CLEAN MESSAGE FORMAT
   let message = `
-🧪 *New Lab Booking*
+  🧪 *New Lab Booking*
 
-👤 *Name:* ${name}
-📞 *Mobile:* ${mobile}
-📍 *Location:* ${location}
-📅 *Date & Time:* ${datetime}
-`;
+  👤 *Name:* ${name}
+  📞 *Mobile:* ${mobile}
+  🧬 *Test:* ${testname}
+  📍 *Location:* ${location}
+  📅 *Date & Time:* ${datetime}
+  `;
 
   // 🔐 ⚠️ REPLACE WITH NEW TOKEN (DO NOT USE OLD ONE)
   let token = "8674468800:AAG-Th-PKddYC9TeIuSkBLrP5g2Vxo3y14A";
@@ -344,6 +408,7 @@ async function sendToTelegram() {
       // 🧹 RESET FORM
       document.getElementById("name").value = "";
       document.getElementById("mobile").value = "";
+      document.getElementById("testname").value = "";
       document.getElementById("location").value = "";
       document.getElementById("datetime").value = "";
 
@@ -362,7 +427,9 @@ async function sendToTelegram() {
 }
 
 
-
+function visitWebsite() {
+  window.open("https://rapidlabs.in", "_blank");
+}
 </script>
 
 
