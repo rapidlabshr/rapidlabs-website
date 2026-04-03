@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapid Labs</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Premium gradient + image overlay */
+  background:
+    linear-gradient( rgba(238,244,255,0.95) 40%, rgba(238, 255, 254, 0.95) 30%),
+    url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1400&q=80');
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  /* Text & smoothness */
+  color: #1f2937;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+} 
+
+
+
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.header h1 {
+  color: #0b5ed7;
+  margin: 0;
+}
+
+.header h2 {
+  color: #222;
+  margin: 5px 0;
+}
+
+.header p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Grid */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Title */
+.card h3 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Old price */
+.old-price {
+  text-decoration: line-through;
+  color: #9ca3af;
+  font-size: 13px;
+  margin-right: 6px;
+}
+
+/* New price */
+.price {
+  color: #ef4444;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.badge {
+  background: #ff6600;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.details {
+  font-size: 13px;
+  color: #555;
+  margin-top: 8px;
+}
+
+/* Button */
+.view-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 14px;
+  background: #0b5ed7;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.cta h2 {
+  color: #ff6600;
+}
+
+.book-btn {
+  background: linear-gradient(45deg, #ff6600, #ff8533);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* WhatsApp */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+/* Modal */
+/* Modal Background */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+}
+
+/* Modal Box */
+.modal-content {
+  background: #fff;
+  width: 95%;
+  max-width: 420px;
+  height: 90vh; /* FIX HEIGHT */
+  margin: 5vh auto;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column; /* IMPORTANT */
+  overflow: hidden;
+}
+
+/* Sticky Header */
+.modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Scroll Area */
+.modal-body {
+  padding: 15px;
+  overflow-y: auto; /* ENABLE SCROLL */
+  flex: 1;
+}
+
+/* Smooth scroll */
+.modal-body::-webkit-scrollbar {
+  width: 4px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+  <h1>Rapid Labs</h1>
+  <h2>Full Body Checkups</h2>
+  <p>Free Home Collection • Reports in 6 Hours</p>
+</div>
+
+<div class="container">
+  <div class="cards">
+
+    <div class="card">
+      <span class="tag">Checkup</span>
+      <h3>Full Body Checkup</h3>
+      <div class="old-price">₹2700</div>
+      <div class="price">₹1890</div>
+      <div class="badge">30% OFF</div>
+      <div class="details">50 Parameters • Reports in 6 hrs</div>
+      <div class="view-btn" onclick="openModal('fullBody')">View Details</div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Checkup</span>
+      <h3>Master Health Check Up</h3>
+      <div class="old-price">₹1284</div>
+      <div class="price">₹899</div>
+      <div class="badge">30% OFF</div>
+      <div class="details">80 Parameters • Reports in 6 hrs</div>
+      <div class="view-btn" onclick="openModal('master')">View Details</div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Checkup</span>
+      <h3>Heart Check Up</h3>
+      <div class="old-price">₹2284</div>
+      <div class="price">₹1599</div>
+      <div class="badge">30% OFF</div>
+      <div class="details">50 Parameters • Reports in 6 hrs</div>
+      <div class="view-btn" onclick="openModal('heart')">View Details</div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Checkup</span>
+      <h3>Well Women Check Up</h3>
+      <div class="old-price">₹2713</div>
+      <div class="price">₹1899</div>
+      <div class="badge">30% OFF</div>
+      <div class="details">50 Parameters • Reports in 6 hrs</div>
+      <div class="view-btn" onclick="openModal('women')">View Details</div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Checkup</span>
+      <h3>Diabetic Profile</h3>
+      <div class="old-price">₹900</div>
+      <div class="price">₹630</div>
+      <div class="badge">30% OFF</div>
+      <div class="details">25 Parameters • Reports in 6 hrs</div>
+      <div class="view-btn" onclick="openModal('diabetic')">View Details</div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Checkup</span>
+      <h3>Executive Health Check Up</h3>
+      <div class="old-price">₹3141</div>
+      <div class="price">₹2199</div>
+      <div class="badge">30% OFF</div>
+      <div class="details">100 Parameters • Reports in 6 hrs</div>
+      <div class="view-btn" onclick="openModal('executive')">View Details</div>
+    </div>
+
+  </div>
+
+  <div class="cta">
+    <h2>30% OFF on All Packages</h2>
+  </div>
+</div>
+<a href="https://wa.me/917892287102" class="whatsapp">💬 WhatsApp</a>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+
+    <!-- HEADER (fixed) -->
+    <div class="modal-header">
+      <span class="close" onclick="closeModal()" style="float:right; cursor:pointer;">&times;</span>
+      <h3 id="modal-title"></h3>
+      <p id="modal-params" style="font-size:13px; color:#666;"></p>
+    </div>
+
+    <!-- BODY (scrollable) -->
+    <div class="modal-body">
+      <ul id="modal-list"></ul>
+      <div id="extra-info"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const checkupData = {
+fullBody: {
+  title: "Full Body Checkup",
+  params: 50,
+  tests: [
+    {
+      group: "Liver Function Tests (LFTs)",
+      items: [
+        "Total Bilirubin",
+        "SGOT (AST)",
+        "SGPT (ALT)"
+      ]
+    },
+    {
+      group: "Kidney Function Tests (KFTs)",
+      items: [
+        "Blood Urea",
+        "Serum Creatinine"
+      ]
+    },
+    {
+      group: "Blood Sugar Tests",
+      items: [
+        "Fasting Blood Sugar (FBS)"
+      ]
+    },
+    {
+      group: "Lipid Profile",
+      items: [
+        "Total Cholesterol",
+        "Triglycerides"
+      ]
+    },
+    {
+      group: "Complete Blood Count (CBC)",
+      items: [
+        "Hemoglobin",
+        "Total WBC Count",
+        "RBC Count",
+        "Platelet Count",
+        "ESR"
+      ]
+    },
+    {
+      group: "Urine Routine",
+      items: [
+        "Color",
+        "Appearance",
+        "Specific Gravity",
+        "pH",
+        "Protein (Albumin)",
+        "Glucose"
+      ]
+    }
+  ]
+},
+
+master: {
+  title: "Master Health Check Up",
+  params: 80,
+  tests: [
+    {
+      group: "Liver Function Tests (LFTs)",
+      items: [
+        "Total Bilirubin",
+        "SGOT (AST)",
+        "SGPT (ALT)"
+      ]
+    },
+    {
+      group: "Kidney Function Tests (KFTs)",
+      items: [
+        "Blood Urea",
+        "Serum Creatinine"
+      ]
+    },
+    {
+      group: "Complete Blood Count (CBC)",
+      items: [
+        "Hemoglobin",
+        "Total WBC Count",
+        "RBC Count",
+        "Platelet Count",
+        "ESR"
+      ]
+    },
+    {
+      group: "Blood Sugar Tests",
+      items: [
+        "Fasting Blood Sugar",
+        "Postprandial Sugar"
+      ]
+    },
+    {
+      group: "Thyroid Profile",
+      items: [
+        "T3",
+        "T4",
+        "TSH"
+      ]
+    },
+    {
+      group: "Lipid Profile",
+      items: [
+        "Total Cholesterol",
+        "Triglycerides",
+        "HDL",
+        "LDL"
+      ]
+    },
+    {
+      group: "Urine Routine",
+      items: [
+        "Color",
+        "Appearance",
+        "pH",
+        "Protein",
+        "Glucose"
+      ]
+    }
+  ]
+},
+
+heart: {
+  title: "Heart Check Up",
+  params: 50,
+  tests: [
+    {
+      group: "Lipid Profile",
+      items: [
+        "Total Cholesterol",
+        "Triglycerides",
+        "HDL (Good Cholesterol)",
+        "LDL (Bad Cholesterol)"
+      ]
+    },
+    {
+      group: "ECG (Electrocardiogram)",
+      items: [
+        "Heart Rhythm Analysis",
+        "Electrical Activity of Heart"
+      ]
+    },
+    {
+      group: "Blood Pressure Check",
+      items: [
+        "Systolic Pressure",
+        "Diastolic Pressure"
+      ]
+    },
+    {
+      group: "Blood Sugar Test",
+      items: [
+        "Fasting Blood Sugar",
+        "Random Blood Sugar"
+      ]
+    },
+    {
+      group: "Echocardiography",
+      items: [
+        "Heart Structure",
+        "Valve Function",
+        "Pumping Efficiency"
+      ]
+    },
+    {
+      group: "Advanced Cardiac Risk Markers",
+      items: [
+        "hs-CRP",
+        "Homocysteine",
+        "Lipoprotein (a)"
+      ]
+    },
+    {
+      group: "Complete Blood Count (CBC)",
+      items: [
+        "Hemoglobin",
+        "WBC Count",
+        "Platelet Count"
+      ]
+    },
+    {
+      group: "Biochemical Parameters",
+      items: [
+        "Electrolytes",
+        "Calcium",
+        "Magnesium"
+      ]
+    }
+  ]
+},
+
+women: {
+  title: "Well Women Check Up",
+  params: 50,
+  tests: [
+    {
+      group: "Breast Cancer Screening (Ultrasound)",
+      items: [
+        "Breast Ultrasound Imaging",
+        "Lump Detection",
+        "Tissue Assessment"
+      ]
+    },
+    {
+      group: "Pap Smear Test (Cervical Cancer Screening)",
+      items: [
+        "Cervical Cell Analysis",
+        "Infection Screening",
+        "Cancer Risk Detection"
+      ]
+    },
+    {
+      group: "Thyroid Profile",
+      items: [
+        "T3",
+        "T4",
+        "TSH"
+      ]
+    },
+    {
+      group: "Complete Blood Count (CBC)",
+      items: [
+        "Hemoglobin",
+        "WBC Count",
+        "RBC Count",
+        "Platelet Count"
+      ]
+    },
+    {
+      group: "Blood Sugar Profile",
+      items: [
+        "Fasting Blood Sugar",
+        "Postprandial Sugar"
+      ]
+    },
+    {
+      group: "Lipid Profile",
+      items: [
+        "Total Cholesterol",
+        "Triglycerides",
+        "HDL",
+        "LDL"
+      ]
+    },
+    {
+      group: "Liver Function Test (LFT)",
+      items: [
+        "SGOT",
+        "SGPT",
+        "Bilirubin"
+      ]
+    },
+    {
+      group: "Kidney Function Test (KFT)",
+      items: [
+        "Blood Urea",
+        "Creatinine"
+      ]
+    },
+    {
+      group: "Urine Routine Examination",
+      items: [
+        "pH",
+        "Protein",
+        "Glucose",
+        "Microscopy"
+      ]
+    },
+    {
+      group: "Vitamin Profile",
+      items: [
+        "Vitamin D",
+        "Vitamin B12"
+      ]
+    }
+  ]
+},
+
+diabetic: {
+  title: "Diabetic Profile",
+  params: 25,
+  tests: [
+    {
+      group: "Blood Sugar Tests",
+      items: [
+        "Fasting Blood Sugar",
+        "Postprandial Sugar",
+        "HbA1c"
+      ]
+    },
+    {
+      group: "Complete Blood Count (CBC)",
+      items: [
+        "Hemoglobin",
+        "WBC Count",
+        "Platelet Count"
+      ]
+    },
+    {
+      group: "Lipid Profile",
+      items: [
+        "Total Cholesterol",
+        "Triglycerides",
+        "HDL",
+        "LDL"
+      ]
+    },
+    {
+      group: "Kidney Function Tests",
+      items: [
+        "Blood Urea",
+        "Creatinine"
+      ]
+    },
+    {
+      group: "Urine Tests",
+      items: [
+        "Protein",
+        "Glucose",
+        "pH"
+      ]
+    },
+    {
+      group: "Liver Function Tests (LFT)",
+      items: [
+        "SGOT",
+        "SGPT",
+        "Bilirubin"
+      ]
+    },
+    {
+      group: "Electrolytes",
+      items: [
+        "Sodium",
+        "Potassium",
+        "Chloride"
+      ]
+    }
+  ],
+  whyChoose: "This profile helps monitor blood sugar levels and detect complications early. It supports better treatment planning and long-term prevention of heart, kidney, and nerve damage.",
+  whyTest: "Provides a complete overview of glucose metabolism and related health markers, enabling early diagnosis and effective diabetes management."
+},
+
+executive: {
+  title: "Executive Health Check Up",
+  params: 100,
+  tests: [
+    {
+      group: "Vital Examination",
+      items: [
+        "Blood Pressure",
+        "BMI",
+        "Pulse Rate"
+      ]
+    },
+    {
+      group: "Complete Blood Count (CBC)",
+      items: [
+        "Hemoglobin",
+        "WBC Count",
+        "Platelet Count"
+      ]
+    },
+    {
+      group: "Diabetes Profile",
+      items: [
+        "Fasting Sugar",
+        "HbA1c"
+      ]
+    },
+    {
+      group: "Lipid Profile",
+      items: [
+        "Cholesterol",
+        "Triglycerides",
+        "HDL",
+        "LDL"
+      ]
+    },
+    {
+      group: "Liver Function Tests (LFT)",
+      items: [
+        "SGOT",
+        "SGPT",
+        "Bilirubin"
+      ]
+    },
+    {
+      group: "Kidney Function Tests (KFT)",
+      items: [
+        "Urea",
+        "Creatinine"
+      ]
+    },
+    {
+      group: "Thyroid Profile",
+      items: [
+        "T3",
+        "T4",
+        "TSH"
+      ]
+    },
+    {
+      group: "Cardiac Evaluation",
+      items: [
+        "ECG",
+        "Cardiac Risk Markers"
+      ]
+    },
+    {
+      group: "Urine Routine & Microscopy",
+      items: [
+        "pH",
+        "Protein",
+        "Microscopy"
+      ]
+    },
+    {
+      group: "Additional Screening",
+      items: [
+        "Vitamin D",
+        "Vitamin B12",
+        "Iron Studies"
+      ]
+    }
+  ],
+  whyChoose: "Ideal for professionals needing a complete health evaluation. Detects early signs of heart disease, diabetes, and organ issues for timely intervention.",
+  whyTest: "Offers a comprehensive overview of health, helping identify hidden risks and enabling proactive lifestyle and medical decisions."
+}
+};
+
+function openModal(type) {
+  const data = checkupData[type];
+
+  document.getElementById("modal").style.display = "block";
+  document.getElementById("modal-title").innerText = data.title;
+  document.getElementById("modal-params").innerText = data.params + " Parameters Included";
+
+  const list = document.querySelector(".modal-content ul");
+  list.innerHTML = "";
+
+  data.tests.forEach(group => {
+    const groupTitle = document.createElement("li");
+    groupTitle.style.fontWeight = "600";
+    groupTitle.style.marginTop = "10px";
+    groupTitle.innerText = group.group;
+    list.appendChild(groupTitle);
+
+    group.items.forEach(item => {
+      const li = document.createElement("li");
+      li.style.marginLeft = "15px";
+      li.innerText = "• " + item;
+      list.appendChild(li);
+    });
+  });
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
