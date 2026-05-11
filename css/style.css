@@ -61,10 +61,77 @@ body {
 }
 
 
-
 .location-btn:hover {
   background: #1e88e5;
   color: #ffffff;
+}
+
+/* report */
+.report-btn{
+    height:40px;
+
+    padding:0 18px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    background:linear-gradient(135deg,#1f9d55,#15803d);
+
+    color:#ffffff;
+
+    border:none;
+    outline:none;
+    text-decoration:none;
+
+    border-radius:10px;
+
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.2px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 4px 14px rgba(21,128,61,.20);
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
+}
+
+.report-btn:hover{
+    transform:translateY(-1px);
+
+    background:linear-gradient(135deg,#15803d,#166534);
+
+    box-shadow:
+        0 8px 22px rgba(21,128,61,.24);
+
+    text-decoration:none;
+}
+
+.report-btn:focus,
+.report-btn:active{
+    outline:none;
+    border:none;
+    text-decoration:none;
+}
+
+.report-btn svg,
+.report-btn i{
+    font-size:15px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .report-btn{
+        display:none;
+    }
 }
 
 

@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // 📍 GET LOCATION
 function getLocation() {
   let btn = document.querySelector(".loc-btn");
-  btn.innerText = "Detecting location...";
+  btn.innerText = "Detecting location..";
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async function(position) {
@@ -367,7 +367,7 @@ async function sendToTelegram() {
   }
 
   // 🔄 LOADING STATE
-  btn.innerText = "Booking...";
+  btn.innerText = "Booking..";
   btn.disabled = true;
 
   // ✨ CLEAN MESSAGE FORMAT

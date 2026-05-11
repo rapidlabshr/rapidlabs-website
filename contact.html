@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/cart.css">
-    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./css/about.css">
 </head>
 <body>
 
@@ -64,7 +64,7 @@
   </svg>
 
   <!-- Input -->
- <input id="searchInput" type="text" placeholder="Search Blood Tests..." />
+ <input id="searchInput" type="text" placeholder="Search Blood Tests.." />
 
   <!-- Mic Icon -->
   <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +138,7 @@
 
         <!-- Left Image -->
         <div class="contact-hero-image">
-            <img src="../images/contectus.webp" alt="Rapid Labs Contact">
+            <img src="./images/contectus.webp" alt="Rapid Labs Contact">
         </div>
 
         <!-- Right Content -->
@@ -366,7 +366,7 @@
     form.addEventListener("submit", function(e) {
         e.preventDefault();
 
-        button.innerHTML = "Sending...";
+        button.innerHTML = "Sending..";
         button.disabled = true;
 
         emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
@@ -387,11 +387,11 @@
 
 
 
-<script src="../script/script.js"></script>
-<script src="../script/location.js"></script>
-<script src="../script/product.js"></script>
-<script src="../script/search.js"></script>
-<script src="../script/cart.js"></script>
+<script src="./script/script.js"></script>
+<script src="./script/location.js"></script>
+<script src="./script/product.js"></script>
+<script src="./script/search.js"></script>
+<script src="./script/cart.js"></script>
 </body>
 </html>
 

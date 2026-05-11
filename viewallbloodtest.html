@@ -6,9 +6,9 @@
     <title>Rapid Labs| viewbloodtest</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/cart.css">
-    <link rel="stylesheet" href="../css/bloodtest.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./css/bloodtest.css">
 </head>
 
 <body>
@@ -64,7 +64,7 @@
   </svg>
 
   <!-- Input -->
- <input id="searchInput" type="text" placeholder="Search Blood Tests..." />
+ <input id="searchInput" type="text" placeholder="Search Blood Tests." />
 
   <!-- Mic Icon -->
   <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg"
@@ -137,10 +137,10 @@
     <!-- LEFT SLIDER -->
     <div class="offer-slider">
       <div class="slide active">
-        <img src="../images/bloodslide1.webp" alt="Healthkind Offer 1">
+        <img src="./images/bloodslide1.webp" alt="Healthkind Offer 1">
       </div>
       <div class="slide">
-        <img src="../images/lab.webp" alt="Healthkind Offer 2">
+        <img src="./images/lab.webp" alt="Healthkind Offer 2">
       </div>
       <!-- Add more slides as needed -->
       
@@ -166,32 +166,32 @@
   <div class="cert-container">
 
     <div class="cert-item">
-      <img src="../images/icons/nabh.webp" alt="NABH">
+      <img src="./images/icons/nabh.webp" alt="NABH">
       <p>NABH Accredited<br>Laboratory</p>
     </div>
 
     <div class="cert-item">
-      <img src="../images/icons/home.webp" alt="Home Sample Collection">
+      <img src="./images/icons/home.webp" alt="Home Sample Collection">
       <p>Certified Technicians for Home Sample Collection</p>
     </div>
 
     <div class="cert-item">
-      <img src="../images/icons/cmc.webp" alt="CMC Vellore">
+      <img src="./images/icons/cmc.webp" alt="CMC Vellore">
       <p>CMC Vellore<br>Approved</p>
     </div>
 
     <div class="cert-item">
-      <img src="../images/icons/hospital.webp" alt="Own Hospital">
+      <img src="./images/icons/hospital.webp" alt="Own Hospital">
       <p>Own Hospital &<br>Diagnostics</p>
     </div>
 
     <div class="cert-item">
-      <img src="../images/icons/hospital.webp" alt="Doctors">
+      <img src="./images/icons/hospital.webp" alt="Doctors">
       <p>Reports Reviewed by<br>Qualified Doctors</p>
     </div>
 
     <div class="cert-item">
-      <img src="../images/icons/quality.webp" alt="Quality">
+      <img src="./images/icons/quality.webp" alt="Quality">
       <p>Strict Quality &<br>Hygiene Standards</p>
     </div>
 
@@ -404,11 +404,11 @@
 </a>
 
 
-<script src="../script/script.js"></script>
-<script src="../script/location.js"></script>
-<script src="../script/product.js"></script>
-<script src="../script/search.js"></script>
-<script src="../script/cart.js"></script>
+<script src="./script/script.js"></script>
+<script src="./script/location.js"></script>
+<script src="./script/product.js"></script>
+<script src="./script/search.js"></script>
+<script src="./script/cart.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -421,7 +421,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentPage = 1;
   let allTests = [];
 
-  fetch("../data/bloodtest.json")
+  fetch("./data/bloodtest.json")
     .then(response => response.json())
     .then(data => {
       allTests = data;
