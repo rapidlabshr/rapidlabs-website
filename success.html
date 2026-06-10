@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmed | Rapid Labs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f8fafc;
+  padding:20px;
+}
+
+.success-container{
+  width:100%;
+  max-width:600px;
+}
+
+.success-card{
+  background:#fff;
+  border-radius:24px;
+  padding:50px 40px;
+  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+.success-icon{
+  width:90px;
+  height:90px;
+  margin:0 auto 25px;
+  border-radius:50%;
+  background:#22c55e;
+  color:#fff;
+  font-size:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.success-card h1{
+  font-size:32px;
+  color:#111827;
+  margin-bottom:12px;
+}
+
+.success-card p{
+  color:#6b7280;
+  line-height:1.7;
+  margin-bottom:30px;
+  font-size:15px;
+}
+
+.booking-info{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:30px;
+  text-align:left;
+}
+
+.booking-info h3{
+  font-size:16px;
+  color:#111827;
+  margin-bottom:15px;
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  font-size:14px;
+}
+
+.info-row span:first-child{
+  color:#6b7280;
+}
+
+.info-row span:last-child{
+  font-weight:600;
+  color:#111827;
+}
+
+.success-actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:12px 24px;
+  border:none;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.btn-primary{
+  background:#2563eb;
+  color:#fff;
+}
+
+.btn-primary:hover{
+  background:#1d4ed8;
+}
+
+.btn-secondary{
+  background:#f3f4f6;
+  color:#111827;
+}
+
+.btn-secondary:hover{
+  background:#e5e7eb;
+}
+
+.footer-note{
+  margin-top:20px;
+  font-size:13px;
+  color:#9ca3af;
+}
+
+@media(max-width:768px){
+
+  .success-card{
+    padding:35px 25px;
+  }
+
+  .success-card h1{
+    font-size:26px;
+  }
+
+  .success-actions{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="success-container">
+
+  <div class="success-card">
+
+    <div class="success-icon">
+      ✓
+    </div>
+
+    <h1>Booking Confirmed</h1>
+
+    <p>
+      Thank you for choosing Rapid Labs.
+      Your booking has been successfully received and our team will contact you shortly for confirmation.
+    </p>
+
+    <div class="booking-info">
+
+      <h3>Booking Details</h3>
+
+      <div class="info-row">
+        <span>Booking Status</span>
+        <span>Confirmed</span>
+      </div>
+
+      <div class="info-row">
+        <span>Appointment</span>
+        <span id="appointmentDate">Scheduled</span>
+      </div>
+
+      <div class="info-row">
+        <span>Lab</span>
+        <span>Rapid Labs</span>
+      </div>
+
+    </div>
+
+    <div class="success-actions">
+
+      <a href="index.html" class="btn btn-primary">
+        Back to Home
+      </a>
+
+      <a href="tel:+917829044698" class="btn btn-secondary">
+        Contact Support
+      </a>
+
+    </div>
+
+    <div class="footer-note">
+      Need help? Contact our support team anytime.
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+// Optional: Show appointment info from localStorage
+
+const appointment = JSON.parse(localStorage.getItem("rapidlabs_appointment"));
+
+if(appointment){
+  document.getElementById("appointmentDate").textContent =
+    `${appointment.date} | ${appointment.time}`;
+}
+
+</script>
+
+</body>
+</html>

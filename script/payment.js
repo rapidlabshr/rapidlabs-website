@@ -179,7 +179,7 @@ confirmBtn.addEventListener("click", () => {
   name: members.map(m => m.name).join(", "),
   mobile_number: members[0].mobile, // primary number
     test_name: cart.map(t => t.name).join(", "),
-    location: member.location,
+    location: members[0]?.location || "",
     pincode: "",
     amount: subtotal - discount,
     sample_date: appointment.date,

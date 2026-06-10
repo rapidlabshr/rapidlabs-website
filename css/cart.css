@@ -310,16 +310,19 @@ body {
   }
 
   /* 🔥 ADD MORE (HIGHLY VISIBLE CHIP STYLE) */
-  .add-more {
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    color: #007bff !important;
-    background: rgba(0,123,255,0.12) !important;
-    padding: 8px 12px !important;
-    border-radius: 20px !important;
-    text-decoration: none !important;
-    display: inline-block;
-  }
+.add-more {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  margin-bottom: 14px;
+  display: inline-block;
+}
+
+.add-more:hover {
+  color: #000;
+}
 
   /* 🔥 NEXT BUTTON (COMPACT PRIMARY CTA) */
   .next-btn {

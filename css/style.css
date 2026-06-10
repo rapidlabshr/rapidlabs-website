@@ -608,13 +608,12 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   width: 100%;
+  height: 52px;
   background: #f1f3f4;
-  padding: 12px 18px;
+  padding: 0 18px;
   border-radius: 999px;
-  transition: all 0.3s ease;
-  z-index: 10000;
 }
 
 /* Hover effect */
@@ -634,11 +633,13 @@ body {
 
 .nav-search input {
   flex: 1;
+  min-width: 0;
   border: none;
   background: transparent;
   font-size: 16px;
   outline: none;
-  color: #202124;
+  padding: 0;
+  margin: 0;
 }
 
 /* Placeholder color */
@@ -652,17 +653,22 @@ body {
 
 .search-icon,
 .mic-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
   color: #5f6368;
-  cursor: pointer;
   flex-shrink: 0;
-  transition: 0.2s ease;
+  display: block;
 }
 
 .search-icon:hover,
 .mic-icon:hover {
   color: #202124;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
 }
 
 /* =====================================================
@@ -2395,6 +2401,63 @@ body {
   font-size:13px;
 }
 
+
+.med-payment-options{
+  display:flex;
+  gap:15px;
+  margin:20px 0;
+}
+
+.med-payment-card{
+  flex:1;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:16px;
+  cursor:pointer;
+  background:#fff;
+  transition:.25s ease;
+}
+
+.med-payment-card:hover{
+  border-color:#2563eb;
+  box-shadow:0 8px 20px rgba(37,99,235,.08);
+}
+
+.med-payment-card input{
+  margin-bottom:12px;
+}
+
+.med-pay-content{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.med-pay-icon{
+  font-size:24px;
+  line-height:1;
+}
+
+.med-pay-info strong{
+  display:block;
+  font-size:15px;
+  color:#111827;
+  margin-bottom:4px;
+}
+
+.med-pay-info p{
+  margin:0;
+  font-size:13px;
+  color:#6b7280;
+}
+
+@media(max-width:768px){
+
+  .med-payment-options{
+    flex-direction:column;
+  }
+
+}
 /* LOCATION BUTTON */
 
 .detect-location{
@@ -2679,4 +2742,34 @@ body {
   #mobileMenu .cart-link {
     display: none;
   }
+}
+
+.header-search-bar {
+  display: flex;
+  align-items: center;
+  background: #f1f3f4;
+  border-radius: 50px;
+  height: 50px;
+  padding: 0 16px;
+  gap: 10px;
+}
+
+.header-search-icon,
+.header-mic-icon {
+  font-size: 18px;
+  color: #5f6368;
+  flex-shrink: 0;
+}
+
+#headerSearchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #202124;
+}
+
+#headerSearchInput::placeholder {
+  color: #5f6368;
 }

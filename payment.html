@@ -94,7 +94,7 @@
 
 <div id="paymentModal" class="med-booking-modal">
 
-  <div class="med-booking-card" style="max-width:500px">
+  <div class="med-booking-card" style="max-width:550px">
 
     <button class="med-close" id="closePaymentModal">✕</button>
 
@@ -102,7 +102,7 @@
 
       <div class="med-header">
         <h3>Select Payment Method</h3>
-        <p>Choose how you want to pay</p>
+        <p>Choose your preferred payment option to complete the booking.</p>
       </div>
 
       <form id="paymentForm">
@@ -111,17 +111,36 @@
 
           <div class="med-payment-options">
 
+            <!-- Online Payment -->
             <label class="med-payment-card">
-              <input type="radio" name="payment_method" value="online" checked>
+              <input type="radio"
+                     name="payment_method"
+                     value="online"
+                     checked>
+
               <div class="med-pay-content">
-                ⚡ <div><strong>Pay Online</strong><p>UPI / Card</p></div>
+                <div class="med-pay-icon">⚡</div>
+
+                <div class="med-pay-info">
+                  <strong>Pay Online</strong>
+                  <p>UPI, Credit Card, Debit Card & Net Banking</p>
+                </div>
               </div>
             </label>
 
+            <!-- Cash Payment -->
             <label class="med-payment-card">
-              <input type="radio" name="payment_method" value="offline">
+              <input type="radio"
+                     name="payment_method"
+                     value="offline">
+
               <div class="med-pay-content">
-                🏠 <div><strong>Pay at Home</strong><p>Cash</p></div>
+                <div class="med-pay-icon">🏠</div>
+
+                <div class="med-pay-info">
+                  <strong>Pay at Home</strong>
+                  <p>Pay after sample collection</p>
+                </div>
               </div>
             </label>
 
@@ -140,7 +159,6 @@
   </div>
 
 </div>
-
 
 
 <script src="./script/bookingcontrol.js"></script>
