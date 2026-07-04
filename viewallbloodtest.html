@@ -209,7 +209,7 @@
 </section>
 
 <section class="hk-section view-all-page">
-  <h2 class="hk-title">Blood Test Package</h2>
+  <h2 class="hk-title">Blood Test / Package</h2>
 
   <div class="hk-results-info" id="results-info"></div>
 
@@ -404,7 +404,7 @@
   </div>
 </section>
 <a
-  href="https://wa.me/919999999999?text=Hello%20Rapid%20Labs,%20I%20want%20to%20book%20a%20test"
+  href="https://wa.me/917829044698?text=Hello%20Rapid%20Labs,%20I%20want%20to%20book%20a%20test"
   class="whatsapp-float"
   target="_blank"
   aria-label="Chat on WhatsApp"
@@ -433,11 +433,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetch("./data/bloodtest.json")
     .then(response => response.json())
-    .then(data => {
-      allTests = data;
-      window.ALL_PRODUCTS = data; // VERY IMPORTANT
-      renderPage();
+.then(data => {
+
+    data.sort((a, b) => {
+        return (a.display_order || 999999) - (b.display_order || 999999);
     });
+
+    allTests = data;
+    window.ALL_PRODUCTS = data;
+
+    renderPage();
+});
 
 
 function renderPage() {

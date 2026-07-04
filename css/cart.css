@@ -1502,3 +1502,53 @@ hr {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+
+.empty-member-card{
+
+text-align:center;
+padding:50px 30px;
+border:2px dashed #d9e2ec;
+border-radius:16px;
+background:#fff;
+
+}
+
+.empty-member-icon{
+
+font-size:60px;
+margin-bottom:15px;
+
+}
+
+.empty-member-card h3{
+
+margin-bottom:10px;
+
+}
+
+.empty-member-card p{
+
+color:#64748b;
+margin-bottom:25px;
+
+}
+
+.create-member-btn{
+
+background:#00b894;
+color:#fff;
+border:none;
+padding:14px 30px;
+border-radius:10px;
+font-size:15px;
+cursor:pointer;
+
+}
+
+.create-member-btn:hover{
+
+background:#009f7a;
+
+}
+

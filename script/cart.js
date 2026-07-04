@@ -277,7 +277,7 @@ function renderCart() {
 if (cart.length === 0) {
   container.innerHTML = `
     <div class="empty-cart">
-      <img src="../images/mtcart.webp" alt="Empty Cart">
+      <img src="./images/mtcart.webp" alt="Empty Cart">
       <h3>Your Cart is Empty</h3>
       <p>Add tests to proceed with booking</p>
     </div>
@@ -338,7 +338,8 @@ document.addEventListener("DOMContentLoaded", () => {
   updateAddToCartButtons();
   renderCart();
   initNextButton();
-  initModal();   // ADD THIS LINE
+  initModal();
+  initStepNavigation();
 });
 
 
@@ -454,4 +455,28 @@ function goToCart() {
 
 function goToServices() {
   window.location.href = "services.html";
+}
+
+/* ===============================
+   STEP NAVIGATION
+================================ */
+
+function initStepNavigation() {
+
+  document.querySelectorAll(".cart-steps .step").forEach(step => {
+
+    step.style.cursor = "pointer";
+
+    step.addEventListener("click", function () {
+
+      const page = this.dataset.page;
+
+      if (page) {
+        window.location.href = page;
+      }
+
+    });
+
+  });
+
 }

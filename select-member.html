@@ -15,10 +15,27 @@
 <section class="cart-container">
 
 <div class="cart-steps">
-<div class="step completed">1<br><span>Add to Cart</span></div>
-<div class="step active">2<br><span>Select Member</span></div>
-<div class="step">3<br><span>Date & Time</span></div>
-<div class="step">4<br><span>Payment</span></div>
+
+  <div class="step active" data-page="cart.html">
+    <div class="step-number">1</div>
+    <span>Add to Cart</span>
+  </div>
+
+  <div class="step" data-page="select-member.html">
+    <div class="step-number">2</div>
+    <span>Select Member</span>
+  </div>
+
+  <div class="step" data-page="date-time.html">
+    <div class="step-number">3</div>
+    <span>Date & Time</span>
+  </div>
+
+  <div class="step" data-page="payment.html">
+    <div class="step-number">4</div>
+    <span>Payment</span>
+  </div>
+
 </div>
 
 <div class="member-container">
@@ -28,7 +45,7 @@
 <div id="memberList" class="member-list"></div>
 
 <button class="add-member-btn" id="addMemberBtn">
-+ Add New Member
++ Add Family Member
 </button>
 
 <div class="cart-actions">
@@ -79,6 +96,7 @@ Next →
 </div>
 
 <script src="./script/member.js"></script>
+<script src="./script/cart.js"></script>
 
 </body>
 </html>

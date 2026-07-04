@@ -186,6 +186,8 @@ confirmBtn.addEventListener("click", () => {
     sample_time: appointment.time
   };
 
+  console.log("Lead Data:", finalLeadData);
+
   paymentModal.style.display = "flex";
 });
 
@@ -205,7 +207,7 @@ document.getElementById("paymentForm").addEventListener("submit", async function
     if(paymentMethod === "online"){
 
       // 🔹 CREATE ORDER
-      const orderRes = await fetch("http://127.0.0.1:5000/create-order",{
+      const orderRes = await fetch("https://backend-1bx3.onrender.com/create-order",{
         method:"POST",
         headers:{ "Content-Type":"application/json" },
         body: JSON.stringify({ amount: finalLeadData.amount })
@@ -223,19 +225,27 @@ document.getElementById("paymentForm").addEventListener("submit", async function
 
         handler: async function () {
 
-          await fetch("http://127.0.0.1:5000/api/create-lead",{
-            method:"POST",
-            headers:{ "Content-Type":"application/json" },
-            body: JSON.stringify({
-              ...finalLeadData,
-              payment_status: "Paid"
-            })
-          });
+const res = await fetch("https://backend-1bx3.onrender.com/api/create-lead",{
+  method:"POST",
+  headers:{ "Content-Type":"application/json" },
+  body: JSON.stringify({
+    ...finalLeadData,
+    payment_status: "Paid"
+  })
+});
 
-          alert("✅ Payment Successful & Booking Confirmed");
+const data = await res.json();
 
-          localStorage.clear();
-          window.location.href = "success.html";
+console.log("Create Lead Response:", data);
+
+if (!res.ok || !data.success) {
+  throw new Error(data.message || "Booking failed");
+}
+
+alert("✅ Payment Successful & Booking Confirmed");
+
+localStorage.clear();
+window.location.href = "success.html";
         }
       };
 
@@ -244,26 +254,40 @@ document.getElementById("paymentForm").addEventListener("submit", async function
 
     }else{
 
-      // 🔹 OFFLINE
-      await fetch("http://127.0.0.1:5000/api/create-lead",{
-        method:"POST",
-        headers:{ "Content-Type":"application/json" },
-        body: JSON.stringify({
-          ...finalLeadData,
-          payment_status: "Not Paid"
-        })
-      });
+// 🔹 OFFLINE
+const res = await fetch("https://backend-1bx3.onrender.com/api/create-lead",{
+  method:"POST",
+  headers:{ "Content-Type":"application/json" },
+  body: JSON.stringify({
+    ...finalLeadData,
+    payment_status: "Not Paid"
+  })
+});
 
-      alert("✅ Booking Confirmed! Pay at Home");
+const data = await res.json();
+
+console.log("Create Lead Response:", data);
+
+if (!res.ok || !data.success) {
+  throw new Error(data.message || "Booking failed");
+}
+
+alert("✅ Booking Confirmed! Pay at Home");
+
+localStorage.clear();
+window.location.href = "success.html";
 
       localStorage.clear();
       window.location.href = "success.html";
     }
 
-  }catch(err){
-    console.error(err);
-    alert("❌ Server error");
-  }
+}catch(err){
+
+    console.error("Booking Error:", err);
+
+    alert(err.message);
+
+}
 
 });
 

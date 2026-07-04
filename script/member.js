@@ -17,20 +17,11 @@ let members = JSON.parse(localStorage.getItem("rapidlabs_members")) || [];
 
 /* CREATE SELF MEMBER */
 
-if(members.length === 0){
+/* CREATE SELF MEMBER */
+/* Don't create an empty member automatically */
 
-members = [{
-id:1,
-name:"Self",
-mobile:"",
-age:"",
-gender:"",
-location:"",
-type:"self"
-}];
-
-localStorage.setItem("rapidlabs_members", JSON.stringify(members));
-
+if (!Array.isArray(members)) {
+    members = [];
 }
 
 
@@ -39,6 +30,47 @@ renderMembers();
 function renderMembers(){
 
   memberList.innerHTML = "";
+
+
+  if (members.length === 0) {
+
+    memberList.innerHTML = `
+        <div class="empty-member-card">
+
+            <div class="empty-member-icon">
+                👤
+            </div>
+
+            <h3>No Member Added</h3>
+
+            <p>
+                Add yourself before booking a test.
+            </p>
+
+            <button class="create-member-btn" id="createSelfBtn">
+                + Add Yourself
+            </button>
+
+        </div>
+    `;
+
+    document.getElementById("createSelfBtn").onclick = () => {
+
+        editingMemberId = null;
+
+        document.getElementById("memberName").value = "";
+        document.getElementById("memberMobile").value = "";
+        document.getElementById("memberAge").value = "";
+        document.getElementById("memberGender").value = "";
+        document.getElementById("memberLocation").value = "";
+
+        modal.style.display = "flex";
+
+    };
+
+    return;
+
+}
 
   members.forEach(member => {
 
@@ -70,9 +102,23 @@ function renderMembers(){
 
     const checkbox = div.querySelector(".member-checkbox");
 
-    checkbox.addEventListener("change", () => {
-        updateSelectedMembers();
-        });
+checkbox.addEventListener("change", (e) => {
+
+    // Don't allow selecting an incomplete member
+    if (!member.mobile || !member.age || !member.gender || !member.location) {
+
+        e.preventDefault();
+
+        checkbox.checked = false;
+
+        openEditForm(member.id);
+
+        return;
+    }
+
+    updateSelectedMembers();
+
+});
 
 
 
@@ -270,12 +316,13 @@ nextBtn.disabled = false;
 }else{
 
 members.push({
-id:Date.now(),
+id: Date.now(),
 name,
 mobile,
 age,
 gender,
-location
+location,
+type: members.length === 0 ? "self" : "family"
 });
 
 }
@@ -298,6 +345,8 @@ if(selected.length === 0){
 alert("Please select member");
 return;
 }
+
+
 
 window.location.href="date-time.html";
 
