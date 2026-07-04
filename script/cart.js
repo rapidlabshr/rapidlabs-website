@@ -1,22 +1,4 @@
-// /* ===============================
-//    PRODUCTS MASTER DATA
-// ================================ */
-// const PRODUCTS = {
-//   // Blood Tests
-//   1: { name: "CBC Test", price: 280, details: "15 Parameters · Blood Test" },
-//   2: { name: "CRP Test", price: 280, details: "70 Parameters · Blood Test" },
-//   3: { name: "HbA1c Test", price: 455, details: "1 Parameter · Blood Test" },
-//   4: { name: "Vitamin B12, D Test", price: 1890, details: "2 Parameters · Blood Test" },
-//   5: { name: "Lipid Profile Test", price: 420, details: "8 Parameters · Blood Test" },
-//   303: { name: "Kidney Function Test (KFT)", price: 700, details: "Blood Test · 8 Parameters" },
 
-//   // Health Packages
-//   6: { name: "Basic Health Checkup", price: 1299, details: "Routine health screening package" },
-//   7: { name: "Master Health Checkup", price: 2499, details: "Comprehensive full body package" },
-//   8: { name: "Heart Health Checkup", price: 2199, details: "Cardiac risk assessment tests" },
-//   9: { name: "Well Women Checkup", price: 2299, details: "Women’s complete health profile" },
-//   10:{ name: "Diabetic Profile", price: 1199, details: "Blood sugar & diabetes monitoring" }
-// };
 
 
 /* ===============================
@@ -66,7 +48,9 @@ if (parentScanIds.includes(id)) {
       const p = window.PRODUCT_DATA[pid];
       const pname = p.name.toLowerCase();
 
-      return pname.includes(name.split(" ")[0]) && pid !== id;
+      const keyword = name.split(" ")[0].toLowerCase();
+
+      return pname.startsWith(keyword + " ") && pid !== id;
 
     });
 
@@ -201,17 +185,21 @@ whatsappBtn.onclick = function () {
 
 // remve from cart 
 function removeFromCart(id) {
+
   let cart = getCart();
 
-  cart = cart.filter(item => item.id !== id);
+  cart = cart.filter(item => Number(item.id) !== Number(id));
 
   saveCart(cart);
 
   renderCart();
   updateCartCount();
   updateAddToCartButtons();
-}
 
+  // Notify other pages that the cart changed
+  localStorage.setItem("cart_updated", Date.now());
+
+}
 
 /* ===============================
    CART COUNT (Footer)
@@ -354,6 +342,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+window.addEventListener("storage", function (e) {
+
+  if (e.key === "cart_updated") {
+
+    updateCartCount();
+    updateAddToCartButtons();
+    renderCart();
+
+  }
+
+});
 
 /* ===============================
    MODAL LOGIC

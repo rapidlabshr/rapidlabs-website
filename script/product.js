@@ -7,34 +7,34 @@ const PRODUCT_DATA = {
   1: { name: "CBC Test", price: 280, details: "15 Parameters · Blood Test" },
   2: { name: "CRP Test", price: 480, details: "70 Parameters · Blood Test" },
   3: { name: "HbA1c Test", price: 455, details: "1 Parameter · Blood Test" },
-  4: { name: "Vitamin B12", price: 1890, details: "2 Parameters · Blood Test" },
+  4: { name: "Vitamin B12", price: 799, details: "1 Parameters · Blood Test" },
   5: { name: "Lipid Profile Test", price: 420, details: "8 Parameters · Blood Test" },
   
-  301: { name: "Thyroid Profile", price: 560, details: "5 Parameters . Blood Test" },
-  302: { name: "LFT", price: 840, details: "Blood Test · 12 Parameters" },
-  303: { name: "KFT", price: 700, details: "Blood Test · 8 Parameters" },
-  304: { name: "Blood Sugar (Fasting/PP)", price: 350, details: "Blood Test · 2 Parameters" },
+  301: { name: "Thyroid Profile", price: 499, details: "5 Parameters . Blood Test" },
+  302: { name: "LFT", price:599, details: "Blood Test · 12 Parameters" },
+  303: { name: "KFT", price: 799, details: "Blood Test · 8 Parameters" },
+  304: { name: "Blood Sugar (Fasting/PP)", price: 299, details: "Blood Test · 2 Parameters" },
   305: { name: "Vitamin D Test", price: 490, details: "Blood Test · 1 Parameter" },
-  306: { name: "Iron Studies", price: 420, details: "Blood Test · 4 Parameters" },
-  307: { name: "Hormone Profile", price: 630, details: "Blood Test · 6 Parameters" },
+  306: { name: "Iron Studies", price: 499, details: "Blood Test · 4 Parameters" },
+  307: { name: "Hormone Profile", price: 690, details: "Blood Test · 6 Parameters" },
   308: { name: "Urine Routine & Microscopy", price: 350, details: "Urine Test · 8 Parameters" },
   309: { name: "electrolytes", price: 490, details: "Blood Test · 6 Parameters" },
-  310: { name: "Calcium Test", price: 420, details: "Blood Test · 2 Parameters" },
+  310: { name: "Calcium Test", price: 299, details: "Blood Test · 2 Parameters" },
   311: { name: "Prostate Specific Antigen (PSA)", price: 560, details: "Blood Test · 1 Parameter" },
   312: { name: "Iron & Ferritin Test", price: 490, details: "Blood Test · 4 Parameters" },
-  313: { name: "Blood Culture", price: 700, details: "Blood Test · 1 Parameter" },
+  313: { name: "Blood Culture", price: 599, details: "Blood Test · 1 Parameter" },
   314: { name: "Coagulation Profile", price: 630, details: "Blood Test · 4 Parameters" },
   315: { name: "Thyroid Antibodies Test", price: 595, details: "Blood Test · 3 Parameters" },
   316: { name: "Uric Acid Test", price: 280, details: "Blood Test · 1 Parameter" },
   317: { name: "Homocysteine Test", price: 840, details: "Blood Test · 1 Parameter" },
   318: { name: "Triglycerides Test", price: 420, details: "Blood Test · 1 Parameter" },
   319: { name: "Cholesterol – HDL/LDL", price: 420, details: "Blood Test · 2 Parameters" },
-  320: { name: "Folate Test", price: 350, details: "Blood Test · 1 Parameter" },
+  320: { name: "Folate Test", price: 450, details: "Blood Test · 1 Parameter" },
   321: { name: "Cortisol Test", price: 490, details: "Blood Test · 1 Parameter" },
-  322: { name: "Insulin Test", price: 560, details: "Blood Test · 1 Parameter" },
+  322: { name: "Insulin Test", price: 399, details: "Blood Test · 1 Parameter" },
   323: { name: "Magnesium Test", price: 350, details: "Blood Test · 1 Parameter" },
   324: { name: "Amylase & Lipase Test", price: 490, details: "Blood Test · 2 Parameters" },
-  325: { name: "Vitamin K Test", price: 420, details: "Blood Test · 1 Parameter" },
+  325: { name: "Vitamin K Test", price: 2199, details: "Blood Test · 1 Parameter" },
   326: { name: "Dengue Test (NS1, IgG, IgM)", price: 900, details: "Blood Test · Dengue Detection" },
   327: { name: "Malaria Test", price: 350, details: "Blood Test · Malaria Parasite Detection" },
   328: { name: "Typhoid Test", price: 400, details: "Blood Test · Typhoid Screening" },
@@ -50,7 +50,7 @@ const PRODUCT_DATA = {
   7: { name: "Master Health Checkup", price: 2499, details: "Comprehensive full body package" },
   8: { name: "Heart Health Checkup", price: 2199, details: "Cardiac risk assessment tests" },
   9: { name: "Well Women Checkup", price: 2299, details: "Women’s complete health profile" },
-  10: { name: "Diabetic Profile", price: 1199, details: "Blood sugar & diabetes monitoring" },
+  10: { name: "Diabetic Profile", price: 899, details: "Blood sugar & diabetes monitoring" },
 
 
 /* ===============================
@@ -58,21 +58,21 @@ const PRODUCT_DATA = {
 ================================ */
 
 // Parent Scans
-11: { name: "X-Ray Scan", price: 560, details: "Digital X-Ray · Imaging Test" },
+11: { name: "X-Ray Scan", price: 399, details: "Digital X-Ray · Imaging Test" },
 12: { name: "MRI Scan", price: 4200, details: "Magnetic Resonance Imaging" },
 13: { name: "CT Scan", price: 3500, details: "Computed Tomography Scan" },
-14: { name: "Ultrasound (USG)", price: 1400, details: "Ultrasound Imaging Scan" },
+14: { name: "Ultrasound (USG)", price: 1099, details: "Ultrasound Imaging Scan" },
 15: { name: "PET Scan", price: 14000, details: "Positron Emission Tomography" },
 
 /* ===============================
    X-RAY TYPES (5 Major)
 ================================ */
 
-507: { name: "X-Ray Chest", price: 800, details: "Chest radiography" },
-508: { name: "X-Ray Spine", price: 1000, details: "Spinal radiography" },
-511: { name: "X-Ray Hand", price: 700, details: "Hand bone imaging" },
-512: { name: "X-Ray Leg", price: 900, details: "Lower limb radiography" },
-513: { name: "X-Ray Skull", price: 850, details: "Skull & facial bone imaging" },
+507: { name: "X-Ray Chest", price: 500, details: "Chest radiography" },
+508: { name: "X-Ray Spine", price: 899, details: "Spinal radiography" },
+511: { name: "X-Ray Hand", price: 399, details: "Hand bone imaging" },
+512: { name: "X-Ray Leg", price: 499, details: "Lower limb radiography" },
+513: { name: "X-Ray Skull", price: 899, details: "Skull & facial bone imaging" },
 
 /* ===============================
    MRI TYPES (5 Major)
@@ -143,19 +143,19 @@ const PRODUCT_DATA = {
 
   107: {
     name: "Senior Citizen Health Checkup",
-    price: 2599,
+    price: 2499,
     details: "Age-specific Preventive Package"
   },
 
   108: {
     name: "Thyroid Health Checkup",
-    price: 799,
+    price: 599,
     details: "Thyroid Function Tests"
   },
 
   109: {
     name: "Vitamin & Mineral Checkup",
-    price: 1499,
+    price: 899,
     details: "Nutritional Deficiency Panel"
   },
 

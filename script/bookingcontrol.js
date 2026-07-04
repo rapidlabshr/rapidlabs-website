@@ -4,7 +4,7 @@ window.createLead = async function(leadData){
 
     try{
 
-        const res = await fetch("http://127.0.0.1:5000/api/create-lead",{
+        const res = await fetch("https://backend-1bx3.onrender.com/api/create-lead",{
 
             method:"POST",
 
@@ -147,7 +147,7 @@ try{
     if(paymentMethod === "online"){
 
         // 🔹 Create Razorpay order
-        const orderRes = await fetch("http://127.0.0.1:5000/create-order",{
+        const orderRes = await fetch("https://backend-1bx3.onrender.com/create-order",{
             method:"POST",
             headers:{ "Content-Type":"application/json" },
             body: JSON.stringify({ amount: totalAmount })
@@ -166,7 +166,7 @@ try{
             handler: async function () {
 
                 // ✅ Save lead after successful payment
-                await fetch("http://127.0.0.1:5000/api/create-lead",{
+                await fetch("https://backend-1bx3.onrender.com/api/create-lead",{
                     method:"POST",
                     headers:{ "Content-Type":"application/json" },
                     body: JSON.stringify({
@@ -192,7 +192,7 @@ try{
     }else{
 
         // 🔹 Offline booking
-        const res = await fetch("http://127.0.0.1:5000/api/create-lead",{
+        const res = await fetch("https://backend-1bx3.onrender.com/api/create-lead",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
@@ -328,7 +328,7 @@ document.getElementById("upload-btn").onclick = async function () {
 
   try {
 
-    const res = await fetch("http://127.0.0.1:5000/api/upload-prescription", {
+    const res = await fetch("https://backend-1bx3.onrender.com/api/upload-prescription", {
       method: "POST",
       body: formData
     });
@@ -402,7 +402,7 @@ if (downloadBtn) {
 
     try {
 
-      const res = await fetch("http://127.0.0.1:5000/api/get-report", {
+      const res = await fetch("https://backend-1bx3.onrender.com/api/get-report", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

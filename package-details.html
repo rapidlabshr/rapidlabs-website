@@ -196,7 +196,7 @@
       <div class="card"><span class="label">Tests Included</span><strong id="pkgTests"></strong></div>
       <div class="card"><span class="label">Sample</span><strong>Blood / Urine</strong></div>
       <div class="card"><span class="label">Preparation</span><strong>Fasting if required</strong></div>
-      <div class="card"><span class="label">Report Time</span><strong>24–48 Hours</strong></div>
+      <div class="card"><span class="label">Report Time</span><strong>6–8 Hours</strong></div>
     </div>
   </div>
 </section>
@@ -204,7 +204,7 @@
 <!-- ================= TESTS ================= -->
 <section class="details-section" id="testsSection">
   <div class="container">
-    <h2>Available Diagnostic Tests</h2>
+    <h2>Tests & Parameters Included</h2>
 
     <div class="test-grid" id="organTests">
       <!-- JS inject cards here -->
@@ -706,220 +706,1029 @@
 /* ================= PACKAGE DATA ================= */
 const packages = {
   basic: {
+  productId: 101,
+  name: "Basic Health Checkup",
+  price: 1299,
+  oldPrice: 1999,
+  image: "./images/basic.webp",
 
-    productId: 101,
-    name: "Basic Health Checkup",
-    price: 1299,
-    oldPrice: 1999,
-    image: "./images/basic.webp",
-    desc: "Ideal for routine health screening and early detection.",
-    tests: "60+ Parameters",
-    list: [
-      "Complete Blood Count (CBC)",
-      "Blood Sugar (Fasting/PP)",
-      "Liver Function Test (LFT)",
-      "Kidney Function Test (KFT)",
-      "Urine Routine & Microscopy"
-    ],
-    who: [
-      "Adults above 18 years",
-      "Routine annual checkup",
-      "Early disease detection"
-    ]
-  },
+  desc: "A comprehensive preventive health package designed for routine health screening and early detection of common lifestyle diseases.",
 
-  master: {
-    name: "Master Health Checkup",
-    price: 2499,
-    oldPrice: 3999,
-    image: "./images/master.webp",
-    desc: "Comprehensive full body checkup covering major organs.",
-    tests: "85+ Parameters",
-    list: [
-      "Complete Blood Count (CBC)",
-      "Liver Function Test (LFT)",
-      "Kidney Function Test (KFT)",
-      "Thyroid Profile",
-      "Lipid Profile",
-      "HbA1c Test",
-      "Vitamin D Test",
-      "Iron Studies"
-    ],
-    who: [
-      "Adults 25+",
-      "Preventive healthcare",
-      "Corporate employees"
-    ]
-  },
+  tests: "60+ Parameters",
 
-  heart: {
-    name: "Heart Health Checkup",
-    price: 1799,
-    oldPrice: 2999,
-    image: "./images/heart.webp",
-    desc: "Focused on heart-related tests for early detection of cardiac issues.",
-    tests: "15+ Parameters",
-    list: [
-      "Lipid Profile",
-      "Cholesterol – HDL/LDL",
-      "Triglycerides Test",
-      "Electrolytes Panel",
-      "ECG",
-      "Blood Pressure Check"
-    ],
-    who: [
-      "Adults 35+",
-      "Family history of heart disease",
-      "Lifestyle risk assessment"
-    ]
-  },
+  categories: [
+    {
+      name: "Complete Blood Count (CBC)",
+      parameters: [
+        "Hemoglobin",
+        "RBC Count",
+        "WBC Count",
+        "Platelet Count",
+        "Hematocrit (PCV)",
+        "MCV",
+        "MCH",
+        "MCHC",
+        "RDW",
+        "Neutrophils",
+        "Lymphocytes",
+        "Monocytes",
+        "Eosinophils",
+        "Basophils",
+        "ESR"
+      ]
+    },
 
-  women: {
-    name: "Well Women Checkup",
-    price: 1999,
-    oldPrice: 3499,
-    image: "./images/women.webp",
-    desc: "Comprehensive package designed for women’s health and hormonal balance.",
-    tests: "30+ Parameters",
-    list: [
-      "CBC",
-      "Thyroid Profile",
-      "Vitamin D Test",
-      "Iron Studies",
-      "Hormone Profile",
-      "Urine Routine & Microscopy"
-    ],
-    who: [
-      "Women aged 20+",
-      "Routine health monitoring",
-      "Hormonal imbalance check"
-    ]
-  },
+    {
+      name: "Blood Sugar",
+      parameters: [
+        "Fasting Blood Sugar (FBS)",
+        "Post Prandial Blood Sugar (PPBS)"
+      ]
+    },
 
-  diabetic: {
-    name: "Diabetic Profile",
-    price: 899,
-    oldPrice: 1499,
-    image: "./images/diabetic.webp",
-    desc: "Designed for diabetes monitoring and control.",
-    tests: "6 Parameters",
-    list: [
-      "Fasting Blood Sugar",
-      "Post Prandial Sugar",
-      "HbA1c Test",
-      "Lipid Profile"
-    ],
-    who: [
-      "Diabetic patients",
-      "Prediabetes monitoring"
-    ]
-  },
+    {
+      name: "Liver Function Test (LFT)",
+      parameters: [
+        "Total Bilirubin",
+        "Direct Bilirubin",
+        "Indirect Bilirubin",
+        "SGOT (AST)",
+        "SGPT (ALT)",
+        "Alkaline Phosphatase",
+        "Total Protein",
+        "Albumin",
+        "Globulin",
+        "A/G Ratio",
+        "GGT",
+        "LDH"
+      ]
+    },
 
-  executive: {
-    name: "Executive Health Checkup",
-    price: 2999,
-    oldPrice: 4999,
-    image: "./images/executive.webp",
-    desc: "Premium health package for professionals covering key health markers.",
-    tests: "50+ Parameters",
-    list: [
-      "CBC",
-      "Liver Function Test (LFT)",
-      "Kidney Function Test (KFT)",
-      "Lipid Profile",
-      "Thyroid Profile",
-      "Blood Sugar (Fasting/PP)"
-    ],
-    who: [
-      "Working professionals",
-      "Routine annual checkup",
-      "Corporate health screening"
-    ]
-  },
+    {
+      name: "Kidney Function Test (KFT)",
+      parameters: [
+        "Blood Urea",
+        "Serum Creatinine",
+        "Uric Acid",
+        "Sodium",
+        "Potassium",
+        "Chloride",
+        "Calcium",
+        "eGFR"
+      ]
+    },
 
-  senior: {
-    name: "Senior Citizen Health Checkup",
-    price: 2599,
-    oldPrice: 4499,
-    image: "./images/senior.webp",
-    desc: "Comprehensive package for senior citizens to monitor age-related health risks.",
-    tests: "70+ Parameters",
-    list: [
-      "CBC",
-      "Liver Function Test (LFT)",
-      "Kidney Function Test (KFT)",
-      "Lipid Profile",
-      "Thyroid Profile",
-      "Vitamin D Test",
-      "Iron Studies",
-      "Urine Routine & Microscopy"
-    ],
-    who: [
-      "Aged 60+",
-      "Age-related health monitoring",
-      "Routine preventive checkup"
-    ]
-  },
+    {
+      name: "Lipid Profile",
+      parameters: [
+        "Total Cholesterol",
+        "Triglycerides",
+        "HDL Cholesterol",
+        "LDL Cholesterol",
+        "VLDL",
+        "Non-HDL Cholesterol",
+        "TC/HDL Ratio",
+        "LDL/HDL Ratio"
+      ]
+    },
 
-  thyroid: {
-    name: "Thyroid Health Checkup",
-    price: 799,
-    oldPrice: 1499,
-    image: "./images/thyroid.webp",
-    desc: "Focused on thyroid function tests to detect hypo- or hyperthyroidism.",
-    tests: "5 Parameters",
-    list: [
-      "TSH",
-      "T3",
-      "T4",
-      "Thyroid Antibodies Test"
-    ],
-    who: [
-      "Individuals with fatigue, weight change, or hair fall",
-      "Hormonal imbalance check"
-    ]
-  },
+    {
+      name: "Urine Routine & Microscopy",
+      parameters: [
+        "Colour",
+        "Appearance",
+        "Specific Gravity",
+        "pH",
+        "Protein",
+        "Sugar",
+        "Ketones",
+        "Bile Pigments",
+        "Bile Salts",
+        "Pus Cells",
+        "RBC",
+        "Epithelial Cells",
+        "Casts",
+        "Crystals",
+        "Bacteria"
+      ]
+    }
+  ],
 
-  vitamin: {
-    name: "Vitamin & Mineral Checkup",
-    price: 1499,
-    oldPrice: 2499,
-    image: "./images/vitamin.webp",
-    desc: "Check essential vitamin and mineral levels for overall health.",
-    tests: "10+ Parameters",
-    list: [
-      "Vitamin B12",
-      "Vitamin D",
-      "Vitamin K",
-      "Iron & Ferritin Test",
-      "Folate Test",
-      "Magnesium Test"
-    ],
-    who: [
-      "Adults with fatigue or nutritional deficiencies",
-      "Routine health monitoring"
-    ]
-  },
+  who: [
+    "Adults above 18 years",
+    "Routine annual health checkup",
+    "Working professionals",
+    "People with sedentary lifestyle",
+    "Individuals with family history of diabetes or hypertension",
+    "Preventive health screening"
+  ]
+},
 
-  preemployment: {
-    name: "Pre-employment Health Checkup",
-    price: 999,
-    oldPrice: 1799,
-    image: "./images/preemployment.webp",
-    desc: "Essential tests required for pre-employment screening.",
-    tests: "10+ Parameters",
-    list: [
-      "CBC",
-      "Blood Sugar (Fasting)",
-      "Liver Function Test (LFT)",
-      "Kidney Function Test (KFT)",
-      "Urine Routine & Microscopy"
-    ],
-    who: [
-      "Job applicants",
-      "Mandatory pre-employment screening"
-    ]
-  }
+
+
+master: {
+  productId: 102,
+  name: "Master Health Checkup",
+  price: 2499,
+  oldPrice: 3999,
+  image: "./images/master.webp",
+
+  desc: "Comprehensive full body health package covering major organs, metabolic health, vitamins and preventive screening.",
+
+  tests: "85+ Parameters",
+
+  categories: [
+
+    {
+      name: "Complete Blood Count (CBC)",
+      parameters: [
+        "Hemoglobin",
+        "RBC Count",
+        "WBC Count",
+        "Platelet Count",
+        "Hematocrit (PCV)",
+        "MCV",
+        "MCH",
+        "MCHC",
+        "RDW",
+        "Neutrophils",
+        "Lymphocytes",
+        "Monocytes",
+        "Eosinophils",
+        "Basophils",
+        "ESR"
+      ]
+    },
+
+    {
+      name: "Diabetes Profile",
+      parameters: [
+        "Fasting Blood Sugar",
+        "Post Prandial Blood Sugar",
+        "HbA1c"
+      ]
+    },
+
+    {
+      name: "Liver Function Test (LFT)",
+      parameters: [
+        "Total Bilirubin",
+        "Direct Bilirubin",
+        "Indirect Bilirubin",
+        "SGOT (AST)",
+        "SGPT (ALT)",
+        "Alkaline Phosphatase",
+        "Total Protein",
+        "Albumin",
+        "Globulin",
+        "A/G Ratio",
+        "GGT",
+        "LDH"
+      ]
+    },
+
+    {
+      name: "Kidney Function Test (KFT)",
+      parameters: [
+        "Blood Urea",
+        "Serum Creatinine",
+        "Uric Acid",
+        "Sodium",
+        "Potassium",
+        "Chloride",
+        "Calcium",
+        "eGFR"
+      ]
+    },
+
+    {
+      name: "Lipid Profile",
+      parameters: [
+        "Total Cholesterol",
+        "Triglycerides",
+        "HDL Cholesterol",
+        "LDL Cholesterol",
+        "VLDL",
+        "Non-HDL Cholesterol",
+        "TC/HDL Ratio",
+        "LDL/HDL Ratio"
+      ]
+    },
+
+    {
+      name: "Thyroid Profile",
+      parameters: [
+        "T3",
+        "T4",
+        "TSH"
+      ]
+    },
+
+    {
+      name: "Vitamin Profile",
+      parameters: [
+        "Vitamin D",
+        "Vitamin B12"
+      ]
+    },
+
+    {
+      name: "Iron Studies",
+      parameters: [
+        "Serum Iron",
+        "Ferritin",
+        "TIBC",
+        "Transferrin Saturation"
+      ]
+    },
+
+    {
+      name: "Urine Routine & Microscopy",
+      parameters: [
+        "Colour",
+        "Appearance",
+        "Specific Gravity",
+        "pH",
+        "Protein",
+        "Sugar",
+        "Ketones",
+        "Pus Cells",
+        "RBC",
+        "Epithelial Cells",
+        "Casts",
+        "Crystals",
+        "Bacteria"
+      ]
+    }
+
+  ],
+
+  who: [
+    "Adults above 25 years",
+    "Routine annual health checkup",
+    "Corporate employees",
+    "Individuals with lifestyle diseases",
+    "People with family history of diabetes or heart disease",
+    "Preventive health screening"
+  ]
+},
+
+
+
+heart: {
+  productId: 103,
+  name: "Heart Health Checkup",
+  price: 1799,
+  oldPrice: 2999,
+  image: "./images/heart.webp",
+
+  desc: "Comprehensive cardiac health package designed to assess heart function, cholesterol levels and cardiovascular risk.",
+
+  tests: "25+ Parameters",
+
+  categories: [
+
+    {
+      name: "Lipid Profile",
+      parameters: [
+        "Total Cholesterol",
+        "HDL Cholesterol",
+        "LDL Cholesterol",
+        "VLDL",
+        "Triglycerides",
+        "Non-HDL Cholesterol",
+        "TC/HDL Ratio",
+        "LDL/HDL Ratio"
+      ]
+    },
+
+    {
+      name: "Cardiac Risk Markers",
+      parameters: [
+        "Troponin-I",
+        "CK-MB"
+      ]
+    },
+
+    {
+      name: "Electrolytes",
+      parameters: [
+        "Sodium",
+        "Potassium",
+        "Chloride",
+        "Calcium"
+      ]
+    },
+
+    {
+      name: "Blood Sugar",
+      parameters: [
+        "Fasting Blood Sugar",
+        "HbA1c"
+      ]
+    },
+
+    {
+      name: "Kidney Function",
+      parameters: [
+        "Blood Urea",
+        "Serum Creatinine",
+        "eGFR"
+      ]
+    },
+
+    {
+      name: "Liver Function",
+      parameters: [
+        "SGOT (AST)",
+        "SGPT (ALT)",
+        "Total Bilirubin"
+      ]
+    },
+
+  ],
+
+  who: [
+    "Adults above 35 years",
+    "People with chest pain or palpitations",
+    "Individuals with diabetes or hypertension",
+    "People with family history of heart disease",
+    "Smokers",
+    "Routine cardiovascular risk assessment"
+  ]
+},
+
+women: {
+  productId: 104,
+  name: "Well Women Checkup",
+  price: 1999,
+  oldPrice: 3499,
+  image: "./images/women.webp",
+
+  desc: "Comprehensive women's preventive health package covering blood health, hormones, thyroid, vitamins and overall wellness.",
+
+  tests: "45+ Parameters",
+
+  categories: [
+
+    {
+      name: "Complete Blood Count (CBC)",
+      parameters: [
+        "Hemoglobin",
+        "RBC Count",
+        "WBC Count",
+        "Platelet Count",
+        "Hematocrit (PCV)",
+        "MCV",
+        "MCH",
+        "MCHC",
+        "RDW",
+        "Neutrophils",
+        "Lymphocytes",
+        "Monocytes",
+        "Eosinophils",
+        "Basophils",
+        "ESR"
+      ]
+    },
+
+    {
+      name: "Thyroid Profile",
+      parameters: [
+        "T3",
+        "T4",
+        "TSH"
+      ]
+    },
+
+    {
+      name: "Hormone Profile",
+      parameters: [
+        "FSH",
+        "LH",
+        "Prolactin"
+      ]
+    },
+
+    {
+      name: "Iron Studies",
+      parameters: [
+        "Serum Iron",
+        "Ferritin"
+      ]
+    },
+
+    {
+      name: "Vitamin Profile",
+      parameters: [
+        "Vitamin D",
+        "Vitamin B12"
+      ]
+    },
+
+    {
+      name: "Blood Sugar",
+      parameters: [
+        "Fasting Blood Sugar",
+        "HbA1c"
+      ]
+    },
+
+    {
+      name: "Lipid Profile",
+      parameters: [
+        "Total Cholesterol",
+        "HDL Cholesterol",
+        "LDL Cholesterol",
+        "Triglycerides"
+      ]
+    },
+
+    {
+      name: "Liver Function Test (LFT)",
+      parameters: [
+        "SGOT (AST)",
+        "SGPT (ALT)",
+        "Total Bilirubin",
+        "Albumin"
+      ]
+    },
+
+    {
+      name: "Kidney Function Test (KFT)",
+      parameters: [
+        "Blood Urea",
+        "Serum Creatinine",
+        "Uric Acid",
+        "eGFR"
+      ]
+    },
+
+    {
+      name: "Urine Routine & Microscopy",
+      parameters: [
+        "Colour",
+        "Appearance",
+        "pH",
+        "Sugar",
+        "Ketones",
+        "Pus Cells",
+        "Epithelial Cells",
+        "Crystals",
+        "Bacteria"
+      ]
+    }
+
+  ],
+
+  who: [
+    "Women aged 20 years and above",
+    "Women planning pregnancy",
+    "Women with hormonal imbalance",
+    "Women with fatigue or nutritional deficiency",
+    "Routine annual health checkup",
+    "Preventive health screening"
+  ]
+},
+
+diabetic: {
+  productId: 105,
+  name: "Diabetic Profile",
+  price: 899,
+  oldPrice: 1499,
+  image: "./images/diabetic.webp",
+
+  desc: "Comprehensive diabetes screening package to monitor blood sugar levels, long-term glucose control, kidney health and associated risk factors.",
+
+  tests: "20+ Parameters",
+
+  categories: [
+
+    {
+      name: "Blood Sugar Profile",
+      parameters: [
+        "Fasting Blood Sugar (FBS)",
+        "Post Prandial Blood Sugar (PPBS)",
+        "Random Blood Sugar (RBS)"
+      ]
+    },
+
+    {
+      name: "HbA1c",
+      parameters: [
+        "HbA1c",
+        "Estimated Average Glucose (eAG)"
+      ]
+    },
+
+    {
+      name: "Lipid Profile",
+      parameters: [
+        "Total Cholesterol",
+        "HDL Cholesterol",
+        "LDL Cholesterol",
+        "VLDL",
+        "Triglycerides",
+        "Non-HDL Cholesterol",
+        "TC/HDL Ratio",
+        "LDL/HDL Ratio"
+      ]
+    },
+
+    {
+      name: "Kidney Function Test (KFT)",
+      parameters: [
+        "Blood Urea",
+        "Serum Creatinine",
+        "Uric Acid",
+        "eGFR"
+      ]
+    },
+
+    {
+      name: "Urine Sugar & Protein",
+      parameters: [
+        "Urine Sugar",
+        "Urine Protein",
+        "Microalbumin"
+      ]
+    }
+
+  ],
+
+  who: [
+    "Known diabetic patients",
+    "Prediabetic individuals",
+    "People with family history of diabetes",
+    "Individuals with obesity or hypertension",
+    "Routine diabetes monitoring",
+    "Annual preventive health screening"
+  ]
+},
+
+executive: {
+  productId: 106,
+  name: "Executive Health Checkup",
+  price: 2999,
+  oldPrice: 4999,
+  image: "./images/exculsive.webp",
+
+  desc: "A premium preventive health package designed for busy professionals to assess overall health, lifestyle diseases and organ function.",
+
+  tests: "65+ Parameters",
+
+  categories: [
+
+    {
+      name: "Complete Blood Count (CBC)",
+      parameters: [
+        "Hemoglobin",
+        "RBC Count",
+        "WBC Count",
+        "Platelet Count",
+        "Hematocrit (PCV)",
+        "MCV",
+        "MCH",
+        "MCHC",
+        "RDW",
+        "Neutrophils",
+        "Lymphocytes",
+        "Monocytes",
+        "Eosinophils",
+        "Basophils",
+        "ESR"
+      ]
+    },
+
+    {
+      name: "Blood Sugar Profile",
+      parameters: [
+        "Fasting Blood Sugar",
+        "Post Prandial Blood Sugar",
+        "HbA1c"
+      ]
+    },
+
+    {
+      name: "Liver Function Test (LFT)",
+      parameters: [
+        "Total Bilirubin",
+        "Direct Bilirubin",
+        "Indirect Bilirubin",
+        "SGOT (AST)",
+        "SGPT (ALT)",
+        "Alkaline Phosphatase",
+        "Albumin",
+        "Globulin",
+        "Total Protein",
+        "A/G Ratio",
+        "GGT",
+        "LDH"
+      ]
+    },
+
+    {
+      name: "Kidney Function Test (KFT)",
+      parameters: [
+        "Blood Urea",
+        "Serum Creatinine",
+        "Uric Acid",
+        "Sodium",
+        "Potassium",
+        "Chloride",
+        "Calcium",
+        "eGFR"
+      ]
+    },
+
+    {
+      name: "Lipid Profile",
+      parameters: [
+        "Total Cholesterol",
+        "Triglycerides",
+        "HDL Cholesterol",
+        "LDL Cholesterol",
+        "VLDL",
+        "Non-HDL Cholesterol",
+        "TC/HDL Ratio",
+        "LDL/HDL Ratio"
+      ]
+    },
+
+    {
+      name: "Thyroid Profile",
+      parameters: [
+        "T3",
+        "T4",
+        "TSH"
+      ]
+    },
+
+    {
+      name: "Vitamin Profile",
+      parameters: [
+        "Vitamin D",
+        "Vitamin B12",
+        "Folate"
+      ]
+    },
+
+    {
+      name: "Iron Studies",
+      parameters: [
+        "Serum Iron",
+        "Ferritin",
+        "TIBC",
+        "Transferrin Saturation"
+      ]
+    },
+
+    {
+      name: "Urine Routine & Microscopy",
+      parameters: [
+        "Colour",
+        "Appearance",
+        "Specific Gravity",
+        "pH",
+        "Protein",
+        "Sugar",
+        "Ketones",
+        "Pus Cells",
+        "RBC",
+        "Epithelial Cells",
+        "Casts",
+        "Crystals",
+        "Bacteria"
+      ]
+    }
+
+  ],
+
+  who: [
+    "Working professionals",
+    "Corporate employees",
+    "Business executives",
+    "Annual preventive health checkup",
+    "People with sedentary lifestyle",
+    "Individuals above 30 years"
+  ]
+},
+
+senior: {
+  productId: 107,
+  name: "Senior Citizen Health Checkup",
+  price: 2599,
+  oldPrice: 4499,
+  image: "./images/master.webp",
+
+  desc: "A comprehensive preventive health package specially designed for senior citizens to monitor vital organs, nutritional health and age-related conditions.",
+
+  tests: "75+ Parameters",
+
+  categories: [
+
+    {
+      name: "Complete Blood Count (CBC)",
+      parameters: [
+        "Hemoglobin",
+        "RBC Count",
+        "WBC Count",
+        "Platelet Count",
+        "Hematocrit (PCV)",
+        "MCV",
+        "MCH",
+        "MCHC",
+        "RDW",
+        "Neutrophils",
+        "Lymphocytes",
+        "Monocytes",
+        "Eosinophils",
+        "Basophils",
+        "ESR"
+      ]
+    },
+
+    {
+      name: "Blood Sugar Profile",
+      parameters: [
+        "Fasting Blood Sugar",
+        "Post Prandial Blood Sugar",
+        "HbA1c"
+      ]
+    },
+
+    {
+      name: "Liver Function Test (LFT)",
+      parameters: [
+        "Total Bilirubin",
+        "Direct Bilirubin",
+        "Indirect Bilirubin",
+        "SGOT (AST)",
+        "SGPT (ALT)",
+        "Alkaline Phosphatase",
+        "Albumin",
+        "Globulin",
+        "Total Protein",
+        "A/G Ratio",
+        "GGT",
+        "LDH"
+      ]
+    },
+
+    {
+      name: "Kidney Function Test (KFT)",
+      parameters: [
+        "Blood Urea",
+        "Serum Creatinine",
+        "Uric Acid",
+        "Sodium",
+        "Potassium",
+        "Chloride",
+        "Calcium",
+        "eGFR"
+      ]
+    },
+
+    {
+      name: "Lipid Profile",
+      parameters: [
+        "Total Cholesterol",
+        "Triglycerides",
+        "HDL Cholesterol",
+        "LDL Cholesterol",
+        "VLDL",
+        "Non-HDL Cholesterol",
+        "TC/HDL Ratio",
+        "LDL/HDL Ratio"
+      ]
+    },
+
+    {
+      name: "Thyroid Profile",
+      parameters: [
+        "T3",
+        "T4",
+        "TSH"
+      ]
+    },
+
+    {
+      name: "Vitamin Profile",
+      parameters: [
+        "Vitamin D",
+        "Vitamin B12",
+        "Folate"
+      ]
+    },
+
+    {
+      name: "Iron Studies",
+      parameters: [
+        "Serum Iron",
+        "Ferritin",
+        "TIBC",
+        "Transferrin Saturation"
+      ]
+    },
+
+    {
+      name: "Bone Health",
+      parameters: [
+        "Calcium",
+        "Phosphorus",
+        "Vitamin D"
+      ]
+    },
+
+    {
+      name: "Urine Routine & Microscopy",
+      parameters: [
+        "Colour",
+        "Appearance",
+        "Specific Gravity",
+        "pH",
+        "Protein",
+        "Sugar",
+        "Ketones",
+        "Pus Cells",
+        "RBC",
+        "Epithelial Cells",
+        "Casts",
+        "Crystals",
+        "Bacteria"
+      ]
+    }
+
+  ],
+
+  who: [
+    "Senior citizens aged 60 years and above",
+    "People with chronic medical conditions",
+    "Routine annual preventive health checkup",
+    "Individuals with diabetes or hypertension",
+    "People with heart disease risk",
+    "Overall age-related health monitoring"
+  ]
+},
+
+thyroid: {
+  productId: 108,
+  name: "Thyroid Health Checkup",
+  price: 799,
+  oldPrice: 1499,
+  image: "./images/thyroid.webp",
+
+  desc: "A comprehensive thyroid screening package designed to evaluate thyroid gland function and detect hypo- or hyperthyroidism at an early stage.",
+
+  tests: "10+ Parameters",
+
+  categories: [
+
+    {
+      name: "Thyroid Function Tests",
+      parameters: [
+        "T3",
+        "T4",
+        "TSH (Thyroid Stimulating Hormone)"
+      ]
+    },
+
+
+  ],
+
+  who: [
+    "Individuals with fatigue or weakness",
+    "People with unexplained weight gain or weight loss",
+    "Hair fall or dry skin",
+    "Women with irregular menstrual cycles",
+    "People with family history of thyroid disorders",
+    "Routine thyroid health monitoring"
+  ]
+},
+
+
+
+vitamin: {
+  productId: 109,
+  name: "Vitamin Checkup",
+  price: 899,
+  oldPrice: 1499,
+  image: "./images/vitamin.webp",
+
+  desc: "Essential vitamin screening package to assess Vitamin D and Vitamin B12 levels for overall health and wellness.",
+
+  tests: "2 Parameters",
+
+  categories: [
+    {
+      name: "Vitamin Profile",
+      parameters: [
+        "Vitamin D (25-OH)",
+        "Vitamin B12"
+      ]
+    }
+  ],
+
+  who: [
+    "Adults with fatigue or weakness",
+    "People with vitamin deficiency symptoms",
+    "Individuals with bone or muscle pain",
+    "Routine nutritional health monitoring"
+  ]
+},
+
+
+preemployment: {
+  productId: 110,
+  name: "Pre-employment Health Checkup",
+  price: 999,
+  oldPrice: 1799,
+  image: "./images/emp.webp",
+
+  desc: "A comprehensive pre-employment health screening package designed to assess overall fitness and meet corporate hiring requirements.",
+
+  tests: "40+ Parameters",
+
+  categories: [
+
+    {
+      name: "Complete Blood Count (CBC)",
+      parameters: [
+        "Hemoglobin",
+        "RBC Count",
+        "WBC Count",
+        "Platelet Count",
+        "Hematocrit (PCV)",
+        "MCV",
+        "MCH",
+        "MCHC",
+        "RDW",
+        "Neutrophils",
+        "Lymphocytes",
+        "Monocytes",
+        "Eosinophils",
+        "Basophils",
+        "ESR"
+      ]
+    },
+
+    {
+      name: "Blood Sugar",
+      parameters: [
+        "Fasting Blood Sugar"
+      ]
+    },
+
+    {
+      name: "Liver Function Test (LFT)",
+      parameters: [
+        "Total Bilirubin",
+        "SGOT (AST)",
+        "SGPT (ALT)",
+        "Alkaline Phosphatase",
+        "Albumin",
+        "Total Protein"
+      ]
+    },
+
+    {
+      name: "Kidney Function Test (KFT)",
+      parameters: [
+        "Blood Urea",
+        "Serum Creatinine",
+        "Uric Acid",
+        "eGFR"
+      ]
+    },
+
+    {
+      name: "Urine Routine & Microscopy",
+      parameters: [
+        "Colour",
+        "Appearance",
+        "Specific Gravity",
+        "pH",
+        "Protein",
+        "Sugar",
+        "Ketones",
+        "Pus Cells",
+        "RBC",
+        "Epithelial Cells",
+        "Crystals",
+        "Bacteria"
+      ]
+    }
+
+  ],
+
+  who: [
+    "Job applicants",
+    "Corporate employees",
+    "Candidates undergoing medical fitness screening",
+    "Mandatory pre-employment health assessment",
+    "Annual employee health checkup"
+  ]
+}
 };
 
 /* ================= PACKAGE → CART ID MAP ================= */
@@ -950,12 +1759,62 @@ if (pkg) {
   document.getElementById("pkgTests").textContent = pkg.tests;
   document.getElementById("pkgImage").src = pkg.image;
 
-  // Populate included tests list
-const pkgList = document.getElementById("pkgList");
 
-if (pkgList) {
-  pkgList.innerHTML = pkg.list.map(test => `<li>${test}</li>`).join("");
+  const organTests = document.getElementById("organTests");
+
+if (organTests) {
+
+    organTests.innerHTML = "";
+
+pkg.categories.forEach((category, index) => {
+
+    organTests.innerHTML += `
+
+        <div class="package-category">
+
+            <div class="category-header">
+
+                <h3>${category.name}</h3>
+
+                <button
+                    class="view-btn"
+                    onclick="toggleParameters(${index})">
+
+                    View ${category.parameters.length} Parameters
+
+                </button>
+
+            </div>
+
+            <ul
+                id="parameters-${index}"
+                class="parameter-list">
+
+                ${category.parameters
+                    .map(parameter => `<li>${parameter}</li>`)
+                    .join("")}
+
+            </ul>
+
+        </div>
+
+    `;
+
+});
+
+
+function toggleParameters(index){
+
+    const list = document.getElementById(`parameters-${index}`);
+
+    list.classList.toggle("show");
+
 }
+
+
+
+}
+
 
   // Populate "who should take" list
   const pkgWho = document.getElementById("pkgWho");
